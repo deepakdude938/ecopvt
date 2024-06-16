@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-06-16T18:47:57 IST" name="Default suite" finished-at="2024-06-16T18:48:37 IST" duration-ms="40345">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.SmartSenseRunner@1aafa419]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2024-06-16T18:47:57 IST" name="Default test" finished-at="2024-06-16T18:48:37 IST" duration-ms="40345">
+      <class name="testrunner.SmartSenseRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:testrunner.SmartSenseRunner@1aafa419]" started-at="2024-06-16T18:47:57 IST" name="setUpClass" finished-at="2024-06-16T18:47:58 IST" duration-ms="1268" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@459b187a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:testrunner.SmartSenseRunner@1aafa419]" started-at="2024-06-16T18:47:58 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-06-16T18:48:28 IST" duration-ms="30060" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["verify user able to add new report"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["config report Module"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.datatable.UndefinedDataTableTypeException">
+            <message>
+              <![CDATA[Can't convert DataTable to List<java.lang.String>.
+Please review these problems:
+
+ - There was a table cell transformer for java.lang.String but the table was too wide to use it.
+   Please reduce the table width to use this converter.
+
+ - There was no table entry or table row transformer registered for java.lang.String.
+   Please consider registering a table entry or row transformer.
+
+Note: Usually solving one is enough]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.datatable.UndefinedDataTableTypeException: Can't convert DataTable to List<java.lang.String>.
+Please review these problems:
+
+ - There was a table cell transformer for java.lang.String but the table was too wide to use it.
+   Please reduce the table width to use this converter.
+
+ - There was no table entry or table row transformer registered for java.lang.String.
+   Please consider registering a table entry or row transformer.
+
+Note: Usually solving one is enough
+at io.cucumber.datatable.UndefinedDataTableTypeException.listNoConverterDefined(UndefinedDataTableTypeException.java:102)
+at io.cucumber.datatable.DataTableTypeRegistryTableConverter.toList(DataTableTypeRegistryTableConverter.java:144)
+at io.cucumber.datatable.DataTable.asList(DataTable.java:199)
+at pageclases.Activity.selectSensors(Activity.java:304)
+at stepdefinations.ActivitySteps.add_below_sensors(ActivitySteps.java:185)
+at ✽.Add below sensors(file:///C:/Users/LENOVO/Downloads/eco-master/src/test/resources/features/AddNewReport.feature:15)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.datatable.UndefinedDataTableTypeException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:testrunner.SmartSenseRunner@1aafa419]" started-at="2024-06-16T18:48:28 IST" name="tearDownClass" finished-at="2024-06-16T18:48:37 IST" duration-ms="8767" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- testrunner.SmartSenseRunner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
