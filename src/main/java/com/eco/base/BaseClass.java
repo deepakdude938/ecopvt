@@ -24,6 +24,8 @@ public class BaseClass {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		return element;
 	}
+	
+	
 
 
 }

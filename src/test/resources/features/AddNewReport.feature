@@ -1,7 +1,7 @@
 
 Feature: config report Module
 
-Scenario: Login to Eco app
+Background:: Login to Eco app
 Given User launch the browser
 When  User opens URL "https://staging.ecolibrium.io/" 
 And   User enters Username as "qa12" 
@@ -30,5 +30,29 @@ Then  Page Title should be "SmartSense"
    
     
 
- Scenario: Edit Report
+ Scenario: verify user able to Edit Report
+  Given user is on listPage 
+  And search the create Report by name as "ActivityReport1" 
+  Then verify the user createdReportName is display in the list as "ActivityReport1"
+  And  click on checkBox whose report name as "ActivityReport1" and click on EditButton
+  And update the report name as "ActivityReport" and click on updateconfig button
+  When user search the Updatedreportname as "ActivityReport"
+  Then  verify the user updatedReportName is display in the list as "ActivityReport"
+  And  click on checkBox whose report name as "ActivityReport1" and click on EditButton
+  And select reportType by "option-1" which has TypeOfReport as "Download Report"
+  And select the DayandTime and click on Apply button
+  When userclick on formatxlsx button and click on downloadReportButton
+  Then verify the downloaded file is avaliable with "ActivityReport.xlsx" in project folder
+  When userclick on csvFormat button and click on downloadReportButton
+  Then verify the downloaded file avaliable "ActivityReport.csv" in project folder
+  When userclick on xlxFormat button and click on downloadReportButton
+  Then verify the downloaded file avaliable "ActivityReport.xlx" in project folder
+  When user click on sendMail button user will get message 
+  Then again click on ReportMenu and select the List
+ When user search the Updatedreportname as "ActivityReport" 
+  And  click on checkBox whose report name as "ActivityReport" and click on deleteButton
+    
+  
+  
+  
  
