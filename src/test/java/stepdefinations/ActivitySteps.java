@@ -234,6 +234,9 @@ public class ActivitySteps {
     @Then("verify user is navigated to ReportListPage")
     public void verify_user_is_navigated_to_report_list_page() {
 //       ac.verifyReportListIsAvaliable();
+    	
+    //	String web = "//div[normalize-space()='"+reportname+"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']";
+    	
     }
 
 

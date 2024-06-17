@@ -287,6 +287,8 @@ Select sel;
 		applyExplicitWaitsUntilElementClickable(AddnewReport,30).click();
 	}
 	public void enterReportNameField(String reportName) throws Exception {
+		
+		 super.reportName = reportName;
 		applyExplicitWaitsUntilElementClickable(ReportNameField,30).sendKeys(reportName);;
 	}
 	
@@ -302,9 +304,14 @@ Select sel;
 	List<List<String>>	data= dataTable.asLists(String.class);
 	System.out.println(data.size());
 	System.out.println(data.get(0).size());
-	ndriver.findElement(By.xpath("//div[@class='user-suggestion-contaner']/ul/li[text()='"+ data.get(0).get(0)+"']")).click();
-	applyExplicitWaitsUntilElementClickable(sensors,30).click();
-	ndriver.findElement(By.xpath("//div[@class='user-suggestion-contaner']/ul/li[text()='"+ data.get(0).get(1)+"']")).click();
+	
+	for(int i = 0;i<data.get(0).size();i++) {
+		String t = data.get(0).get(i);
+		ndriver.findElement(By.xpath("//div[@class='user-suggestion-contaner']/ul/li[text()='"+t +"']")).click();
+		applyExplicitWaitsUntilElementClickable(sensors,30).click();
+	//	ndriver.findElement(By.xpath("//div[@class='user-suggestion-contaner']/ul/li[text()='"+ data.get(0).get(1)+"']")).click();
+	}
+	
 	}
 	
 	public void selectParameters(io.cucumber.datatable.DataTable dataTable) throws Exception {

@@ -1,6 +1,7 @@
 
 Feature: config report Module
-Background: This steps will be common for all the following scenarios
+
+Scenario: Login to Eco app
 Given User launch the browser
 When  User opens URL "https://staging.ecolibrium.io/" 
 And   User enters Username as "qa12" 
@@ -9,7 +10,7 @@ And   Click on the Login
 Then  Page Title should be "SmartSense"
 
   @tag1
-  Scenario: verify user able to add new report 
+  Scenario: Verify user able to add new report 
     Given Add new Report
     And  Add report name as "ActivityReport1" and select report type as "Config Report"
    And  Add below sensors
@@ -27,12 +28,7 @@ Then  Page Title should be "SmartSense"
      And click on Save config button
      Then verify user is navigated to ReportListPage
    
-
-   
-   
-   
-   
-   
     
 
- #Scenario: Edit Report
+ Scenario: Edit Report
+ 

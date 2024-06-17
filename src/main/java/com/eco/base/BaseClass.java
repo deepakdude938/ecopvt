@@ -13,8 +13,8 @@ import java.time.Duration;
 
 
 public class BaseClass {
-	
-	WebDriver driver;
+	public String reportName ;
+	public WebDriver driver;
 
 	public static WebElement applyExplicitWaitsUntilElementClickable(WebElement element, int time) throws MalformedURLException {
 		
