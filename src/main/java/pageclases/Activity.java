@@ -1,5 +1,6 @@
 package pageclases;
 
+import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.List;
 
@@ -15,9 +16,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.eco.base.BaseClass;
-import com.eco.base.JavaScriptOperation;
+import com.fasterxml.jackson.databind.node.BooleanNode;
 
-import drivers.DriverFactory;
+import io.cucumber.java.en.Given;
 
 public class Activity extends BaseClass {
 
@@ -85,11 +86,11 @@ Select sel;
 	
 	@FindBy(xpath="//p[@class='download-text']//img[@class='icon-img dark-img']")
 	private WebElement downloadbutton;
+//	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	@FindBy(xpath="//img[@src='/app/assets/images/report.svg']")
+	private WebElement reportMenu;
 	
-	@FindBy(xpath="//img[@class='SSicon center-center icon-inactive']")
-	private WebElement reportfield;
-	
-	@FindBy(xpath="//div[@class='add-btn']")
+	@FindBy(xpath="//*[text()='Add New Report']")
 	private WebElement AddnewReport;
 	
 	@FindBy(xpath="//*[@id='standard-name']")
@@ -100,10 +101,9 @@ Select sel;
 	
 	@FindBy(xpath="//*[@placeholder='Select Upto 100 Sensor']")
 	private WebElement sensors;
-	
+
 	@FindBy(xpath="//*[@placeholder='Select Upto 20 Parameters']")
 	private WebElement parameters;
-	
 	
 	@FindBy(xpath="(//*[@class='input-wrap select-wrap'])[1]")
 	private WebElement grain;
@@ -114,21 +114,23 @@ Select sel;
 	@FindBy(xpath="(//*[@class='input-wrap select-wrap'])[3]")
 	private WebElement selectEndTime;
 	
-	@FindBy(xpath="(//*[@class='input-wrap select-wrap'])[4]")
+	@FindBy(xpath="(//*[@class='css-1pcexqc-container selectionbox'])[5]")
 	private WebElement selectTriggerTime;
 	
 	@FindBy(xpath="//*[@placeholder='Search User']")
 	private WebElement email;
 	
-	@FindBy(xpath="(//*[@class='input-wrap select-wrap'])[5]")
+	@FindBy(xpath="(//*[@class='css-1wy0on6 selectionbox_prefix__indicators'])[6]")
 	private WebElement deliveryFreq;
 	
-	@FindBy(xpath="//div[@data-title='Yesterday']")
+	@FindBy(xpath="(//*[@class='css-16pqwjk-indicatorContainer selectionbox_prefix__indicator selectionbox_prefix__dropdown-indicator'])[7]")
 	private WebElement startDay;
 	
 	@FindBy(xpath="//button[text()='Save Config']")
 	private WebElement saveconfigBtn;
 	
+	@FindBy(xpath="//div[@class='page-header-wrap']/h2[text()='Report List']")
+	private WebElement ReportList;
 	
 	public void clickOnActivityMenu() {
 		wait.until(ExpectedConditions.visibilityOf(activityMenu));
@@ -274,105 +276,112 @@ Select sel;
 		wait.until(ExpectedConditions.visibilityOf(downloadbutton));
 		downloadbutton.click();
 	}
-
-	public void clickonMenuReport() throws Exception {
-//		
-		applyExplicitWaitsUntilElementClickable(reportfield,30).click();
+////////////////////////////////////////////////////////////////////////////////////////////////
+	public void clickonReportMenu() throws Exception {
+		
+		applyExplicitWaitsUntilElementClickable(reportMenu,30).click();
 	}
 	
 	public void clickOnaddNewReport() throws Exception {
 		Thread.sleep(5000);
-		System.out.println(ndriver.getWindowHandles().size());
-//		ndriver.getWindowHandles().size();
-		JavaScriptOperation js= new JavaScriptOperation(DriverFactory.getDriver());
-		js.click(AddnewReport);
-//		applyExplicitWaitsUntilElementClickable(AddnewReport,30).click();
+		applyExplicitWaitsUntilElementClickable(AddnewReport,30).click();
 	}
-	public void enterReportNameField(String name) throws Exception {
-		applyExplicitWaitsUntilElementClickable(ReportNameField,30).sendKeys(name);;
+	public void enterReportNameField(String reportName) throws Exception {
+		applyExplicitWaitsUntilElementClickable(ReportNameField,30).sendKeys(reportName);;
 	}
 	
-	public void selectReportType(String typeOfReport) throws Exception {
-		applyExplicitWaitsUntilElementClickable(ReportType,30).click();
+//	public void selectReportType(String typeOfReport) throws Exception {
+//		applyExplicitWaitsUntilElementClickable(ReportType,30).click();
+//		
+//	}
+	public void selectSensors(io.cucumber.datatable.DataTable dataTable ) throws Exception
+	{
 		
-	}
-	public void selectSensors(io.cucumber.datatable.DataTable dataTable ) throws Exception {
-//		applyExplicitWaitsUntilElementClickable(ReportType,30)
-//		sel= new Select(sensors);
-//		sel.selectByVisibleText(sensorName);
-		  // XPath of the sensor dropdown
-		List<String> sensors = dataTable.asList(String.class);
-        String sensorXPath = "//*[@placeholder='Select Upto 100 Sensor']";
+		applyExplicitWaitsUntilElementClickable(sensors,30).click();
 
-        for (String sensorName : sensors) {
-//            WebElement sensorDropdown = ndriver.findElement(By.xpath(sensorXPath));
-//            sensorDropdown.click();
-//
-//            WebElement sensorOption = ndriver.findElement(By.xpath("//li[text()='" + sensorName + "']"));
-//            sensorOption.click();
-        	System.out.println(sensorName);
-	}}
-	
-	public void selectParameters(String parametersName) throws Exception {
-		applyExplicitWaitsUntilElementClickable(ReportType,30).click();
-//		sel= new Select(parameters);
-//		sel.selectByVisibleText(parametersName);
-		
+	List<List<String>>	data= dataTable.asLists(String.class);
+	System.out.println(data.size());
+	System.out.println(data.get(0).size());
+	ndriver.findElement(By.xpath("//div[@class='user-suggestion-contaner']/ul/li[text()='"+ data.get(0).get(0)+"']")).click();
+	applyExplicitWaitsUntilElementClickable(sensors,30).click();
+	ndriver.findElement(By.xpath("//div[@class='user-suggestion-contaner']/ul/li[text()='"+ data.get(0).get(1)+"']")).click();
 	}
 	
-	public void selectGrain(String GrainTime) throws Exception {
-//		applyExplicitWaitsUntilElementClickable(GrainTime,20).click();
-		sel= new Select(grain);
-		sel.selectByVisibleText(GrainTime);
-		
-		
+	public void selectParameters(io.cucumber.datatable.DataTable dataTable) throws Exception {
+		applyExplicitWaitsUntilElementClickable(parameters,30).click();
+		List<List<String>>	data= dataTable.asLists(String.class);
+		System.out.println(data.size());
+		System.out.println(data.get(0).size());
+		ndriver.findElement(By.xpath("//*[@class='user-suggestion-contaner']/ul/li[text()='"+data.get(0).get(0)+"']")).click();
+		applyExplicitWaitsUntilElementClickable(parameters,30).click();
+		ndriver.findElement(By.xpath("//*[@class='user-suggestion-contaner']/ul/li[text()='"+data.get(0).get(1)+"']")).click();		
 	}
 	
-	public void selectStarttime(String StartTime) throws Exception {
-		applyExplicitWaitsUntilElementClickable(ReportType,20).click();
-		sel= new Select(selectStartTime);
-		sel.selectByVisibleText(StartTime);
+	public void selectTheGrinTime(String option,String time) throws  Exception {
+		applyExplicitWaitsUntilElementClickable(grain,20).click();
+		Thread.sleep(1000);
+		ndriver.findElement(By.xpath("//div[@id='react-select-3-"+option+"' and text()='"+time+"']")).click();
+	}
+	
+	public void selectStarttime(String option,String StartTime) throws Exception {
+		applyExplicitWaitsUntilElementClickable(selectStartTime,20).click();
+		ndriver.findElement(By.xpath("//div[@id='react-select-4-"+option+"' and text()='"+StartTime+"']")).click();
 		
 		}
 	
-	public void selectEndttime(String endTime) throws Exception {
-		applyExplicitWaitsUntilElementClickable(ReportType,20).click();
-		sel= new Select(selectEndTime);
-		sel.selectByVisibleText(endTime);
+	public void selectEndttime(String option,String endTime) throws Exception {
+		applyExplicitWaitsUntilElementClickable(selectEndTime,20).click();
+		ndriver.findElement(By.xpath("//div[@id='react-select-5-"+option+"' and text()='"+endTime+"']")).click();
+		}
+	
+	public void selectTriggertime(String option,String TriggerTime) throws Exception {
+		applyExplicitWaitsUntilElementClickable(selectTriggerTime,20).click();
+		ndriver.findElement(By.xpath("//div[@id='react-select-6-"+option+"' and text()='"+TriggerTime+"']")).click();
+		
+		}
+//	
+	public void selectemail(io.cucumber.datatable.DataTable dataTable) throws Exception {
+		applyExplicitWaitsUntilElementClickable(email,30).click();
+		Thread.sleep(2000);
+		List<List<String>>	data= dataTable.asLists(String.class);
+		ndriver.findElement(By.xpath("//div[@class='user-suggestion-contaner']/ul/li[text()='"+data.get(0).get(0)+"']")).click();
+		applyExplicitWaitsUntilElementClickable(email,30).click();
+//		Thread.sleep(2000);
+		ndriver.findElement(By.xpath("//div[@class='user-suggestion-contaner']/ul/li[text()='"+data.get(0).get(1)+"']")).click();
 		
 		}
 	
-	public void selectTriggertime(String TriggerTime) throws Exception {
-		applyExplicitWaitsUntilElementClickable(ReportType,20).click();
-		sel= new Select(selectTriggerTime);
-		sel.selectByVisibleText(TriggerTime);
+	public void selectfrequency(String option,String freq) throws Exception {
+		applyExplicitWaitsUntilElementClickable(deliveryFreq,30).click();
+		ndriver.findElement(By.xpath("//*[@id='react-select-7-"+option+"' and text()='"+freq+"']")).click();
 		
 		}
-	
-	public void selectemail(String emailname) throws Exception {
-		applyExplicitWaitsUntilElementClickable(ReportType,20).click();
-		sel= new Select(email);
-		sel.selectByVisibleText(emailname);
+	public void selectStartDay(String option,String dayname) throws Exception {
+		String javascript = "window.scrollBy(0,400)";
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) ndriver;
+	    jsExecutor.executeScript(javascript);
+		applyExplicitWaitsUntilElementClickable(startDay,50).click();
+		Thread.sleep(2000);
+		ndriver.findElement(By.xpath("//div[@id='react-select-8-"+option+"' and text()='"+dayname+"']")).click();
 		
-		}
-	public void selectfrequency(String freq) throws Exception {
-		applyExplicitWaitsUntilElementClickable(ReportType,20).click();
-		sel= new Select(deliveryFreq);
-		sel.selectByVisibleText(freq);
-		
-		}
-	public void selectStartDay(String dayname) throws Exception {
-		applyExplicitWaitsUntilElementClickable(ReportType,20).click();
-		sel= new Select(startDay);
-		sel.selectByVisibleText(dayname);
-		
+//		String javascript = "arguments[0].click()";
+//	    JavascriptExecutor jsExecutor = (JavascriptExecutor) ndriver;
+//	    jsExecutor.executeScript(javascript, startDay);
+//	    jsExecutor. executeScript(javascript, ndriver.findElement(By.xpath("//div[@id='react-select-8-"+option+"' and text()='"+dayname+"']")));
 		}
 	
 	public void clickOnSaveConfigbtn() throws Exception {
-		applyExplicitWaitsUntilElementClickable(saveconfigBtn,20).click();
-		
+		applyExplicitWaitsUntilElementClickable(saveconfigBtn,30).click();
 		
 		}
+	
+	public Boolean verifyUserIsOnReportListPage() {
+		Boolean avaliable =wait.until(ExpectedConditions.visibilityOf(ReportList)).isDisplayed();
+		System.out.println("user is navigated to report list page");
+		return avaliable;
+		
+	}
+	
 	
 	
 	

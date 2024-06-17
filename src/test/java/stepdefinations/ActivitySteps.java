@@ -1,6 +1,7 @@
 package stepdefinations;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -166,28 +167,77 @@ public class ActivitySteps {
 		}
 	    Assert.assertTrue(isFileDownloaded(downloadPath, "EventActivitySummaryReport"), "Failed to download Expected document");
     }
-    
+//    
     @Given("Add new Report")
     public void add_new_report() throws Exception {
     	Thread.sleep(2000);
-//    	ac.clickonMenuReport();
-//    	ac.clickOnaddNewReport();
+    	ac.clickonReportMenu();
+    	ac.clickOnaddNewReport();
     }
     @Given("Add report name as {string} and select report type as {string}")
     public void add_report_name_as_and_select_report_type_as(String reportname, String reportType) throws Exception {
-//    	ac.enterReportNameField(reportname);
+    	ac.enterReportNameField(reportname);
 //    	ac.selectReportType(reportType);
     }
    
     @Given("Add below sensors")
     public void add_below_sensors(io.cucumber.datatable.DataTable dataTable) throws Exception {
+    
+    ac.selectSensors(dataTable);
     	
-    	ac.selectSensors(dataTable);
-//    	List<List<String>> data=dataTable.cells();
-//    	System.out.println((data.get(0).get(0)));
-//    	System.out.println((data.get(0).get(1)));
-    	
-    	
+    }
+    
+    @Given("Add below parameters")
+    public void add_below_parameters(io.cucumber.datatable.DataTable dataTable) throws Exception {
+    	ac.selectParameters(dataTable);
        
     }
+   
+    @Given("select the Graintime by {string} which have time {string}")
+    public void select_the_graintime_by_which_have_time(String option, String time) throws Exception {
+    	ac.selectTheGrinTime(option, time);
+    }
+    
+    @Given("select the startTime by {string} which have time {string}")
+    public void select_the_start_time_by_which_have_time(String option, String starttime) throws Exception {
+     ac.selectStarttime(option, starttime);
+}
+    
+    @Given("select the endTime by {string} which have time {string}")
+    public void select_the_end_time_by_which_have_time(String option, String endtime) throws Exception {
+    	ac.selectEndttime(option, endtime);
+    }
+    @Given("select the triggerTime by {string} which have time {string}")
+    public void select_the_trigger_time_by_which_have_time(String option, String triggerTime) throws Exception {
+    	ac.selectTriggertime(option, triggerTime);
+    }
+    
+    @Given("add the emails as below")
+    public void add_the_emails_as_below(io.cucumber.datatable.DataTable datatable) throws Exception {
+    	ac.selectemail(datatable);
+    }
+    
+    @Given("select Delivery Frequency by {string} which has {string} frequency")
+    public void select_delivery_frequency_by_which_has_frequency(String option, String freq) throws Exception {
+//ac.selectfrequency(option, freq);
+}
+    @Given("start Day by {string} which is {string}")
+    public void start_day_by_which_is(String option, String dayname) throws Exception {
+    	
+    	ac.selectStartDay(option, dayname);
+    }
+    @Given("click on Save config button")
+    public void click_on_save_config_button() throws Exception {
+       ac.clickOnSaveConfigbtn();
+    }
+    
+    @Then("verify user is navigated to ReportListPage")
+    public void verify_user_is_navigated_to_report_list_page() {
+//       ac.verifyReportListIsAvaliable();
+    }
+
+
+    
+    
+   
 }
