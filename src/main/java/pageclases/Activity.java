@@ -24,7 +24,7 @@ public class Activity extends BaseClass {
 
 	WebDriver ndriver;
 	WebDriverWait wait;
-Select sel;
+
 	public Activity(WebDriver odriver) {
 		this.ndriver = odriver;
 		PageFactory.initElements(ndriver, this);
@@ -427,7 +427,7 @@ private	WebElement EditCheckbox;
 	
 	public void clickOnSaveConfigbtn() throws Exception {
 		applyExplicitWaitsUntilElementClickable(saveconfigBtn,30).click();
-		Thread.sleep(10000);
+		Thread.sleep(300000); //5 min
 		
 		}
 	
@@ -437,12 +437,33 @@ private	WebElement EditCheckbox;
 		return avaliable;
 		
 	}
-	public String serchTheCreatedReportName(String createdreportName) throws Exception
+	
+	
+	public void searchTheCreatedReportName(String createdreportName) throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).click();
 		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).sendKeys(createdreportName,Keys.ENTER);
-		String createdReportName =displayedReportName.getText();
+//		String createdReportName =displayedReportName.getText();
+//		return createdReportName;
+		
+	}
+	
+	public boolean verifySearchReportnameIsDisplayed()
+	{
+		wait.until(ExpectedConditions.visibilityOf(displayedReportName));
+		boolean ReportCreated =displayedReportName.isDisplayed();
+		return ReportCreated ;
+	}
+	public String VerifyTheNameOfCreatedReport()
+	{
+		String createdReportName=displayedReportName.getText();
 		return createdReportName;
+	}
+	public void clickOnReportMenuAndList() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(reportMenu,30).click();
+		applyExplicitWaitsUntilElementClickable(Listbtn,30).click();
+		
 		
 	}
 	
@@ -469,15 +490,15 @@ private	WebElement EditCheckbox;
 		applyExplicitWaitsUntilElementClickable(updateonfigBtn,30).click();
 	}
 	
-	public String serchTheUpdatedReportName(String updatedreportName) throws Exception
+	public void searchTheUpdatedReportName(String updatedreportName) throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).click();
 		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).sendKeys(updatedreportName,Keys.ENTER);
-		String createdReportName =displayedReportName.getText();
-		return createdReportName;
+//		String createdReportName =displayedReportName.getText();
+//		return createdReportName;
 	}
 	
-	public String updatedRepotnameIsDisplayed()
+	public String updatedReportnameIsDisplayed()
 	{
 		String updatedName =displayedReportName.getText();
 		return updatedName;
@@ -516,23 +537,20 @@ private	WebElement EditCheckbox;
 		applyExplicitWaitsUntilElementClickable(downloadReportBtn,30).click();
 	}
 	
-	public void verifyCSVReportAvaliableInFolder()
+	public void verifyCSVReportAvaliableInFolder(String folderName,String reportNameWithExtension)
 	{
-//			File fileCSV = new File(path+"smartsense.csv");
+/*	String path= System.getProperty("user.dir");
+ File filexlsx = new File(path+"\\"+foldername+"\\"+reportNamewithextension);
+	Assert.assertTrue(file.exists(), "File not downloaded successfully");
+*/		
+
+		
+		//		String path ="C:\\Users\\LENOVO\\git\\repository2\\Eco_PVT_LTD\\downlodedReports"
+
+				//			File fileCSV = new File(path+"smartsense.csv");
 //			Assert.assertTrue(file.exists(), "File not downloaded successfully");
 	}
 	
-	public void verifyXlsxReportAvaliableInFolder()
-	{
-//		File filexlsx = new File(path+"smartsense.xlsx");
-//		Assert.assertTrue(file.exists(), "File not downloaded successfully");
-	}
-	
-	public void verifyXlxReportAvaliableInFolder()
-	{
-//		File filexlsx = new File(path+"smartsense.xlx");
-//		Assert.assertTrue(file.exists(), "File not downloaded successfully");
-	}
 	
 	
 	public void clickOncsvFormat() throws Exception
@@ -541,7 +559,7 @@ private	WebElement EditCheckbox;
 	}
 	
 	
-	public void clickOnXlsFormat() throws Exception
+	public void clickOnXlxFormat() throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(xlsFileFormat,30).click();
 	}
@@ -549,6 +567,8 @@ private	WebElement EditCheckbox;
 	public void clickOnEmailBtn() throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(emailBtn,30).click();
+		Thread.sleep(1000);
+		ndriver.switchTo().alert().accept();
 	}
 	
 	public void clickOnDeleteBtn() throws Exception

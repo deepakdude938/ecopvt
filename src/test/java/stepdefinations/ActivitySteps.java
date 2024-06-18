@@ -1,11 +1,16 @@
 package stepdefinations;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+
+import com.fasterxml.jackson.databind.node.BooleanNode;
 
 import drivers.DriverFactory;
 import io.cucumber.java.en.And;
@@ -233,10 +238,111 @@ public class ActivitySteps {
     
     @Then("verify user is navigated to ReportListPage")
     public void verify_user_is_navigated_to_report_list_page() {
-//       ac.verifyReportListIsAvaliable();
-    	
+     Boolean  avaliable =ac.verifyUserIsOnReportListPage();
+     System.out.println(avaliable);
+     assertTrue(avaliable,"listpage is not avaliable");
+    }
     
-    	
+    String createdReportname;
+    @When("search the create Report by name as {string}")
+    public void search_the_create_report_by_name_as(String reportName) throws Exception {
+    	ac.searchTheCreatedReportName(reportName);
+    }
+    
+    @Then("verify the user createdReportName is display in the list as {string}")
+    public void verify_the_user_created_report_name_is_display_in_the_list_as(String CreatedReportName) {
+        boolean ReportAvaliable=ac.verifySearchReportnameIsDisplayed();
+        assertTrue(ReportAvaliable, "report is not displayed");
+        String reportName=ac.VerifyTheNameOfCreatedReport();
+        assertEquals(reportName, CreatedReportName);
+        System.out.println("user is able to create report succefully");
+       
+    }
+//    ..................................................................
+    
+    @Given("user is on smartSense page and click on ReportMenu and select the List")
+    public void user_is_on_smart_sense_page_and_click_on_report_menu_and_select_the_list() throws Exception {
+       ac.clickOnReportMenuAndList();
+    }
+    
+    @Then("click on checkBox whose report name as {string} and click on EditButton")
+    public void click_on_check_box_whose_report_name_as_and_click_on_edit_button(String Reportname) throws Exception {
+       ac.clickOnCheckBox(Reportname);
+       ac.clickOnEditBtn();
+    }
+    
+    @Then("update the report name as {string} and click on updateconfig button")
+    public void update_the_report_name_as_and_click_on_updateconfig_button(String updateName) throws Exception {
+             ac.updateReportName( updateName);
+             ac.clickOnUpdateConfigBtn();
+    }
+    
+    @When("user search the Updatedreportname as {string}")
+    public void user_search_the_updatedreportname_as(String withUpdatedName) throws Exception {
+              ac.searchTheUpdatedReportName(withUpdatedName);
+    }
+    
+    @Then("verify the user updatedReportName is display in the list as {string}")
+    public void verify_the_user_updated_report_name_is_display_in_the_list_as(String updatedReportName) {
+        String reportName= ac.updatedReportnameIsDisplayed();
+         assertEquals(reportName, updatedReportName);
+    }
+    
+    @Then("select reportType by {string} which has TypeOfReport as {string}")
+    public void select_report_type_by_which_has_type_of_report_as(String optn, String reportType) throws Exception {
+            ac.selectReportType( optn,reportType);
+    
+    }
+    
+    @Then("select the DayandTime and click on Apply button")
+    public void select_the_dayand_time_and_click_on_apply_button() throws Exception {
+           ac.selectDateAndTime();
+           ac.clickOnApplyBtn();
+           
+    }
+    
+    @When("userclick on formatxlsx button and click on downloadReportButton")
+    public void userclick_on_formatxlsx_button_and_click_on_download_report_button() throws Exception {
+            ac.clickOnXlxsFormat();
+            ac.clickOnDownloadReport();
+            
+    }
+    @Then("verify the downloaded file is avaliable with {string} in project folder")
+    public void verify_the_downloaded_file_is_avaliable_with_in_project_folder(String xlsxExtension) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @When("userclick on csvFormat button and click on downloadReportButton")
+    public void userclick_on_csv_format_button_and_click_on_download_report_button() throws Exception {
+       ac.clickOncsvFormat();
+       ac.clickOnDownloadReport();
+    
+    }
+    @Then("verify the downloaded file is avaliable in project folder as {string}  with {string} name")
+    public void verify_the_downloaded_file_is_avaliable_in_project_folder_as_with_name(String folderName, String REportNameWithExtension) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    
+    @When("userclick on xlxFormat button and click on downloadReportButton")
+    public void userclick_on_xlx_format_button_and_click_on_download_report_button() throws Exception {
+    	ac.clickOnXlxFormat();
+        ac.clickOnDownloadReport();
+    }
+    
+    @When("user click on sendMail button user will get message")
+    public void user_click_on_send_mail_button_user_will_get_message() throws Exception {
+        ac.clickOnEmailBtn();
+        
+    }
+    @Then("again click on ReportMenu and select the List")
+    public void again_click_on_report_menu_and_select_the_list() throws Exception {
+         ac.clickOnReportMenuAndList();
+    }
+    @When("click on checkBox whose report name as {string} and click on deleteButton")
+    public void click_on_check_box_whose_report_name_as_and_click_on_delete_button(String updatedRepoName) throws Exception {
+        ac.clickOnCheckBox(updatedRepoName);
+    	ac.clickOnDeleteBtn();
     }
 
 

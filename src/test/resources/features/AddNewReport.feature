@@ -27,12 +27,14 @@ Then  Page Title should be "SmartSense"
      And start Day by "option-0" which is "Yesterday"
      And click on Save config button
      Then verify user is navigated to ReportListPage
+     When search the create Report by name as "ActivityReport1" 
+     Then verify the user createdReportName is display in the list as "ActivityReport1"
    
     
 
  Scenario: verify user able to Edit Report
-  Given user is on listPage 
-  And search the create Report by name as "ActivityReport1" 
+  Given user is on smartSense page and click on ReportMenu and select the List  
+  When search the create Report by name as "ActivityReport1" 
   Then verify the user createdReportName is display in the list as "ActivityReport1"
   And  click on checkBox whose report name as "ActivityReport1" and click on EditButton
   And update the report name as "ActivityReport" and click on updateconfig button
@@ -42,14 +44,15 @@ Then  Page Title should be "SmartSense"
   And select reportType by "option-1" which has TypeOfReport as "Download Report"
   And select the DayandTime and click on Apply button
   When userclick on formatxlsx button and click on downloadReportButton
-  Then verify the downloaded file is avaliable with "ActivityReport.xlsx" in project folder
+  Then verify the downloaded file is avaliable in project folder as "downloadedReport"  with "ActivityReport.xlsx" name
   When userclick on csvFormat button and click on downloadReportButton
-  Then verify the downloaded file avaliable "ActivityReport.csv" in project folder
+  Then verify the downloaded file is avaliable in project folder as "downloadedReport"  with "ActivityReport.csv" name
   When userclick on xlxFormat button and click on downloadReportButton
-  Then verify the downloaded file avaliable "ActivityReport.xlx" in project folder
+   Then verify the downloaded file is avaliable in project folder as "downloadedReport"  with "ActivityReport.xlx" name
   When user click on sendMail button user will get message 
   Then again click on ReportMenu and select the List
- When user search the Updatedreportname as "ActivityReport" 
+ When user search the Updatedreportname as "ActivityReport"
+  
   And  click on checkBox whose report name as "ActivityReport" and click on deleteButton
     
   
