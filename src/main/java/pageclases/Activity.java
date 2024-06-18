@@ -153,19 +153,20 @@ public class Activity extends BaseClass {
 	
 	@FindBy(xpath = "//*[text()='Select Date & Time']")
 	private WebElement selectDateAndTime;
-	
 
 	@FindBy(xpath = "//button[text()='Apply']")
 	private WebElement ApplyBtn;
 	
+	@FindBy(xpath = "//span[@class='success-message']")
+	private WebElement successMessage;
 	
-	@FindBy(xpath = "//img[@src='/app/assets/images/dark-active-excelsheet.svg']")
+	@FindBy(xpath = "(//div[@class='dark-img'])[1]")
 	private	WebElement Excelformat ;
 	
-	@FindBy(xpath = "//img[@src='/app/assets/images/dark-active-csv.svg']")
+	@FindBy(xpath = "(//div[@class='dark-img'])[2]")
 	private	WebElement csvFileformat;
 	
-	@FindBy(xpath = "//img[@src='/app/assets/images/dark-normal-xls.svg']")
+	@FindBy(xpath = "(//div[@class='dark-img'])[3]")
 	private	WebElement xlsFileFormat;
 	
 	@FindBy(xpath = "//button[text()='Download Report']")
@@ -176,6 +177,22 @@ public class Activity extends BaseClass {
 	
 	@FindBy(xpath = "//img[@src='/app/assets/images/deleteIconLight.svg']")
 	private	WebElement deleteBtn;
+	
+	@FindBy(xpath = "//button[normalize-space()='Send Email']")
+	private	WebElement sendEmail;
+	
+	@FindBy(xpath = "//button[normalize-space()='OK']")
+	private	WebElement okButton;
+	
+	@FindBy(xpath = "//button[contains(@class,'commonButtonGroup')]")
+	private	List<WebElement> dateOptions;
+	
+	@FindBy(xpath = "//button[contains(@class,'commonButtonGroup') and normalize-space()='Last 7 Days']")
+	private	WebElement dateOption_7Days;
+	
+	
+	
+	
 	
 	
 	public void clickOnActivityMenu() {
@@ -474,7 +491,7 @@ public class Activity extends BaseClass {
 	public void clickOnCheckBox(String reportName)
 	{
 //		String web = "//div[normalize-space()='"+reportname+"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']";
-		
+		reportName1=reportName;
 		ndriver.findElement(By.xpath("//div[normalize-space()='"+reportName1+"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']")).click();
 	}
 	
@@ -526,18 +543,34 @@ public class Activity extends BaseClass {
 	public void selectReportType(String option,String typeOfReport) throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(ReportType,30).click();
-		ndriver.findElement(By.xpath("//div[@id='react-select-16-"+option+"' and text()='"+typeOfReport+"']")).click();
+		Thread.sleep(2000);
+		ndriver.findElement(By.xpath("//*[normalize-space()='"+typeOfReport+"']")).click();
 		
 	}
 	
 	public void selectDateAndTime() throws Exception
 	{
+		
 		applyExplicitWaitsUntilElementClickable(selectDateAndTime,30).click();
 		Thread.sleep(2000);
-		ndriver.findElement(By.xpath("//table[@class='CalendarMonth_table CalendarMonth_table_1']"
-				+ "/tbody//tr/td[@aria-label='Selected as start date. Sunday, June 9, 2024']")).click();
-		ndriver.findElement(By.xpath("//table[@class='CalendarMonth_table CalendarMonth_table_1']"
-				+ "/tbody//tr/td[@aria-label='Selected as end date. Monday, June 17, 2024']")).click();
+		for(int i=0;i<dateOptions.size();i++) {
+			WebElement dateOption = dateOptions.get(i);
+			boolean isdateAbleToSelect=dateOption.isEnabled();
+			dateOption.click();
+			Thread.sleep(1000);
+			String classtext = dateOption.getAttribute("class");
+			if(isdateAbleToSelect && classtext.contains("active")) {
+				
+			}
+			else {
+				System.err.println(dateOption.getText());
+				System.out.println(dateOption.getAttribute("class"));
+				
+				
+			}
+		}
+		applyExplicitWaitsUntilElementClickable(dateOption_7Days,30).click();
+		
 	}
 	
 	public void clickOnApplyBtn() throws Exception
@@ -553,7 +586,12 @@ public class Activity extends BaseClass {
 	
 	public void clickOnDownloadReport() throws Exception
 	{
+		try {
 		applyExplicitWaitsUntilElementClickable(downloadReportBtn,30).click();
+		}
+		catch(Exception r) {
+			js.click(downloadReportBtn);
+		}
 	}
 	
 	public void verifyCSVReportAvaliableInFolder(String folderName,String reportNameWithExtension)
@@ -574,13 +612,23 @@ public class Activity extends BaseClass {
 	
 	public void clickOncsvFormat() throws Exception
 	{
+		try {
 		applyExplicitWaitsUntilElementClickable(csvFileformat,30).click();
+		}
+		catch(Exception r) {
+			js.click(csvFileformat);
+		}
 	}
 	
 	
 	public void clickOnXlxFormat() throws Exception
 	{
-		applyExplicitWaitsUntilElementClickable(xlsFileFormat,30).click();
+		try {
+			applyExplicitWaitsUntilElementClickable(xlsFileFormat,30).click();
+			}
+			catch(Exception r) {
+				js.click(xlsFileFormat);
+			}
 	}
 	
 	public void clickOnEmailBtn() throws Exception
@@ -593,6 +641,48 @@ public class Activity extends BaseClass {
 	public void clickOnDeleteBtn() throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(deleteBtn,30).click();
+	}
+
+	public void checkIfFileIsDownloaded(String reportNameWithExtension) throws Exception {
+		String basePath = System.getProperty("user.dir");
+		String path =basePath+"\\downloadfiles";	
+		// C:\Users\Admin\git\Eco\Eco_PVT\download
+		System.out.println(path);
+		Thread.sleep(4000);
+		boolean a = isFileDownloaded(path,reportNameWithExtension);
+		if(!a) {
+			System.err.println("File not downloaded");
+		}
+		else {
+			System.out.println(reportNameWithExtension+" File downloaded");
+		}
+		
+	}
+	
+	public static boolean isFileDownloaded(String downloadDir, String fileName) {
+        File file = new File(downloadDir + File.separator + fileName);
+      String f=  file.getAbsolutePath();
+      System.out.println(f);
+        return file.exists();
+    }
+
+	public void checkSuccessMessageForSendEmail() throws MalformedURLException {
+		
+		
+		String expectedMessage = "";
+		try {
+			applyExplicitWaitsUntilElementClickable(sendEmail,30).click();
+			}
+			catch(Exception r) {
+				js.click(sendEmail);
+			}
+		applyExplicitWaitsUntilElementClickable(successMessage, 20);
+		boolean isMessagedisplayed = isWebElementDisplayed(successMessage);
+		String actualMessage = successMessage.getText();
+		System.out.println(actualMessage);
+		applyExplicitWaitsUntilElementClickable(okButton, 30).click();
+		
+		
 	}
 	
 	

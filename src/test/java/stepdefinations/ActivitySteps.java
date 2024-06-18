@@ -21,7 +21,7 @@ import io.cucumber.java.en.When;
 import pageclases.Activity;
 
 
-public class ActivitySteps {
+public class ActivitySteps  extends BaseClass {
 	
 
 	
@@ -307,6 +307,7 @@ public class ActivitySteps {
     public void userclick_on_formatxlsx_button_and_click_on_download_report_button() throws Exception {
             ac.clickOnXlxsFormat();
             ac.clickOnDownloadReport();
+            ac.checkSuccessMessageForSendEmail();
             
     }
     @Then("verify the downloaded file is avaliable with {string} in project folder")
@@ -318,18 +319,19 @@ public class ActivitySteps {
     public void userclick_on_csv_format_button_and_click_on_download_report_button() throws Exception {
        ac.clickOncsvFormat();
        ac.clickOnDownloadReport();
+       ac.checkSuccessMessageForSendEmail();
     
     }
     @Then("verify the downloaded file is avaliable in project folder as {string}  with {string} name")
-    public void verify_the_downloaded_file_is_avaliable_in_project_folder_as_with_name(String folderName, String REportNameWithExtension) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void verify_the_downloaded_file_is_avaliable_in_project_folder_as_with_name(String folderName, String reportNameWithExtension) throws Exception {
+      ac.checkIfFileIsDownloaded(reportNameWithExtension);
     }
     
     @When("userclick on xlxFormat button and click on downloadReportButton")
     public void userclick_on_xlx_format_button_and_click_on_download_report_button() throws Exception {
     	ac.clickOnXlxFormat();
         ac.clickOnDownloadReport();
+        ac.checkSuccessMessageForSendEmail();
     }
     
     @When("user click on sendMail button user will get message")
@@ -339,6 +341,7 @@ public class ActivitySteps {
     }
     @Then("again click on ReportMenu and select the List")
     public void again_click_on_report_menu_and_select_the_list() throws Exception {
+    	
          ac.clickOnReportMenuAndList();
     }
     @When("click on checkBox whose report name as {string} and click on deleteButton")
