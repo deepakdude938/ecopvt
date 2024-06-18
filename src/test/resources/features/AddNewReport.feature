@@ -1,15 +1,16 @@
 
 Feature: config report Module
 
-Scenario: Login to Eco app
-Given User launch the browser
-When  User opens URL "https://staging.ecolibrium.io/" 
-And   User enters Username as "qa12" 
-And   User enters Password as "qa12" 
-And   Click on the Login 
-Then  Page Title should be "SmartSense"
+	
+		Background: Login to Eco app
+		Given User launch the browser
+		When  User opens URL "https://staging.ecolibrium.io/" 
+		And   User enters Username as "qa12" 
+		And   User enters Password as "qa12" 
+		And   Click on the Login 
+		Then  Page Title should be "SmartSense"
 
-  @tag1
+ 
   Scenario: Verify user able to add new report 
     Given Add new Report
     And  Add report name as "ActivityReport1" and select report type as "Config Report"
@@ -30,5 +31,5 @@ Then  Page Title should be "SmartSense"
    
     
 
- Scenario: Edit Report
+# Scenario: Edit Report
  
