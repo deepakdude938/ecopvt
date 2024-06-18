@@ -1,5 +1,6 @@
 package pageclases;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.List;
@@ -16,15 +17,14 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.eco.base.BaseClass;
-import com.fasterxml.jackson.databind.node.BooleanNode;
 
-import io.cucumber.java.en.Given;
+import dev.failsafe.internal.util.Assert;
 
 public class Activity extends BaseClass {
 
 	WebDriver ndriver;
 	WebDriverWait wait;
-Select sel;
+
 	public Activity(WebDriver odriver) {
 		this.ndriver = odriver;
 		PageFactory.initElements(ndriver, this);
@@ -131,6 +131,48 @@ Select sel;
 	
 	@FindBy(xpath="//div[@class='page-header-wrap']/h2[text()='Report List']")
 	private WebElement ReportList;
+//......................
+	@FindBy(xpath="//input[@name='TableSearchkey']")
+	private WebElement searchReportnameFiled;
+	
+	@FindBy(xpath="(//*[@class='configured-reports-table-cell'])[3]")
+	private WebElement displayedReportName;
+	
+	@FindBy(xpath="//img[@src='/app/assets/images/editIconDark.svg']")
+private	WebElement EditCheckbox;
+	
+	@FindBy(xpath = "//button[text()='Update Config']")
+	private	WebElement updateonfigBtn;
+	
+	@FindBy(xpath = "//button[text()='List']")
+	private	WebElement Listbtn;
+	
+	@FindBy(xpath = "//*[text()='Select Date & Time']")
+	private WebElement selectDateAndTime;
+	
+
+	@FindBy(xpath = "//button[text()='Apply']")
+	private WebElement ApplyBtn;
+	
+	
+	@FindBy(xpath = "//img[@src='/app/assets/images/dark-active-excelsheet.svg']")
+	private	WebElement Excelformat ;
+	
+	@FindBy(xpath = "//img[@src='/app/assets/images/dark-active-csv.svg']")
+	private	WebElement csvFileformat;
+	
+	@FindBy(xpath = "//img[@src='/app/assets/images/dark-normal-xls.svg']")
+	private	WebElement xlsFileFormat;
+	
+	@FindBy(xpath = "//button[text()='Download Report']")
+	private	WebElement downloadReportBtn;
+	
+	@FindBy(xpath = "//button[text()='Send Email']")
+	private	WebElement emailBtn;
+	
+	@FindBy(xpath = "//img[@src='/app/assets/images/deleteIconLight.svg']")
+	private	WebElement deleteBtn;
+	
 	
 	public void clickOnActivityMenu() {
 		wait.until(ExpectedConditions.visibilityOf(activityMenu));
@@ -278,13 +320,15 @@ Select sel;
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////
 	public void clickonReportMenu() throws Exception {
-		
+//		wait.until(ExpectedConditions.visibilityOf(reportMenu));
+//		reportMenu.click();
+//		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(reportMenu,30).click();
 	}
 	
 	public void clickOnaddNewReport() throws Exception {
 		Thread.sleep(5000);
-		applyExplicitWaitsUntilElementClickable(AddnewReport,30).click();
+		applyExplicitWaitsUntilElementClickable(AddnewReport,60).click();
 	}
 	public void enterReportNameField(String reportName) throws Exception {
 		
@@ -325,13 +369,17 @@ Select sel;
 	}
 	
 	public void selectTheGrinTime(String option,String time) throws  Exception {
-		applyExplicitWaitsUntilElementClickable(grain,20).click();
+		String javascript = "window.scrollBy(0,400)";
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) ndriver;
+	    jsExecutor.executeScript(javascript);
+		
+		applyExplicitWaitsUntilElementClickable(grain,40).click();
 		Thread.sleep(1000);
 		ndriver.findElement(By.xpath("//div[@id='react-select-3-"+option+"' and text()='"+time+"']")).click();
 	}
 	
 	public void selectStarttime(String option,String StartTime) throws Exception {
-		applyExplicitWaitsUntilElementClickable(selectStartTime,20).click();
+		applyExplicitWaitsUntilElementClickable(selectStartTime,40).click();
 		ndriver.findElement(By.xpath("//div[@id='react-select-4-"+option+"' and text()='"+StartTime+"']")).click();
 		
 		}
@@ -379,6 +427,7 @@ Select sel;
 	
 	public void clickOnSaveConfigbtn() throws Exception {
 		applyExplicitWaitsUntilElementClickable(saveconfigBtn,30).click();
+		Thread.sleep(300000); //5 min
 		
 		}
 	
@@ -387,6 +436,144 @@ Select sel;
 		System.out.println("user is navigated to report list page");
 		return avaliable;
 		
+	}
+	
+	
+	public void searchTheCreatedReportName(String createdreportName) throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).click();
+		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).sendKeys(createdreportName,Keys.ENTER);
+//		String createdReportName =displayedReportName.getText();
+//		return createdReportName;
+		
+	}
+	
+	public boolean verifySearchReportnameIsDisplayed()
+	{
+		wait.until(ExpectedConditions.visibilityOf(displayedReportName));
+		boolean ReportCreated =displayedReportName.isDisplayed();
+		return ReportCreated ;
+	}
+	public String VerifyTheNameOfCreatedReport()
+	{
+		String createdReportName=displayedReportName.getText();
+		return createdReportName;
+	}
+	public void clickOnReportMenuAndList() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(reportMenu,30).click();
+		applyExplicitWaitsUntilElementClickable(Listbtn,30).click();
+		
+		
+	}
+	
+	public void clickOnCheckBox(String reportName)
+	{
+//		String web = "//div[normalize-space()='"+reportname+"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']";
+		
+		ndriver.findElement(By.xpath("//div[normalize-space()='\"+reportname+\"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']")).click();
+	}
+	
+	public void clickOnEditBtn() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(EditCheckbox,30).click();
+		
+	}
+	
+	public void updateReportName(String updateReportName) throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(ReportNameField,30).sendKeys(updateReportName);;
+	}
+	
+	public void clickOnUpdateConfigBtn() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(updateonfigBtn,30).click();
+	}
+	
+	public void searchTheUpdatedReportName(String updatedreportName) throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).click();
+		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).sendKeys(updatedreportName,Keys.ENTER);
+//		String createdReportName =displayedReportName.getText();
+//		return createdReportName;
+	}
+	
+	public String updatedReportnameIsDisplayed()
+	{
+		String updatedName =displayedReportName.getText();
+		return updatedName;
+	}
+	
+	public void selectReportType(String option,String typeOfReport) throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(ReportType,30).click();
+		ndriver.findElement(By.xpath("//div[@id='react-select-16-"+option+"' and text()='"+typeOfReport+"']")).click();
+		
+	}
+	
+	public void selectDateAndTime() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(selectDateAndTime,30).click();
+		Thread.sleep(2000);
+		ndriver.findElement(By.xpath("//table[@class='CalendarMonth_table CalendarMonth_table_1']"
+				+ "/tbody//tr/td[@aria-label='Selected as start date. Sunday, June 9, 2024']")).click();
+		ndriver.findElement(By.xpath("//table[@class='CalendarMonth_table CalendarMonth_table_1']"
+				+ "/tbody//tr/td[@aria-label='Selected as end date. Monday, June 17, 2024']")).click();
+	}
+	
+	public void clickOnApplyBtn() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(ApplyBtn,30).click();
+	}
+	
+	public void clickOnXlxsFormat() throws Exception
+	{
+
+		applyExplicitWaitsUntilElementClickable(Excelformat,30).click();
+	}
+	
+	public void clickOnDownloadReport() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(downloadReportBtn,30).click();
+	}
+	
+	public void verifyCSVReportAvaliableInFolder(String folderName,String reportNameWithExtension)
+	{
+/*	String path= System.getProperty("user.dir");
+ File filexlsx = new File(path+"\\"+foldername+"\\"+reportNamewithextension);
+	Assert.assertTrue(file.exists(), "File not downloaded successfully");
+*/		
+
+		
+		//		String path ="C:\\Users\\LENOVO\\git\\repository2\\Eco_PVT_LTD\\downlodedReports"
+
+				//			File fileCSV = new File(path+"smartsense.csv");
+//			Assert.assertTrue(file.exists(), "File not downloaded successfully");
+	}
+	
+	
+	
+	public void clickOncsvFormat() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(csvFileformat,30).click();
+	}
+	
+	
+	public void clickOnXlxFormat() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(xlsFileFormat,30).click();
+	}
+	
+	public void clickOnEmailBtn() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(emailBtn,30).click();
+		Thread.sleep(1000);
+		ndriver.switchTo().alert().accept();
+	}
+	
+	public void clickOnDeleteBtn() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(deleteBtn,30).click();
 	}
 	
 	
@@ -399,8 +586,23 @@ Select sel;
 	
 	
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
 }
+

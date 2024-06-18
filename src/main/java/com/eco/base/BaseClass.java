@@ -15,6 +15,8 @@ import java.time.Duration;
 public class BaseClass {
 	public String reportName ;
 	public WebDriver driver;
+	
+	
 
 	public static WebElement applyExplicitWaitsUntilElementClickable(WebElement element, int time) throws MalformedURLException {
 		
@@ -24,6 +26,8 @@ public class BaseClass {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		return element;
 	}
+	
+	
 
 
 }
