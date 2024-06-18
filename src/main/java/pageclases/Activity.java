@@ -138,8 +138,8 @@ public class Activity extends BaseClass {
 	@FindBy(xpath="(//*[@class='configured-reports-table-cell'])[3]")
 	private WebElement displayedReportName;
 	
-	@FindBy(xpath="//img[@src='/app/assets/images/editIconDark.svg']")
-private	WebElement EditCheckbox;
+	@FindBy(xpath="//span[@data-for='edit']")
+private	WebElement Editbtn;
 	
 	@FindBy(xpath = "//button[text()='Update Config']")
 	private	WebElement updateonfigBtn;
@@ -427,7 +427,7 @@ private	WebElement EditCheckbox;
 	
 	public void clickOnSaveConfigbtn() throws Exception {
 		applyExplicitWaitsUntilElementClickable(saveconfigBtn,30).click();
-		Thread.sleep(300000); //5 min
+		Thread.sleep(120000); //2 min
 		
 		}
 	
@@ -442,6 +442,7 @@ private	WebElement EditCheckbox;
 	public void searchTheCreatedReportName(String createdreportName) throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).click();
+		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).clear();
 		applyExplicitWaitsUntilElementClickable(searchReportnameFiled,30).sendKeys(createdreportName,Keys.ENTER);
 //		String createdReportName =displayedReportName.getText();
 //		return createdReportName;
@@ -467,16 +468,18 @@ private	WebElement EditCheckbox;
 		
 	}
 	
-	public void clickOnCheckBox(String reportName)
+	public void clickOnCheckBox(String reportName) throws Exception
 	{
 //		String web = "//div[normalize-space()='"+reportname+"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']";
 		
-		ndriver.findElement(By.xpath("//div[normalize-space()='\"+reportname+\"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']")).click();
+WebElement checkBox=ndriver.findElement(By.xpath("//div[normalize-space()='"+reportName+"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']"));
+applyExplicitWaitsUntilElementClickable(checkBox,30).click();
+
 	}
 	
 	public void clickOnEditBtn() throws Exception
 	{
-		applyExplicitWaitsUntilElementClickable(EditCheckbox,30).click();
+		applyExplicitWaitsUntilElementClickable(Editbtn,30).click();
 		
 	}
 	
@@ -487,6 +490,9 @@ private	WebElement EditCheckbox;
 	
 	public void clickOnUpdateConfigBtn() throws Exception
 	{
+		String javascript = "arguments[0].scrollIntoView():";
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) ndriver;
+	    jsExecutor.executeScript(javascript,updateonfigBtn);
 		applyExplicitWaitsUntilElementClickable(updateonfigBtn,30).click();
 	}
 	
@@ -574,6 +580,7 @@ private	WebElement EditCheckbox;
 	public void clickOnDeleteBtn() throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(deleteBtn,30).click();
+		ndriver.switchTo().alert().accept();
 	}
 	
 	
