@@ -1,8 +1,8 @@
 
 Feature: config report Module
 
-	
-		Background: Login to Eco app
+		@Login	
+		Scenario: Login to Eco app
 		Given User launch the browser
 		When  User opens URL "https://staging.ecolibrium.io/" 
 		And   User enters Username as "qa12" 
@@ -39,7 +39,7 @@ Feature: config report Module
   And update the report name as "ActivityReport" and click on updateconfig button
   When user search the Updatedreportname as "ActivityReport"
   Then  verify the user updatedReportName is display in the list as "ActivityReport"
-  And  click on checkBox whose report name as "ActivityReport1" and click on EditButton
+  And  click on checkBox whose report name as "ActivityReport" and click on EditButton
   And select reportType by "option-1" which has TypeOfReport as "Download Report"
   And select the DayandTime and click on Apply button
   When userclick on formatxlsx button and click on downloadReportButton

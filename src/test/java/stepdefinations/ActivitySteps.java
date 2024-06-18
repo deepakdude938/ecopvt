@@ -10,6 +10,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import com.eco.base.BaseClass;
 import com.fasterxml.jackson.databind.node.BooleanNode;
 
 import drivers.DriverFactory;
@@ -273,6 +274,7 @@ public class ActivitySteps {
     
     @Then("update the report name as {string} and click on updateconfig button")
     public void update_the_report_name_as_and_click_on_updateconfig_button(String updateName) throws Exception {
+    	BaseClass.reportName1 = updateName;
              ac.updateReportName( updateName);
              ac.clickOnUpdateConfigBtn();
     }
@@ -283,7 +285,7 @@ public class ActivitySteps {
     }
     
     @Then("verify the user updatedReportName is display in the list as {string}")
-    public void verify_the_user_updated_report_name_is_display_in_the_list_as(String updatedReportName) {
+    public void verify_the_user_updated_report_name_is_display_in_the_list_as(String updatedReportName) throws MalformedURLException {
         String reportName= ac.updatedReportnameIsDisplayed();
          assertEquals(reportName, updatedReportName);
     }

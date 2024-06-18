@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.eco.base.BaseClass;
+import com.eco.base.JavaScriptOperation;
 
 import dev.failsafe.internal.util.Assert;
 
@@ -24,11 +25,14 @@ public class Activity extends BaseClass {
 
 	WebDriver ndriver;
 	WebDriverWait wait;
+	JavaScriptOperation js;
 
 	public Activity(WebDriver odriver) {
 		this.ndriver = odriver;
 		PageFactory.initElements(ndriver, this);
 		wait = new WebDriverWait(ndriver, Duration.ofSeconds(30));
+		js=new JavaScriptOperation(ndriver);
+		
 	}
 	
 	
@@ -105,7 +109,7 @@ public class Activity extends BaseClass {
 	@FindBy(xpath="//*[@placeholder='Select Upto 20 Parameters']")
 	private WebElement parameters;
 	
-	@FindBy(xpath="(//*[@class='input-wrap select-wrap'])[1]")
+	@FindBy(xpath="//div[@class='grain-collapse']")
 	private WebElement grain;
 	
 	@FindBy(xpath="(//*[@class='input-wrap select-wrap'])[2]")
@@ -138,8 +142,8 @@ public class Activity extends BaseClass {
 	@FindBy(xpath="(//*[@class='configured-reports-table-cell'])[3]")
 	private WebElement displayedReportName;
 	
-	@FindBy(xpath="//img[@src='/app/assets/images/editIconDark.svg']")
-private	WebElement EditCheckbox;
+	@FindBy(xpath="//div[@class='edit-alert top-option-item']/span/span")
+	private	WebElement EditCheckbox;
 	
 	@FindBy(xpath = "//button[text()='Update Config']")
 	private	WebElement updateonfigBtn;
@@ -332,7 +336,7 @@ private	WebElement EditCheckbox;
 	}
 	public void enterReportNameField(String reportName) throws Exception {
 		
-		 super.reportName = reportName;
+		 super.reportName1 = reportName;
 		applyExplicitWaitsUntilElementClickable(ReportNameField,30).sendKeys(reportName);;
 	}
 	
@@ -374,7 +378,7 @@ private	WebElement EditCheckbox;
 	    jsExecutor.executeScript(javascript);
 		
 		applyExplicitWaitsUntilElementClickable(grain,40).click();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		ndriver.findElement(By.xpath("//div[@id='react-select-3-"+option+"' and text()='"+time+"']")).click();
 	}
 	
@@ -427,7 +431,7 @@ private	WebElement EditCheckbox;
 	
 	public void clickOnSaveConfigbtn() throws Exception {
 		applyExplicitWaitsUntilElementClickable(saveconfigBtn,30).click();
-		Thread.sleep(300000); //5 min
+	//	Thread.sleep(300000); //5 min//
 		
 		}
 	
@@ -471,23 +475,38 @@ private	WebElement EditCheckbox;
 	{
 //		String web = "//div[normalize-space()='"+reportname+"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']";
 		
-		ndriver.findElement(By.xpath("//div[normalize-space()='\"+reportname+\"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']")).click();
+		ndriver.findElement(By.xpath("//div[normalize-space()='"+reportName1+"' and @class='configured-reports-table-cell']//ancestor::div[@class='rt-tr -odd']//span[@class='checkmark']")).click();
 	}
 	
 	public void clickOnEditBtn() throws Exception
 	{
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(EditCheckbox,30).click();
 		
 	}
 	
 	public void updateReportName(String updateReportName) throws Exception
 	{
+		//applyExplicitWaitsUntilElementClickable(ReportNameField,30).clear();
+		applyExplicitWaitsUntilElementClickable(ReportNameField,30).sendKeys(""); // Focus on the textbox
+
+	        // Select all text in the textbox
+		ReportNameField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+
+	        // Send backspace to delete the text
+		ReportNameField.sendKeys(Keys.BACK_SPACE);
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(ReportNameField,30).sendKeys(updateReportName);;
 	}
 	
 	public void clickOnUpdateConfigBtn() throws Exception
 	{
+		try {
 		applyExplicitWaitsUntilElementClickable(updateonfigBtn,30).click();
+		}
+		catch(Exception e) {
+			js.click(updateonfigBtn);
+		}
 	}
 	
 	public void searchTheUpdatedReportName(String updatedreportName) throws Exception
@@ -498,9 +517,9 @@ private	WebElement EditCheckbox;
 //		return createdReportName;
 	}
 	
-	public String updatedReportnameIsDisplayed()
+	public String updatedReportnameIsDisplayed() throws MalformedURLException
 	{
-		String updatedName =displayedReportName.getText();
+		String updatedName =applyExplicitWaitsUntilElementClickable(displayedReportName,30).getText();
 		return updatedName;
 	}
 	
