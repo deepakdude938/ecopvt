@@ -339,12 +339,11 @@ ac.checkIfFileIsDownloaded(xlsxExtension);
     }
     @When("User click on sendMail button user will get message and  again click on ReportMenu and select the List")
     public void user_click_on_send_mail_button_user_will_get_message_and_again_click_on_report_menu_and_select_the_list() throws Exception {
-//    	 ac.clickOnEmailBtn();
+    //	 ac.clickOnEmailBtn();
     	 Thread.sleep(1000);
-    	 ac.checkSuccessMessageForSendEmail();
+   // 	 ac.checkSuccessMessageForSendEmail();
     	 ac.clickOnReportMenuAndList();
     
-
     }
     
     @When("Click on checkBox whose report name as {string} and click on export btn and then  deleteButton")

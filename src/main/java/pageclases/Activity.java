@@ -141,6 +141,11 @@ public class Activity extends BaseClass {
 	@FindBy(xpath="//input[@name='TableSearchkey']")
 	private WebElement searchReportNameFiled;
 	
+	@FindBy(xpath="//div[@data-title='Report']")
+	private WebElement reportButton;
+	
+	
+	
 	@FindBy(xpath="(//*[@class='configured-reports-table-cell'])[3]")
 	private WebElement displayedReportName;
 	
@@ -193,6 +198,9 @@ public class Activity extends BaseClass {
 	
 	@FindBy(xpath = "//button[normalize-space()='OK']")
 	private	WebElement okButton;
+	
+	@FindBy(xpath = "//button[normalize-space()='Ok']")
+	private	WebElement okButton1;
 	
 	@FindBy(xpath = "//button[contains(@class,'commonButtonGroup')]")
 	private	List<WebElement> dateOptions;
@@ -543,6 +551,7 @@ public class Activity extends BaseClass {
 	
 	public void searchTheUpdatedReportName(String updatedReportName) throws Exception
 	{
+	//	applyExplicitWaitsUntilElementClickable(searchReportNameFiled,30).click();
 		applyExplicitWaitsUntilElementClickable(searchReportNameFiled,30).click();
 		applyExplicitWaitsUntilElementClickable(searchReportNameFiled,30).sendKeys(updatedReportName,Keys.ENTER);
 //		String createdReportName =displayedReportName.getText();
@@ -674,7 +683,7 @@ public class Activity extends BaseClass {
 	{
 		applyExplicitWaitsUntilElementClickable(deleteBtn,30).click();
 //		ndriver.switchTo().alert().accept();
-		applyExplicitWaitsUntilElementClickable(okButton, 30).click();
+		applyExplicitWaitsUntilElementClickable(okButton1, 30).click();
 		
 	}
 
@@ -723,8 +732,14 @@ public class Activity extends BaseClass {
 	public void clickOnExportBtnAndHandlegeneratedPopup() throws Exception
 	{
 			applyExplicitWaitsUntilElementClickable(exportBtn,30).click();
+			try {
 			ndriver.switchTo().alert().dismiss();
 			applyExplicitWaitsUntilElementClickable(exportBtn,30).click();
+			}
+			catch(Exception e) {
+				
+			}
+			
 			applyExplicitWaitsUntilElementClickable(inPOpUpsendEmailBtn,30).click();
 			applyExplicitWaitsUntilElementClickable(okButton, 30).click();
 			
