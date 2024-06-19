@@ -15,8 +15,6 @@ public class DriverFactory {
 		{
 			String basePath = System.getProperty("user.dir");
 			String path =basePath+"\\downloadfiles";		
-			System.out.println(basePath);
-			System.out.println(path);
 			HashMap<String, Object> chromePrefs = new HashMap<>();
 			chromePrefs.put("profile.default_content_settings.popups", 0);
 			chromePrefs.put("download.default_directory", path);
@@ -24,8 +22,6 @@ public class DriverFactory {
 			options.setExperimentalOption("prefs", chromePrefs);
 
 			driver = new ChromeDriver(options);
-			
-			
 				
 		}
 		else if(browsername.equals("Edge"))
