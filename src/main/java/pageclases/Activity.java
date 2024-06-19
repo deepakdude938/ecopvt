@@ -92,7 +92,8 @@ public class Activity extends BaseClass {
 	@FindBy(xpath="//p[@class='download-text']//img[@class='icon-img dark-img']")
 	private WebElement downloadbutton;
 
-	@FindBy(xpath="//img[@src='/app/assets/images/report.svg']")
+//	@FindBy(xpath="//img[@src='/app/assets/images/report.svg']")
+	@FindBy(xpath="//div[@data-title='Report']/div/div[@class='iconconntainer']")
 	private WebElement reportMenu;
 	
 	@FindBy(xpath="//*[text()='Add New Report']")
@@ -145,6 +146,9 @@ public class Activity extends BaseClass {
 	
     @FindBy(xpath="//div[@class='edit-alert top-option-item']/span/span")
 	private	WebElement editBtn;
+    
+    @FindBy(xpath="(//div[@class='mt delete top-option-item']/span)[2]")
+	private	WebElement exportBtn;
 
 	@FindBy(xpath = "//button[text()='Update Config']")
 	private	WebElement updateConfigBtn;
@@ -183,6 +187,10 @@ public class Activity extends BaseClass {
 	@FindBy(xpath = "//button[normalize-space()='Send Email']")
 	private	WebElement sendEmail;
 	
+	@FindBy(xpath = "//div[@class='send-mail']")
+	private	WebElement inPOpUpsendEmailBtn;
+	
+	
 	@FindBy(xpath = "//button[normalize-space()='OK']")
 	private	WebElement okButton;
 	
@@ -192,7 +200,8 @@ public class Activity extends BaseClass {
 	@FindBy(xpath = "//button[contains(@class,'commonButtonGroup') and normalize-space()='Last 7 Days']")
 	private	WebElement dateOption_7Days;
 	
-	
+	@FindBy(xpath = "//div[@class='rt-noData']")
+	private	WebElement noDataAvaliable;
 	
 	
 	
@@ -664,7 +673,9 @@ public class Activity extends BaseClass {
 	public void clickOnDeleteBtn() throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(deleteBtn,30).click();
-		ndriver.switchTo().alert().accept();
+//		ndriver.switchTo().alert().accept();
+		applyExplicitWaitsUntilElementClickable(okButton, 30).click();
+		
 	}
 
 	public void checkIfFileIsDownloaded(String reportNameWithExtension) throws Exception {
@@ -707,6 +718,24 @@ public class Activity extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(okButton, 30).click();
 		
 		
+	}
+	
+	public void clickOnExportBtnAndHandlegeneratedPopup() throws Exception
+	{
+			applyExplicitWaitsUntilElementClickable(exportBtn,30).click();
+			ndriver.switchTo().alert().dismiss();
+			applyExplicitWaitsUntilElementClickable(exportBtn,30).click();
+			applyExplicitWaitsUntilElementClickable(inPOpUpsendEmailBtn,30).click();
+			applyExplicitWaitsUntilElementClickable(okButton, 30).click();
+			
+		
+	}
+	
+	
+	public boolean checkNotAvaliableIsDisplay()
+	{
+		boolean display =isWebElementDisplayed(noDataAvaliable);
+		return display;
 	}
 	
 	

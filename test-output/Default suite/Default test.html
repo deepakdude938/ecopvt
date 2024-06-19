@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/2/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>2/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Jun 19 11:55:40 IST 2024</td>
+<td>Started on:</td><td>Wed Jun 19 14:20:29 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>87 seconds (87708 ms)</td>
+<tr><td>Total time:</td><td>247 seconds (247633 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,16 +76,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testrunner.SmartSenseRunner.runScenario()'><b>runScenario</b><br>Test class: testrunner.SmartSenseRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify user able to Edit Report", "config report Module"</td>
-<td><div><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
+<td title='testrunner.SmartSenseRunner.runScenario()'><b>runScenario</b><br>Test class: testrunner.SmartSenseRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify user able to Edit Report", "config report Module"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[normalize-space()=&apos;ActivityReport&apos; and @class=&apos;configured-reports-table-cell&apos;]//ancestor::div[@class=&apos;rt-tr -odd&apos;]//span[@class=&apos;checkmark&apos;]&quot;}
   (Session info: chrome=126.0.6478.62)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.20.0&apos;, revision: &apos;866c76ca80&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;18.0.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [d00e0f9856c4551a1e42629747599b4d, findElement {using=xpath, value=//img[@src=&apos;/app/assets/images/report.svg&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.62, chrome: {chromedriverVersion: 126.0.6478.62 (b2781ca4c383..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53936}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53936/devtoo..., se:cdpVersion: 126.0.6478.62, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d00e0f9856c4551a1e42629747599b4d
+Command: [2411f95f523f8fb0dc94f8de8ced6066, findElement {using=xpath, value=//div[normalize-space()=&apos;ActivityReport&apos; and @class=&apos;configured-reports-table-cell&apos;]//ancestor::div[@class=&apos;rt-tr -odd&apos;]//span[@class=&apos;checkmark&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.62, chrome: {chromedriverVersion: 126.0.6478.62 (b2781ca4c383..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56095}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56095/devtoo..., se:cdpVersion: 126.0.6478.62, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2411f95f523f8fb0dc94f8de8ced6066
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
@@ -100,27 +100,19 @@ Session ID: d00e0f9856c4551a1e42629747599b4d
 	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy26.toString(Unknown Source)
-	at java.base/java.lang.String.valueOf(String.java:4213)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.toString(ExpectedConditions.java:295)
-	at java.base/java.lang.String.valueOf(String.java:4213)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:225)
-	at com.eco.base.BaseClass.applyExplicitWaitsUntilElementClickable(BaseClass.java:27)
-	at pageclases.Activity.clickOnReportMenuAndList(Activity.java:491)
-	at stepdefinations.ActivitySteps.user_is_on_smart_sense_page_and_click_on_report_menu_and_select_the_list(ActivitySteps.java:264)
-	at ✽.user is on smartSense page and click on ReportMenu and select the List(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddNewReport.feature:35)
-</pre></div><a href='#' onClick='toggleBox("stack-trace2045143855", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2045143855'><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
+	at pageclases.Activity.clickOnCheckBox(Activity.java:510)
+	at stepdefinations.ActivitySteps.click_on_check_box_whose_report_name_as_and_click_on_export_btn_and_then_delete_button(ActivitySteps.java:352)
+	at ✽.Click on checkBox whose report name as &quot;ActivityReport&quot; and click on export btn and then  deleteButton(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddNewReport.feature:53)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1180105925", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1180105925'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[normalize-space()=&apos;ActivityReport&apos; and @class=&apos;configured-reports-table-cell&apos;]//ancestor::div[@class=&apos;rt-tr -odd&apos;]//span[@class=&apos;checkmark&apos;]&quot;}
   (Session info: chrome=126.0.6478.62)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.20.0&apos;, revision: &apos;866c76ca80&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;18.0.1&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [d00e0f9856c4551a1e42629747599b4d, findElement {using=xpath, value=//img[@src=&apos;/app/assets/images/report.svg&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.62, chrome: {chromedriverVersion: 126.0.6478.62 (b2781ca4c383..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53936}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53936/devtoo..., se:cdpVersion: 126.0.6478.62, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d00e0f9856c4551a1e42629747599b4d
+Command: [2411f95f523f8fb0dc94f8de8ced6066, findElement {using=xpath, value=//div[normalize-space()=&apos;ActivityReport&apos; and @class=&apos;configured-reports-table-cell&apos;]//ancestor::div[@class=&apos;rt-tr -odd&apos;]//span[@class=&apos;checkmark&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.62, chrome: {chromedriverVersion: 126.0.6478.62 (b2781ca4c383..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56095}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56095/devtoo..., se:cdpVersion: 126.0.6478.62, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2411f95f523f8fb0dc94f8de8ced6066
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
@@ -135,93 +127,11 @@ Session ID: d00e0f9856c4551a1e42629747599b4d
 	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy26.toString(Unknown Source)
-	at java.base/java.lang.String.valueOf(String.java:4213)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.toString(ExpectedConditions.java:295)
-	at java.base/java.lang.String.valueOf(String.java:4213)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:225)
-	at com.eco.base.BaseClass.applyExplicitWaitsUntilElementClickable(BaseClass.java:27)
-	at pageclases.Activity.clickOnReportMenuAndList(Activity.java:491)
-	at stepdefinations.ActivitySteps.user_is_on_smart_sense_page_and_click_on_report_menu_and_select_the_list(ActivitySteps.java:264)
-	at ✽.user is on smartSense page and click on ReportMenu and select the List(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddNewReport.feature:35)
+	at pageclases.Activity.clickOnCheckBox(Activity.java:510)
+	at stepdefinations.ActivitySteps.click_on_check_box_whose_report_name_as_and_click_on_export_btn_and_then_delete_button(ActivitySteps.java:352)
+	at ✽.Click on checkBox whose report name as &quot;ActivityReport&quot; and click on export btn and then  deleteButton(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddNewReport.feature:53)
 </pre></div></td>
-<td>30</td>
-<td>testrunner.SmartSenseRunner@1aafa419</td></tr>
-<tr>
-<td title='testrunner.SmartSenseRunner.runScenario()'><b>runScenario</b><br>Test class: testrunner.SmartSenseRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify user able to add new report", "config report Module"</td>
-<td><div><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=126.0.6478.62)
-Build info: version: &apos;4.20.0&apos;, revision: &apos;866c76ca80&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;18.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [d00e0f9856c4551a1e42629747599b4d, findElement {using=xpath, value=//img[@src=&apos;/app/assets/images/report.svg&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.62, chrome: {chromedriverVersion: 126.0.6478.62 (b2781ca4c383..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53936}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53936/devtoo..., se:cdpVersion: 126.0.6478.62, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d00e0f9856c4551a1e42629747599b4d
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy26.toString(Unknown Source)
-	at java.base/java.lang.String.valueOf(String.java:4213)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.toString(ExpectedConditions.java:295)
-	at java.base/java.lang.String.valueOf(String.java:4213)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:225)
-	at com.eco.base.BaseClass.applyExplicitWaitsUntilElementClickable(BaseClass.java:27)
-	at pageclases.Activity.clickonReportMenu(Activity.java:349)
-	at stepdefinations.ActivitySteps.add_new_report(ActivitySteps.java:180)
-	at ✽.Add new Report(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddNewReport.feature:14)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1904720585", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1904720585'><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=126.0.6478.62)
-Build info: version: &apos;4.20.0&apos;, revision: &apos;866c76ca80&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;18.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [d00e0f9856c4551a1e42629747599b4d, findElement {using=xpath, value=//img[@src=&apos;/app/assets/images/report.svg&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.62, chrome: {chromedriverVersion: 126.0.6478.62 (b2781ca4c383..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53936}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53936/devtoo..., se:cdpVersion: 126.0.6478.62, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d00e0f9856c4551a1e42629747599b4d
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy26.toString(Unknown Source)
-	at java.base/java.lang.String.valueOf(String.java:4213)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.toString(ExpectedConditions.java:295)
-	at java.base/java.lang.String.valueOf(String.java:4213)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:225)
-	at com.eco.base.BaseClass.applyExplicitWaitsUntilElementClickable(BaseClass.java:27)
-	at pageclases.Activity.clickonReportMenu(Activity.java:349)
-	at stepdefinations.ActivitySteps.add_new_report(ActivitySteps.java:180)
-	at ✽.Add new Report(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddNewReport.feature:14)
-</pre></div></td>
-<td>32</td>
+<td>78</td>
 <td>testrunner.SmartSenseRunner@1aafa419</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
@@ -233,9 +143,14 @@ Session ID: d00e0f9856c4551a1e42629747599b4d
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='testrunner.SmartSenseRunner.runScenario()'><b>runScenario</b><br>Test class: testrunner.SmartSenseRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify user able to add new report", "config report Module"</td>
+<td></td>
+<td>146</td>
+<td>testrunner.SmartSenseRunner@1aafa419</td></tr>
+<tr>
 <td title='testrunner.SmartSenseRunner.runScenario()'><b>runScenario</b><br>Test class: testrunner.SmartSenseRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Login to Eco app", "config report Module"</td>
 <td></td>
-<td>19</td>
+<td>17</td>
 <td>testrunner.SmartSenseRunner@1aafa419</td></tr>
 </table><p>
 </body>

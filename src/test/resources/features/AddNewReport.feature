@@ -50,6 +50,7 @@ Feature: config report Module
  Then Verify the downloaded file is avaliable in project folder with "smartsense.xls" name
  When User click on sendMail button user will get message and  again click on ReportMenu and select the List
  When User search the Updatedreportname as "ActivityReport"
-  And  Click on checkBox whose report name as "ActivityReport" and click on deleteButton
-    
+  And  Click on checkBox whose report name as "ActivityReport" and click on export btn and then  deleteButton 
+  When User again search the reportname as "ActivityReport" then it not avaliable
+  
  
