@@ -13,7 +13,7 @@ import java.time.Duration;
 
 
 public class BaseClass {
-	public String reportName ;
+	public static String reportName1 ;
 	public WebDriver driver;
 	
 	

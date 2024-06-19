@@ -1,15 +1,15 @@
 
 Feature: config report Module
 
-Background:: Login to Eco app
-Given User launch the browser
-When  User opens URL "https://staging.ecolibrium.io/" 
-And   User enters Username as "qa12" 
-And   User enters Password as "qa12" 
-And   Click on the Login 
-Then  Page Title should be "SmartSense"
-
-  @tag1
+		@Login	
+		Scenario: Login to Eco app
+		Given User launch the browser
+		When  User opens URL "https://staging.ecolibrium.io/" 
+		And   User enters Username as "qa12" 
+		And   User enters Password as "qa12" 
+		And   Click on the Login 
+		Then  Page Title should be "SmartSense"
+ 
   Scenario: Verify user able to add new report 
     Given Add new Report
     And  Add report name as "ActivityReport1" and select report type as "Config Report"
@@ -25,22 +25,20 @@ Then  Page Title should be "SmartSense"
      |HArshul G|Bhagawat Balaji Dongre Dongre|
      And select Delivery Frequency by "option-1" which has "Daily" frequency
      And start Day by "option-0" which is "Yesterday"
-     And click on Save config button
-     Then verify user is navigated to ReportListPage
+     Then click on Save config button and verify user is navigated to ReportListPage
      When search the create Report by name as "ActivityReport1" 
      Then verify the user createdReportName is display in the list as "ActivityReport1"
    
-    
-@tag2
+
  Scenario: verify user able to Edit Report
   Given user is on smartSense page and click on ReportMenu and select the List  
-  When search the create Report by name as "Testt2" 
-  Then verify the user createdReportName is display in the list as "Testt2"
-  And  click on checkBox whose report name as "Testt2" and click on EditButton
-  And update the report name as "Testt234" and click on updateconfig button
-  When user search the Updatedreportname as "Testt234"
-  Then  verify the user updatedReportName is display in the list as "Testt234"
+  When search the create Report by name as "ActivityReport1" 
+  Then verify the user createdReportName is display in the list as "ActivityReport1"
   And  click on checkBox whose report name as "ActivityReport1" and click on EditButton
+  And update the report name as "ActivityReport" and click on updateconfig button
+  When user search the Updatedreportname as "ActivityReport"
+  Then  verify the user updatedReportName is display in the list as "ActivityReport"
+  And  click on checkBox whose report name as "ActivityReport" and click on EditButton
   And select reportType by "option-1" which has TypeOfReport as "Download Report"
   And select the DayandTime and click on Apply button
   When userclick on formatxlsx button and click on downloadReportButton
@@ -49,12 +47,8 @@ Then  Page Title should be "SmartSense"
   Then verify the downloaded file is avaliable in project folder as "downloadedReports"  with "ActivityReport.csv" name
   When userclick on xlxFormat button and click on downloadReportButton
    Then verify the downloaded file is avaliable in project folder as "downloadedReports"  with "ActivityReport.xls" name
-  When user click on sendMail button user will get message 
-  Then again click on ReportMenu and select the List
- When user search the Updatedreportname as "Testt234"
-  And  click on checkBox whose report name as "Testt234" and click on deleteButton
+  When user click on sendMail button user will get message and  again click on ReportMenu and select the List
+  When user search the Updatedreportname as "ActivityReport"
+  And  click on checkBox whose report name as "ActivityReport" and click on deleteButton
     
-  
-  
-  
  

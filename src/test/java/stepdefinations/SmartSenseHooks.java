@@ -14,7 +14,7 @@ public class SmartSenseHooks {
 	WebDriver driver;
 	DriverFactory df;
 
-	@Before
+	@Before("@Login")
 	public void LaunchBrowser() throws IOException {
 
 		Properties prop = new Properties();

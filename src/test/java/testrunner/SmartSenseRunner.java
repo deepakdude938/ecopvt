@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 		glue= {"stepdefinations"},
 		dryRun= false,
 		monochrome=true,
-		tags="@tag2",
+//				tags={"@tag2" "@Login"},
 		plugin = {"pretty"}
 		)
 

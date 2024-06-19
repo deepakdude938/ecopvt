@@ -10,6 +10,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import com.eco.base.BaseClass;
 import com.fasterxml.jackson.databind.node.BooleanNode;
 
 import drivers.DriverFactory;
@@ -231,26 +232,24 @@ public class ActivitySteps {
     	
     	ac.selectStartDay(option, dayname);
     }
-    @Given("click on Save config button")
-    public void click_on_save_config_button() throws Exception {
-       ac.clickOnSaveConfigbtn();
+    
+    
+    @Then("click on Save config button and verify user is navigated to ReportListPage")
+    public void click_on_save_config_button_and_verify_user_is_navigated_to_report_list_page() throws Exception {
+    	ac.clickOnSaveConfigbtn();
+    	 boolean  avaliable =ac.verifyUserIsOnReportListPage();
+       System.out.println(avaliable);
+       assertTrue(avaliable,"listpage is not avaliable");
     }
     
-    @Then("verify user is navigated to ReportListPage")
-    public void verify_user_is_navigated_to_report_list_page() {
-     Boolean  avaliable =ac.verifyUserIsOnReportListPage();
-     System.out.println(avaliable);
-     assertTrue(avaliable,"listpage is not avaliable");
-    }
     
-    String createdReportname;
     @When("search the create Report by name as {string}")
     public void search_the_create_report_by_name_as(String reportName) throws Exception {
     	ac.searchTheCreatedReportName(reportName);
     }
     
     @Then("verify the user createdReportName is display in the list as {string}")
-    public void verify_the_user_created_report_name_is_display_in_the_list_as(String CreatedReportName) {
+    public void verify_the_user_created_report_name_is_display_in_the_list_as(String CreatedReportName) throws Exception {
         boolean ReportAvaliable=ac.verifySearchReportnameIsDisplayed();
         assertTrue(ReportAvaliable, "report is not displayed");
         String reportName=ac.VerifyTheNameOfCreatedReport();
@@ -273,6 +272,7 @@ public class ActivitySteps {
     
     @Then("update the report name as {string} and click on updateconfig button")
     public void update_the_report_name_as_and_click_on_updateconfig_button(String updateName) throws Exception {
+    	BaseClass.reportName1 = updateName;
              ac.updateReportName( updateName);
              ac.clickOnUpdateConfigBtn();
     }
@@ -283,7 +283,7 @@ public class ActivitySteps {
     }
     
     @Then("verify the user updatedReportName is display in the list as {string}")
-    public void verify_the_user_updated_report_name_is_display_in_the_list_as(String updatedReportName) {
+    public void verify_the_user_updated_report_name_is_display_in_the_list_as(String updatedReportName) throws MalformedURLException {
         String reportName= ac.updatedReportnameIsDisplayed();
          assertEquals(reportName, updatedReportName);
     }
@@ -296,8 +296,8 @@ public class ActivitySteps {
     
     @Then("select the DayandTime and click on Apply button")
     public void select_the_dayand_time_and_click_on_apply_button() throws Exception {
-           ac.selectDateAndTime();
-           ac.clickOnApplyBtn();
+//           ac.selectDateAndTime();
+//           ac.clickOnApplyBtn();
            
     }
     
@@ -329,21 +329,23 @@ public class ActivitySteps {
     	ac.clickOnXlxFormat();
         ac.clickOnDownloadReport();
     }
+    @When("user click on sendMail button user will get message and  again click on ReportMenu and select the List")
+    public void user_click_on_send_mail_button_user_will_get_message_and_again_click_on_report_menu_and_select_the_list() throws Exception {
+    	 ac.clickOnEmailBtn();
+    	 ac.clickOnReportMenuAndList();
     
-    @When("user click on sendMail button user will get message")
-    public void user_click_on_send_mail_button_user_will_get_message() throws Exception {
-        ac.clickOnEmailBtn();
-        
     }
-    @Then("again click on ReportMenu and select the List")
-    public void again_click_on_report_menu_and_select_the_list() throws Exception {
-         ac.clickOnReportMenuAndList();
-    }
+    
+    
     @When("click on checkBox whose report name as {string} and click on deleteButton")
     public void click_on_check_box_whose_report_name_as_and_click_on_delete_button(String updatedRepoName) throws Exception {
         ac.clickOnCheckBox(updatedRepoName);
     	ac.clickOnDeleteBtn();
     }
+    
+    
+    
+    
 
 
     
