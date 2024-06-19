@@ -339,7 +339,7 @@ ac.checkIfFileIsDownloaded(xlsxExtension);
     }
     @When("User click on sendMail button user will get message and  again click on ReportMenu and select the List")
     public void user_click_on_send_mail_button_user_will_get_message_and_again_click_on_report_menu_and_select_the_list() throws Exception {
-    	 ac.clickOnEmailBtn();
+//    	 ac.clickOnEmailBtn();
     	 Thread.sleep(1000);
     	 ac.checkSuccessMessageForSendEmail();
     	 ac.clickOnReportMenuAndList();
@@ -347,12 +347,22 @@ ac.checkIfFileIsDownloaded(xlsxExtension);
 
     }
     
-    
-    @When("Click on checkBox whose report name as {string} and click on deleteButton")
-    public void click_on_check_box_whose_report_name_as_and_click_on_delete_button(String updatedRepoName) throws Exception {
-        ac.clickOnCheckBox(updatedRepoName);
+    @When("Click on checkBox whose report name as {string} and click on export btn and then  deleteButton")
+    public void click_on_check_box_whose_report_name_as_and_click_on_export_btn_and_then_delete_button(String updatedRepoName) throws Exception {
+    	Thread.sleep(2000);
+    	ac.clickOnCheckBox(updatedRepoName);
+    	ac.clickOnExportBtnAndHandlegeneratedPopup();
     	ac.clickOnDeleteBtn();
+    
     }
+    
+    @When("User again search the reportname as {string} then it not avaliable")
+     public void user_again_search_the_reportname_as_then_it_not_avaliable(String withUpdatedName) throws Exception {
+    	 ac.searchTheUpdatedReportName(withUpdatedName);
+    boolean	display = ac.checkNotAvaliableIsDisplay();
+    }
+
+
     
     
     
