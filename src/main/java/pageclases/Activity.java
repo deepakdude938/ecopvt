@@ -187,7 +187,7 @@ public class Activity extends BaseClass {
 	@FindBy(xpath = "//button[normalize-space()='Send Email']")
 	private	WebElement sendEmail;
 	
-	@FindBy(xpath = "//div[@class='send-mail']")
+	@FindBy(xpath = "//div[@class='modal-footer']/div/div/div/div[@class='send-mail']")
 	private	WebElement inPOpUpsendEmailBtn;
 	
 	
