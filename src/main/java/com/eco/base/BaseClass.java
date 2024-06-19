@@ -1,7 +1,9 @@
 package com.eco.base;
 
+import java.io.File;
 import java.net.MalformedURLException;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,6 +29,32 @@ public class BaseClass {
 		return element;
 	}
 	
+	public boolean isWebElementDisplayed(WebElement element) {
+		boolean status;
+		try {
+			status = element.isDisplayed();
+		} catch (NoSuchElementException e) {
+			status = false;
+		}
+
+		return status;
+	}
+	
+	public static boolean deleteFolder(File folder) {
+        if (folder.isDirectory()) {
+            File[] files = folder.listFiles();
+            System.out.println(files.length);
+            if (files != null) {
+                for (File file : files) {
+                    if (!deleteFolder(file)) {
+                        System.err.println("Failed to delete " + file);
+                        return false;
+                    }
+                }
+            }
+        }
+        return folder.delete();
+    }
 	
 
 

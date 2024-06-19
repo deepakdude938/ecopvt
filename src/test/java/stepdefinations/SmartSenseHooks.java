@@ -1,16 +1,19 @@
 package stepdefinations;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 
+import com.eco.base.BaseClass;
+
 import drivers.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
-public class SmartSenseHooks {
+public class SmartSenseHooks extends BaseClass{
 	WebDriver driver;
 	DriverFactory df;
 
@@ -29,10 +32,12 @@ public class SmartSenseHooks {
 	}
 
 	
-	@After
+	@After("@Delete")
 	public void tearDown() 
 	{
-//		driver.quit();
+		String basePath = System.getProperty("user.dir");
+		String path =basePath+"\\downloadfiles";	
+    	deleteFolder(new File(path));
 	}
 }
 

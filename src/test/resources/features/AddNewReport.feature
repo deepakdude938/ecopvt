@@ -30,6 +30,7 @@ Feature: config report Module
      Then verify the user createdReportName is display in the list as "ActivityReport1"
    
 
+   @Delete
  Scenario: verify user able to Edit Report
   Given user is on smartSense page and click on ReportMenu and select the List  
   When search the create Report by name as "ActivityReport1" 
@@ -42,11 +43,11 @@ Feature: config report Module
   And select reportType by "option-1" which has TypeOfReport as "Download Report"
   And select the DayandTime and click on Apply button
   When userclick on formatxlsx button and click on downloadReportButton
-  Then verify the downloaded file is avaliable in project folder as "downloadedReports"  with "ActivityReport.xlsx" name
+ Then verify the downloaded file is avaliable in project folder as "downloadedReport"  with "smartsense.xlsx" name
   When userclick on csvFormat button and click on downloadReportButton
-  Then verify the downloaded file is avaliable in project folder as "downloadedReports"  with "ActivityReport.csv" name
+  Then verify the downloaded file is avaliable in project folder as "downloadedReport"  with "smartsense.csv" name
   When userclick on xlxFormat button and click on downloadReportButton
-   Then verify the downloaded file is avaliable in project folder as "downloadedReports"  with "ActivityReport.xls" name
+   Then verify the downloaded file is avaliable in project folder as "downloadedReport"  with "smartsense.xls" name
   When user click on sendMail button user will get message and  again click on ReportMenu and select the List
   When user search the Updatedreportname as "ActivityReport"
   And  click on checkBox whose report name as "ActivityReport" and click on deleteButton

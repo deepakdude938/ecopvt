@@ -12,16 +12,18 @@ public class DriverFactory {
 	public WebDriver initBrowser(String browsername) 
 	{
 		if(browsername.equals("Chrome")) 
-		{driver = new ChromeDriver();
-//			String basePath = System.getProperty("user.dir");
-//			String path =basePath+"Eco_PVT\\downloadfiles";
-//			HashMap<String, Object> chromePrefs = new HashMap<>();
-//			chromePrefs.put("profile.default_content_settings.popups", 0);
-//			chromePrefs.put("download.default_directory", path);
-//			ChromeOptions options = new ChromeOptions();
-//			options.setExperimentalOption("prefs", chromePrefs);
+		{
+			String basePath = System.getProperty("user.dir");
+			String path =basePath+"\\downloadfiles";		
+			System.out.println(basePath);
+			System.out.println(path);
+			HashMap<String, Object> chromePrefs = new HashMap<>();
+			chromePrefs.put("profile.default_content_settings.popups", 0);
+			chromePrefs.put("download.default_directory", path);
+			ChromeOptions options = new ChromeOptions();
+			options.setExperimentalOption("prefs", chromePrefs);
 
-//			driver = new ChromeDriver(options);
+			driver = new ChromeDriver(options);
 			
 			
 				
