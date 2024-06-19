@@ -17,39 +17,39 @@ Feature: config report Module
    |Accenture Test 1|  Accenture Test 2|QA12|
    And Add below parameters
    |Real Power Positive|Flow Totalizer| kW|
-   And select the Graintime by "option-1" which have time "30 min"
-   And select the startTime by "option-0" which have time "00.00"
-    And select the endTime by "option-1" which have time "00.30"
-     And select the triggerTime by "option-1" which have time "01 to 02"
-     And add the emails as below
+   And Select the Graintime by "option-1" which have time "30 min"
+   And Select the startTime by "option-0" which have time "00.00"
+    And Select the endTime by "option-1" which have time "00.30"
+     And Select the triggerTime by "option-1" which have time "01 to 02"
+     And Add the emails as below
      |HArshul G|Bhagawat Balaji Dongre Dongre|
-     And select Delivery Frequency by "option-1" which has "Daily" frequency
-     And start Day by "option-0" which is "Yesterday"
-     Then click on Save config button and verify user is navigated to ReportListPage
-     When search the create Report by name as "ActivityReport1" 
-     Then verify the user createdReportName is display in the list as "ActivityReport1"
+     And Select Delivery Frequency by "option-1" which has "Daily" frequency
+     And Start Day by "option-0" which is "Yesterday"
+     Then Click on Save config button and verify user is navigated to ReportListPage
+     When Search the create Report by name as "ActivityReport1" 
+     Then Verify the user createdReportName is display in the list as "ActivityReport1"
    
 
    @Delete
- Scenario: verify user able to Edit Report
-  Given user is on smartSense page and click on ReportMenu and select the List  
-  When search the create Report by name as "ActivityReport1" 
-  Then verify the user createdReportName is display in the list as "ActivityReport1"
-  And  click on checkBox whose report name as "ActivityReport1" and click on EditButton
-  And update the report name as "ActivityReport" and click on updateconfig button
-  When user search the Updatedreportname as "ActivityReport"
-  Then  verify the user updatedReportName is display in the list as "ActivityReport"
-  And  click on checkBox whose report name as "ActivityReport" and click on EditButton
-  And select reportType by "option-1" which has TypeOfReport as "Download Report"
-  And select the DayandTime and click on Apply button
-  When userclick on formatxlsx button and click on downloadReportButton
- Then verify the downloaded file is avaliable in project folder with "smartsense.xlsx" name
-  When userclick on csvFormat button and click on downloadReportButton
- Then verify the downloaded file is avaliable in project folder with "smartsense.csv" name
-  When userclick on xlxFormat button and click on downloadReportButton
- Then verify the downloaded file is avaliable in project folder with "smartsense.xls" name
- When user click on sendMail button user will get message and  again click on ReportMenu and select the List
- When user search the Updatedreportname as "ActivityReport"
-  And  click on checkBox whose report name as "ActivityReport" and click on deleteButton
+ Scenario: Verify user able to Edit Report
+  Given User is on smartSense page and click on ReportMenu and select the List  
+  When Search the create Report by name as "ActivityReport1" 
+  Then Verify the user createdReportName is display in the list as "ActivityReport1"
+  And  Click on checkBox whose report name as "ActivityReport1" and click on EditButton
+  And Update the report name as "ActivityReport" and click on updateconfig button
+  When User search the Updatedreportname as "ActivityReport"
+  Then  Verify the user updatedReportName is display in the list as "ActivityReport"
+  And  Click on checkBox whose report name as "ActivityReport" and click on EditButton
+  And Select reportType by "option-1" which has TypeOfReport as "Download Report"
+  And Select the DayandTime and click on Apply button
+  When Userclick on formatxlsx button and click on downloadReportButton
+ Then Verify the downloaded file is avaliable in project folder with "smartsense.xlsx" name
+  When Userclick on csvFormat button and click on downloadReportButton
+ Then Verify the downloaded file is avaliable in project folder with "smartsense.csv" name
+  When Userclick on xlxFormat button and click on downloadReportButton
+ Then Verify the downloaded file is avaliable in project folder with "smartsense.xls" name
+ When User click on sendMail button user will get message and  again click on ReportMenu and select the List
+ When User search the Updatedreportname as "ActivityReport"
+  And  Click on checkBox whose report name as "ActivityReport" and click on deleteButton
     
  

@@ -199,42 +199,42 @@ public class ActivitySteps  extends BaseClass {
        
     }
    
-    @Given("select the Graintime by {string} which have time {string}")
-    public void select_the_graintime_by_which_have_time(String option, String time) throws Exception {
+    @Given("Select the Graintime by {string} which have time {string}")
+    public void Select_the_graintime_by_which_have_time(String option, String time) throws Exception {
     	ac.selectTheGrinTime(option, time);
     }
     
-    @Given("select the startTime by {string} which have time {string}")
+    @Given("Select the startTime by {string} which have time {string}")
     public void select_the_start_time_by_which_have_time(String option, String starttime) throws Exception {
      ac.selectStarttime(option, starttime);
 }
     
-    @Given("select the endTime by {string} which have time {string}")
+    @Given("Select the endTime by {string} which have time {string}")
     public void select_the_end_time_by_which_have_time(String option, String endtime) throws Exception {
     	ac.selectEndttime(option, endtime);
     }
-    @Given("select the triggerTime by {string} which have time {string}")
+    @Given("Select the triggerTime by {string} which have time {string}")
     public void select_the_trigger_time_by_which_have_time(String option, String triggerTime) throws Exception {
     	ac.selectTriggertime(option, triggerTime);
     }
     
-    @Given("add the emails as below")
+    @Given("Add the emails as below")
     public void add_the_emails_as_below(io.cucumber.datatable.DataTable datatable) throws Exception {
     	ac.selectemail(datatable);
     }
     
-    @Given("select Delivery Frequency by {string} which has {string} frequency")
+    @Given("Select Delivery Frequency by {string} which has {string} frequency")
     public void select_delivery_frequency_by_which_has_frequency(String option, String freq) throws Exception {
 //ac.selectfrequency(option, freq);
 }
-    @Given("start Day by {string} which is {string}")
+    @Given("Start Day by {string} which is {string}")
     public void start_day_by_which_is(String option, String dayname) throws Exception {
     	
     	ac.selectStartDay(option, dayname);
     }
     
     
-    @Then("click on Save config button and verify user is navigated to ReportListPage")
+    @Then("Click on Save config button and verify user is navigated to ReportListPage")
     public void click_on_save_config_button_and_verify_user_is_navigated_to_report_list_page() throws Exception {
     	ac.clickOnSaveConfigbtn();
     	 boolean  avaliable =ac.verifyUserIsOnReportListPage();
@@ -243,12 +243,12 @@ public class ActivitySteps  extends BaseClass {
     }
     
     
-    @When("search the create Report by name as {string}")
+    @When("Search the create Report by name as {string}")
     public void search_the_create_report_by_name_as(String reportName) throws Exception {
     	ac.searchTheCreatedReportName(reportName);
     }
     
-    @Then("verify the user createdReportName is display in the list as {string}")
+    @Then("Verify the user createdReportName is display in the list as {string}")
     public void verify_the_user_created_report_name_is_display_in_the_list_as(String CreatedReportName) throws Exception {
         boolean ReportAvaliable=ac.verifySearchReportnameIsDisplayed();
         assertTrue(ReportAvaliable, "report is not displayed");
@@ -259,61 +259,61 @@ public class ActivitySteps  extends BaseClass {
     }
 //    ..................................................................
     
-    @Given("user is on smartSense page and click on ReportMenu and select the List")
+    @Given("User is on smartSense page and click on ReportMenu and select the List")
     public void user_is_on_smart_sense_page_and_click_on_report_menu_and_select_the_list() throws Exception {
        ac.clickOnReportMenuAndList();
     }
     
-    @Then("click on checkBox whose report name as {string} and click on EditButton")
+    @Then("Click on checkBox whose report name as {string} and click on EditButton")
     public void click_on_check_box_whose_report_name_as_and_click_on_edit_button(String Reportname) throws Exception {
        ac.clickOnCheckBox(Reportname);
        ac.clickOnEditBtn();
     }
     
-    @Then("update the report name as {string} and click on updateconfig button")
+    @Then("Update the report name as {string} and click on updateconfig button")
     public void update_the_report_name_as_and_click_on_updateconfig_button(String updateName) throws Exception {
     	BaseClass.reportName1 = updateName;
              ac.updateReportName( updateName);
              ac.clickOnUpdateConfigBtn();
     }
     
-    @When("user search the Updatedreportname as {string}")
+    @When("User search the Updatedreportname as {string}")
     public void user_search_the_updatedreportname_as(String withUpdatedName) throws Exception {
               ac.searchTheUpdatedReportName(withUpdatedName);
     }
     
-    @Then("verify the user updatedReportName is display in the list as {string}")
+    @Then("Verify the user updatedReportName is display in the list as {string}")
     public void verify_the_user_updated_report_name_is_display_in_the_list_as(String updatedReportName) throws MalformedURLException {
         String reportName= ac.updatedReportnameIsDisplayed();
          assertEquals(reportName, updatedReportName);
     }
     
-    @Then("select reportType by {string} which has TypeOfReport as {string}")
+    @Then("Select reportType by {string} which has TypeOfReport as {string}")
     public void select_report_type_by_which_has_type_of_report_as(String optn, String reportType) throws Exception {
             ac.selectReportType( optn,reportType);
     
     }
     
-    @Then("select the DayandTime and click on Apply button")
+    @Then("Select the DayandTime and click on Apply button")
     public void select_the_dayand_time_and_click_on_apply_button() throws Exception {
            ac.selectDateAndTime();
            ac.clickOnApplyBtn();
            
     }
     
-    @When("userclick on formatxlsx button and click on downloadReportButton")
+    @When("Userclick on formatxlsx button and click on downloadReportButton")
     public void userclick_on_formatxlsx_button_and_click_on_download_report_button() throws Exception {
             ac.clickOnXlxsFormat();
             ac.clickOnDownloadReport();
             ac.checkSuccessMessageForSendEmail();
             
     }
-    @Then("verify the downloaded file is avaliable with {string} in project folder")
+    @Then("Verify the downloaded file is avaliable with {string} in project folder")
     public void verify_the_downloaded_file_is_avaliable_with_in_project_folder(String xlsxExtension) throws Exception {
 ac.checkIfFileIsDownloaded(xlsxExtension);
     
     }
-    @When("userclick on csvFormat button and click on downloadReportButton")
+    @When("Userclick on csvFormat button and click on downloadReportButton")
     public void userclick_on_csv_format_button_and_click_on_download_report_button() throws Exception {
        ac.clickOncsvFormat();
        ac.clickOnDownloadReport();
@@ -325,19 +325,19 @@ ac.checkIfFileIsDownloaded(xlsxExtension);
 //      ac.checkIfFileIsDownloaded(reportNameWithExtension);
 //    }
     
-    @Then("verify the downloaded file is avaliable in project folder with {string} name")
+    @Then("Verify the downloaded file is avaliable in project folder with {string} name")
     public void verify_the_downloaded_file_is_avaliable_in_project_folder_with_name(String reportNameWithExtension) throws Exception {
     	ac.checkIfFileIsDownloaded(reportNameWithExtension);
     	}
 
     
-    @When("userclick on xlxFormat button and click on downloadReportButton")
+    @When("Userclick on xlxFormat button and click on downloadReportButton")
     public void userclick_on_xlx_format_button_and_click_on_download_report_button() throws Exception {
     	ac.clickOnXlxFormat();
         ac.clickOnDownloadReport();
         ac.checkSuccessMessageForSendEmail();
     }
-    @When("user click on sendMail button user will get message and  again click on ReportMenu and select the List")
+    @When("User click on sendMail button user will get message and  again click on ReportMenu and select the List")
     public void user_click_on_send_mail_button_user_will_get_message_and_again_click_on_report_menu_and_select_the_list() throws Exception {
     	 ac.clickOnEmailBtn();
     	 Thread.sleep(1000);
@@ -348,7 +348,7 @@ ac.checkIfFileIsDownloaded(xlsxExtension);
     }
     
     
-    @When("click on checkBox whose report name as {string} and click on deleteButton")
+    @When("Click on checkBox whose report name as {string} and click on deleteButton")
     public void click_on_check_box_whose_report_name_as_and_click_on_delete_button(String updatedRepoName) throws Exception {
         ac.clickOnCheckBox(updatedRepoName);
     	ac.clickOnDeleteBtn();
