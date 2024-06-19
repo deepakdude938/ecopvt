@@ -658,7 +658,7 @@ public class Activity extends BaseClass {
 	{
 		applyExplicitWaitsUntilElementClickable(emailBtn,30).click();
 		Thread.sleep(1000);
-		ndriver.switchTo().alert().accept();
+//		ndriver.switchTo().alert().accept();
 	}
 	
 	public void clickOnDeleteBtn() throws Exception
@@ -700,7 +700,7 @@ public class Activity extends BaseClass {
 			catch(Exception r) {
 				js.click(sendEmail);
 			}
-		applyExplicitWaitsUntilElementClickable(successMessage, 20);
+		applyExplicitWaitsUntilElementClickable(successMessage, 30);
 		boolean isMessagedisplayed = isWebElementDisplayed(successMessage);
 		String actualMessage = successMessage.getText();
 		System.out.println(actualMessage);

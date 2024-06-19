@@ -320,10 +320,16 @@ ac.checkIfFileIsDownloaded(xlsxExtension);
        ac.checkSuccessMessageForSendEmail();
     
     }
-    @Then("verify the downloaded file is avaliable in project folder as {string}  with {string} name")
-    public void verify_the_downloaded_file_is_avaliable_in_project_folder_as_with_name(String folderName, String reportNameWithExtension) throws Exception {
-      ac.checkIfFileIsDownloaded(reportNameWithExtension);
-    }
+//    @Then("verify the downloaded file is avaliable in project folder as {string}  with {string} name")
+//    public void verify_the_downloaded_file_is_avaliable_in_project_folder_as_with_name(String folderName, String reportNameWithExtension) throws Exception {
+//      ac.checkIfFileIsDownloaded(reportNameWithExtension);
+//    }
+    
+    @Then("verify the downloaded file is avaliable in project folder with {string} name")
+    public void verify_the_downloaded_file_is_avaliable_in_project_folder_with_name(String reportNameWithExtension) throws Exception {
+    	ac.checkIfFileIsDownloaded(reportNameWithExtension);
+    	}
+
     
     @When("userclick on xlxFormat button and click on downloadReportButton")
     public void userclick_on_xlx_format_button_and_click_on_download_report_button() throws Exception {
@@ -335,6 +341,7 @@ ac.checkIfFileIsDownloaded(xlsxExtension);
     public void user_click_on_send_mail_button_user_will_get_message_and_again_click_on_report_menu_and_select_the_list() throws Exception {
     	 ac.clickOnEmailBtn();
     	 Thread.sleep(1000);
+    	 ac.checkSuccessMessageForSendEmail();
     	 ac.clickOnReportMenuAndList();
     
 
