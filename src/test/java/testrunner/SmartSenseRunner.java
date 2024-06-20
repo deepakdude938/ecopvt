@@ -5,12 +5,14 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 		
-		features = {"src\\test\\resources\\features\\AddNewReport.feature"},
+		features = {"src\\test\\resources\\features\\AddDashboard.feature"},
 		glue= {"stepdefinations"},
 		dryRun= false,
 		monochrome=true,
 //				tags={"@tag2" "@Login"},
-		plugin = {"pretty"}
+//		plugin = {"pretty"}
+		
+		plugin= {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 		)
 
 

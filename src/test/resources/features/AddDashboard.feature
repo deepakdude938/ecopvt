@@ -10,17 +10,15 @@ Feature: create dashboard Module
 		Then  Page Title should be "SmartSense"
 
   Scenario: Create dashboard and add widget successfully
-  Given User is on Smartsense page and dashboard
-  When Add widget
-  Then Verify after refresh preview widget is dispayed compulsory
+  Given User is on Smartsense page and add dashboard as "d1"
+  When Add widget and Verify after refresh preview widget is dispayed compulsory
   When Clone dispayed the widget it gets clone succefully after that delete clone widget
   When Add new widget
   Then Verify user able to add new widget then clone it and delete clone widget successfully
   
   Scenario: Edit dashboard
    Given User is on Smartsense page and dashboard
-  When Add widget
-  Then Verify after refresh preview widget is dispayed compulsory
+  When Add widget and Verify after refresh preview widget is dispayed compulsory
   When Clone dispayed the widget it gets clone succefully after that delete clone widget
   And Save the changes
   Then Download the widget data as img and pdf
