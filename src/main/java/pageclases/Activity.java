@@ -477,6 +477,7 @@ public class Activity extends BaseClass {
 	
 	public void searchTheCreatedReportName(String createdReportName) throws Exception
 	{
+		wait.until(ExpectedConditions.visibilityOf(searchReportNameFiled)).isDisplayed();
 		applyExplicitWaitsUntilElementClickable(searchReportNameFiled,30).click();
 		applyExplicitWaitsUntilElementClickable(searchReportNameFiled,30).clear();
 		applyExplicitWaitsUntilElementClickable(searchReportNameFiled,30).sendKeys(createdReportName,Keys.ENTER);
