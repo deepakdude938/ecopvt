@@ -2,14 +2,14 @@ package pageclases;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.eco.base.BaseClass;
@@ -22,6 +22,7 @@ public class Dashboard extends BaseClass {
 	WebDriver ndriver;
 	WebDriverWait wait;
 	JavaScriptOperation js;
+	Select sel;
 
 	public Dashboard(WebDriver odriver) {
 		this.ndriver = odriver;
@@ -63,9 +64,6 @@ public class Dashboard extends BaseClass {
 
 	@FindBy(xpath="//textarea[@name='widget_description']")
 	private WebElement widgetDescription ;
-
-	@FindBy(xpath="//select[@name='period']")
-	private WebElement period ;
 
 	@FindBy(xpath="//input[@name='from']")
 	private WebElement fromField ;
@@ -121,46 +119,40 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//i[@class='fa fa-plus']")
 	private WebElement plusIcon  ;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//button[normalize-space()='Edit Dashboard']")
 	private WebElement editDashboard  ;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//div[contains(text(),'Anomaly Detection')]")
 	private WebElement anomallyDetectionApp  ;
 
-//	@FindBy(xpath="")
-//	private WebElement  period ;
+	@FindBy(xpath="//select[@placeholder='Enter Period']")
+	private WebElement period ;
 
-	@FindBy(xpath="")
+	@FindBy(xpath="//select[@placeholder='Data Frequency']")
 	private WebElement  dataFrequency ;
 
-	@FindBy(xpath="")
+	@FindBy(xpath="(//input[@placeholder='Enter From'])[1]")
 	private WebElement  threshouldPercent ;
 
-	@FindBy(xpath="")
+	@FindBy(xpath="(//input[@placeholder='Enter From'])[2]")
 	private WebElement trainingWeek  ;
 
-//	@FindBy(xpath="")
-//	private WebElement   ;
-//
-//	@FindBy(xpath="")
-//	private WebElement   ;
-
-	@FindBy(xpath="")
-	private WebElement  toggle ;
+	@FindBy(xpath="(//span[@class='checkmark'])[3]")
+	private WebElement  toggleCheckBox ;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//button[normalize-space()='Save changes']")
 	private WebElement  saveChanges ;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//button[contains(@class,'menu-item false')]")
 	private WebElement   download;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//button[normalize-space()='Settings']")
 	private WebElement  setting ;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//label[normalize-space()='Unified Date Picker']//span[contains(@class,'checkmark')]")
 	private WebElement  unifiedDatePicker ;
 	
-	@FindBy(xpath="")
+	@FindBy(xpath="//button[normalize-space()='Update']")
 	private WebElement  updateBtn ;
 
 	public void createDashboard(String dashBoardName) throws Exception
@@ -182,43 +174,41 @@ public class Dashboard extends BaseClass {
 
 	public void addWidget() throws Exception
 	{
-		ndriver.findElement(By.xpath("//img[@src='/app/assets/images/operational-excellence.svg']")).click();
-		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-		ndriver.findElement(By.xpath("//div[@class='dashboard-list-litem _active']")).click();
+ /*      ndriver.findElement(By.xpath("//div[@class='dashboard-list-litem _active']")).click();
 		ndriver.findElement(By.xpath("//img[@src='/app/assets/images/operational-excellence.svg']")).click();
 		ndriver.findElement(By.xpath("//div[@class='dashboard-list-litem _active']//div[@class='option-wrap dropdown-box']")).click();
+		ndriver.findElement(By.xpath("//button[normalize-space()='Add Widgets']")).click();
+	*/	
+		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(addWidget,40).click();
+		Thread.sleep(1000);
 		
-		
-//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
-//		Thread.sleep(1000);
-//		applyExplicitWaitsUntilElementClickable(addWidget,40).click();
-//		Thread.sleep(1000);
-		
-//		applyExplicitWaitsUntilElementClickable(piechartWidgetApp,30).click();
-//		applyExplicitWaitsUntilElementClickable(addBtn,30).click();
+		applyExplicitWaitsUntilElementClickable(piechartWidgetApp,30).click();
+		applyExplicitWaitsUntilElementClickable(addBtn,30).click();
 
 /*add code copy piechart text and paste in name and description field		
  String widgetName =piechartname.getText();
  */
 		
-//		applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys("Pie Chart");                //here program stop
-//		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys("Pie Chart");
-//
-//		applyExplicitWaitsUntilElementClickable(fromField,30).sendKeys("10");
-//		applyExplicitWaitsUntilElementClickable(alias,30).sendKeys("a11");
-//		applyExplicitWaitsUntilElementClickable(location,30).click();
-//		ndriver.findElement(By.xpath("//div[@id='react-select-4-option-0-0']")).click();
-//		applyExplicitWaitsUntilElementClickable(parameter,30).click();
-//		ndriver.findElement(By.id("react-select-5-option-55")).click();
-//		applyExplicitWaitsUntilElementClickable(color,30).click();
-//		ndriver.findElement(By.xpath("//div[@style='background-color: rgb(18, 74, 184);']")).click();
-//
-//		
-//		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
-//		Thread.sleep(1000);
-//		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
+		applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys("Pie Chart");                //here program stop
+		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys("Pie Chart");
 
-//		
+		applyExplicitWaitsUntilElementClickable(fromField,30).sendKeys("10");
+		applyExplicitWaitsUntilElementClickable(alias,30).sendKeys("a11");
+		applyExplicitWaitsUntilElementClickable(location,30).click();
+		ndriver.findElement(By.xpath("//div[@id='react-select-4-option-0-0']")).click();
+		applyExplicitWaitsUntilElementClickable(parameter,30).click();
+		ndriver.findElement(By.id("react-select-5-option-55")).click();
+		applyExplicitWaitsUntilElementClickable(color,30).click();
+		ndriver.findElement(By.xpath("//div[@style='background-color: rgb(18, 74, 184);']")).click();
+
+		
+		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
+
+		
 
 	}
 
@@ -269,74 +259,94 @@ public class Dashboard extends BaseClass {
 
 	}
 	
-//	public void editDashboard()
-//	{
-//		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
-//		applyExplicitWaitsUntilElementClickable(,30).click();                               //editDashboard
-//		applyExplicitWaitsUntilElementClickable(addNewWidget,30).click();                             //+Addnewwidget
-//		applyExplicitWaitsUntilElementClickable(,30).click();                             //appAbnormallyDetection
-//		applyExplicitWaitsUntilElementClickable(,30).click();                             //addbtn
-//		applyExplicitWaitsUntilElementClickable(widgetName,30).sendKeys("");                        //widgetname
-//		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys("");                        //description
-//		applyExplicitWaitsUntilElementClickable(,30).click();                             //period
-//		ndriver.findElement(By.id("")).click();                                           //select period as week
-//		
-//		applyExplicitWaitsUntilElementClickable(,30).click();                             //datafreq
-//		ndriver.findElement(By.id("")).click();                                            //select 60 min
-//		
-//		applyExplicitWaitsUntilElementClickable(,30).click();                             //enter thres
-//		applyExplicitWaitsUntilElementClickable(,30).sendKeys("50");                                            //50
-//		                                      
-//		
-//		applyExplicitWaitsUntilElementClickable(,30).click();                             //trainigWeek
-//		applyExplicitWaitsUntilElementClickable(,30).sendKeys("2");                                         //2
-//		
-//		
+	public void editDashboard() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
+		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(editDashboard,30).click();                              
+		applyExplicitWaitsUntilElementClickable(addNewWidget,30).click();                             
+		applyExplicitWaitsUntilElementClickable(anomallyDetectionApp,30).click();                             
+		applyExplicitWaitsUntilElementClickable(addBtn,30).click();                             
+		applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys("Anomaly Detection");                        
+		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys("Anomaly Detection");                        
+		applyExplicitWaitsUntilElementClickable(period,30).click(); //click on period
+		
+	WebElement periodField=	ndriver.findElement(By.xpath("//select[@placeholder='Enter Period']"));    //period
+		Select sel = new Select(periodField) ;                                                          //select period as week
+	List<WebElement> periods=	sel.getOptions();
+	for(WebElement period:periods)
+	{
+		System.out.println(period.getText());
+	}
+	sel.selectByValue("Week");
+	
+//		applyExplicitWaitsUntilElementClickable(dataFrequency,30).click();                             //datafreq
+	WebElement datafrq=		ndriver.findElement(By.id("//select[@placeholder='Data Frequency']")); 
+	 sel = new Select(datafrq) ; 
+	List<WebElement> dataFrequencies=	sel.getOptions();
+	for(WebElement frq:dataFrequencies)
+	{
+		System.out.println(frq.getText());
+	}
+	sel.selectByValue("60 min");//select 60 min
+		
+		applyExplicitWaitsUntilElementClickable(threshouldPercent,30).click();                             //enter thres
+		applyExplicitWaitsUntilElementClickable(threshouldPercent,30).sendKeys("50");                                            //50
+		                                      
+		
+		applyExplicitWaitsUntilElementClickable(trainingWeek,30).click();                             //trainigWeek
+		applyExplicitWaitsUntilElementClickable(trainingWeek,30).sendKeys("2");                                         //2
+		
+		
 //		applyExplicitWaitsUntilElementClickable(,30).click();                             //select qa12
-//		ndriver.findElement(By.id("")).click();                
-//		
+		ndriver.findElement(By.id("//div[@class='css-1thkkgx-indicatorContainer selectionbox_prefix__indicator selectionbox_prefix__dropdown-indicator']")).click();                
+//here  we apply loop to select qa2...option-2....last no...3.4.5		
+		ndriver.findElement(By.id("//div[@id='react-select-6-option-2']")).click();            
+		
+		
 //		applyExplicitWaitsUntilElementClickable(,30).click();                             //select kwh
-//		ndriver.findElement(By.id("")).click(); 
-//		
-//		
-//		applyExplicitWaitsUntilElementClickable(,30).click();                       //togglebtn click
-//		
-//		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
-//		Thread.sleep(1000);
-//		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
-//		
-//		applyExplicitWaitsUntilElementClickable(,30).click();                           //click save changes
-//		
-//	}
-//	
-//	
-//	public void downloadWidgetData()
-//	{ 
-//		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
-//		applyExplicitWaitsUntilElementClickable(,30).click();                               //download
-//		ndriver.findElement(By.id("")).click();                                                //image
-//		applyExplicitWaitsUntilElementClickable(,30).click();                           //ok  btn
-//		Thread.sleep(2000);
-//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
-//		applyExplicitWaitsUntilElementClickable(,30).click();                               //download
-//		ndriver.findElement(By.id("")).click();                                                //pdf
-//		applyExplicitWaitsUntilElementClickable(,30).click();                           //ok  btn
-//		Thread.sleep(2000);
-//	}
-//	
-//	public void settingOfDashboard()
-//	{
-//		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
-//		applyExplicitWaitsUntilElementClickable(,30).click();                               //setting
-//		applyExplicitWaitsUntilElementClickable(,30).click();                               //unified picker
-//		applyExplicitWaitsUntilElementClickable(,30).click();                               //update
-//
-//
-//	}
-//	
+		ndriver.findElement(By.id("(//div[contains(@class,'css-1thkkgx-indicatorContainer selectionbox_prefix')])[2]")).click(); 
+		ndriver.findElement(By.id("//div[@id='react-select-7-option-437']")).click();  
+		
+		
+		applyExplicitWaitsUntilElementClickable(toggleCheckBox,30).click();                       //togglebtn click
+		
+		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
+		
+		applyExplicitWaitsUntilElementClickable(saveChanges,30).click();                           //click save changes
+		
+	}
+	
+	
+	public void downloadWidgetData() throws Exception
+	{ 
+		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
+		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(download,30).click();                               //download
+		ndriver.findElement(By.id("//span[normalize-space()='Image']")).click();                                                //image
+		applyExplicitWaitsUntilElementClickable(okBtn,30).click();                           //ok  btn
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
+		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(download,30).click();                               //download
+		ndriver.findElement(By.id("//span[normalize-space()='pdf']")).click();                                                //pdf
+		applyExplicitWaitsUntilElementClickable(okBtn,30).click();                           //ok  btn
+		Thread.sleep(2000);
+	}
+	
+	public void settingOfDashboard() throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
+		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(setting,30).click();                               //setting
+		applyExplicitWaitsUntilElementClickable(unifiedDatePicker,30).click();                               //unified picker
+		applyExplicitWaitsUntilElementClickable(updateBtn,30).click();                               //update
+
+
+	}
+	
 
 
 

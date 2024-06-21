@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jun 21, 2024 08:27:51 pm</span></a>
+<a href="#"><span class="badge badge-primary">Jun 21, 2024 09:05:43 pm</span></a>
 </li>
 </ul>
 </div>
@@ -97,7 +97,7 @@
           <div class="test-detail">
             <p class="name">create dashboard Module</p>
             <p class="text-sm">
-              <span>8:27:52 pm</span> / <span>00:00:30:565</span>
+              <span>9:05:45 pm</span> / <span>00:01:07:201</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -106,9 +106,9 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-fail">create dashboard Module</h5>
-<span class='badge badge-success'>06.21.2024 8:27:52 pm</span>
-<span class='badge badge-danger'>06.21.2024 8:28:23 pm</span>
-<span class='badge badge-default'>00:00:30:565</span>
+<span class='badge badge-success'>06.21.2024 9:05:45 pm</span>
+<span class='badge badge-danger'>06.21.2024 9:06:52 pm</span>
+<span class='badge badge-default'>00:01:07:201</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -166,29 +166,38 @@
     </div>
         <div class="">
           <div class="card-body">
-              <div class="step pass-bg" title="stepdefinations.DashboardSteps.user_is_on_smartsense_page_and_add_dashboard_as(java.lang.String)">
+              <div class="step fail-bg" title="stepdefinations.DashboardSteps.user_is_on_smartsense_page_and_add_dashboard_as(java.lang.String)">
                 <span>Given User is on Smartsense page and add dashboard as "qa1234"</span>
       <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinations.DashboardSteps.add_widget_and_verify_after_refresh_preview_widget_is_dispayed_compulsory()">
-                <span>When Add widget and Verify after refresh preview widget is dispayed compulsory</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinations.DashboardSteps.clone_dispayed_the_widget_it_gets_clone_succefully_after_that_delete_clone_widget()">
-                <span>When Clone dispayed the widget it gets clone succefully after that delete clone widget</span>
-      <div>
-      </div>
-              </div>
-              <div class="step fail-bg" title="stepdefinations.DashboardSteps.add_new_widget()">
-                <span>When Add new widget</span>
-      <div>
-        <textarea disabled class="code-block">io.cucumber.java.PendingException: TODO: implement me
-	at stepdefinations.DashboardSteps.add_new_widget(DashboardSteps.java:33)
-	at ✽.Add new widget(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddDashboard.feature:16)
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (be0fd5e662a14b1af37bcf31163c4a00)] -> xpath: (//img[@class='SSicon center-center'])[1]] (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: '4.20.0', revision: '866c76ca80'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.114, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61720}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61720/devtoo..., se:cdpVersion: 126.0.6478.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: be0fd5e662a14b1af37bcf31163c4a00
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.eco.base.BaseClass.applyExplicitWaitsUntilElementClickable(BaseClass.java:27)
+	at pageclases.Dashboard.createDashboard(Dashboard.java:168)
+	at stepdefinations.DashboardSteps.user_is_on_smartsense_page_and_add_dashboard_as(DashboardSteps.java:18)
+	at ✽.User is on Smartsense page and add dashboard as "qa1234"(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddDashboard.feature:13)
 </textarea>
       
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinations.DashboardSteps.add_widget_and_verify_after_refresh_preview_widget_is_dispayed_compulsory()">
+                <span>When Add widget and Verify after refresh preview widget is dispayed compulsory</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinations.DashboardSteps.clone_dispayed_the_widget_it_gets_clone_succefully_after_that_delete_clone_widget()">
+                <span>When Clone dispayed the widget it gets clone succefully after that delete clone widget</span>
+      <div>Step skipped
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinations.DashboardSteps.add_new_widget()">
+                <span>When Add new widget</span>
+      <div>Step skipped
       </div>
               </div>
               <div class="step skip-bg" title="stepdefinations.DashboardSteps.verify_user_able_to_add_new_widget_then_clone_it_and_delete_clone_widget_successfully()">
@@ -261,22 +270,22 @@
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
 <ul class="test-list-item">
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>2</span>
+<span class='badge log badge-danger'>1</span>
 </span>
 <p class="name">io.cucumber.java.PendingException</p>
-<p class="duration text-sm">2 tests</p>
+<p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>io.cucumber.java.PendingException</h4>
-<span status="fail" class='badge log badge-danger'>2 failed</span>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -289,21 +298,47 @@
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>20:28:23 pm</td>
-<td>
-<a href="#" class="linked" test-id='1' id='14'>When Add new widget</a>
-<div class="">
-<span class="badge badge-default">create dashboard Module.Create dashboard and add widget successfully.When Add new widget</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:28:23 pm</td>
+<td>21:06:52 pm</td>
 <td>
 <a href="#" class="linked" test-id='1' id='17'>Given User is on Smartsense page and dashboard</a>
 <div class="">
 <span class="badge badge-default">create dashboard Module.Edit dashboard.Given User is on Smartsense page and dashboard</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.TimeoutException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.TimeoutException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>21:06:21 pm</td>
+<td>
+<a href="#" class="linked" test-id='1' id='11'>Given User is on Smartsense page and add dashboard as "qa1234"</a>
+<div class="">
+<span class="badge badge-default">create dashboard Module.Create dashboard and add widget successfully.Given User is on Smartsense page and add dashboard as "qa1234"</span>
 </div>
 </td>
 </tr>
@@ -351,7 +386,7 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>20:27:52 pm</td>
+<td>21:05:45 pm</td>
 <td>
 <a href="#" class="linked" test-id='1' id='2'>Login to Eco app</a>
 <div class="">
@@ -376,13 +411,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jun 21, 2024 08:27:51 pm</h3>
+<h3>Jun 21, 2024 09:05:43 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jun 21, 2024 08:28:23 pm</h3>
+<h3>Jun 21, 2024 09:06:52 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -453,10 +488,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='52%'><b>9</b> steps passed</small></div>
+<div><small data-tooltip='35%'><b>6</b> steps passed</small></div>
 <div>
 <small data-tooltip='11%'><b>2</b> steps failed,
-<b>6</b> skipped, <b data-tooltip='%'>0</b> others
+<b>9</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -472,7 +507,7 @@
 </div></div>
 <script>
 var timeline = {
-"create dashboard Module":30.565
+"create dashboard Module":67.201
 };
 </script>
 <div class="row">
@@ -509,10 +544,10 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 9,
+passGrandChild: 6,
 failGrandChild: 2,
 warningGrandChild: 0,
-skipGrandChild: 6,
+skipGrandChild: 9,
 infoGrandChild: 0,
 eventsCount: 5,
 };
