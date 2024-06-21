@@ -69,7 +69,7 @@ public class ReportSteps extends BaseClass{
 	    
 	    @Given("Add the emails as below")
 	    public void add_the_emails_as_below(io.cucumber.datatable.DataTable datatable) throws Exception {
-	    	ac.selectemail(datatable);
+	    	ac.selectEmail(datatable);
 	    }
 	    
 	    @Given("Select Delivery Frequency by {string} which has {string} frequency")

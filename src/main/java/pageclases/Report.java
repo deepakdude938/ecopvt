@@ -236,7 +236,7 @@ public class Report extends BaseClass{
 		
 		}
 //	
-	public void selectemail(io.cucumber.datatable.DataTable dataTable) throws Exception {
+	public void selectEmail(io.cucumber.datatable.DataTable dataTable) throws Exception {
 		applyExplicitWaitsUntilElementClickable(email,30).click();
 		Thread.sleep(2000);
 		List<List<String>>	data= dataTable.asLists(String.class);
@@ -247,7 +247,7 @@ public class Report extends BaseClass{
 		
 		}
 	
-	public void selectfrequency(String option,String freq) throws Exception {
+	public void selectFrequency(String option,String freq) throws Exception {
 		applyExplicitWaitsUntilElementClickable(deliveryFreq,30).click();
 		ndriver.findElement(By.xpath("//*[@id='react-select-7-"+option+"' and text()='"+freq+"']")).click();
 		

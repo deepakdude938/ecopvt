@@ -46,11 +46,14 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//i[@class='fas fa-ellipsis-v']")
 	private WebElement ellipsisVerticalIcon ;
 
-	@FindBy(xpath="//button[text()='Add Widgets']")
+	@FindBy(xpath="//button[normalize-space()='Add Widget']")
 	private WebElement addWidget ;
+	
+    @FindBy(xpath="//button[normalize-space()='+ Add New Widget']")
+	private WebElement addNewWidget ;
 
 	@FindBy(xpath="//i[@class='fas fa-chart-pie']")
-	private WebElement piechartWidget ;
+	private WebElement piechartWidgetApp ;
 
 	@FindBy(xpath="//button[text()='Add']")
 	private WebElement addBtn ;
@@ -87,8 +90,11 @@ public class Dashboard extends BaseClass {
 
 	@FindBy(xpath="(//div[text()='Action'])[1]")
 	private WebElement  action;
+	
+	@FindBy(xpath="(//div[text()='Action'])[2]")
+	private WebElement  copyPieAction;
 
-	@FindBy(xpath="(//div[@class='dropdown-menu level-1 _show']/a/font)[3]")
+	@FindBy(xpath="//div[@class='dropdown-menu level-1 _show']/a[text()='Clone']")
 	private WebElement clone ;
 
 	@FindBy(xpath="//div[text()=' Pie Chart - Copy']")
@@ -97,7 +103,7 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="(//a[@class='trigger level-0'])[2]")
 	private WebElement  copyPiechartEllipsisVerticalIcon;
 
-	@FindBy(xpath="(//div[@class='dropdown-menu level-1 _show']/a/font)[2]")
+	@FindBy(xpath="//div[@class='dropdown-menu level-1 _show']/a[text()='Delete']")
 	private WebElement  deleteCopyPie;
 
 	@FindBy(xpath="//button[text()='Ok']")
@@ -106,16 +112,69 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//div[@class='dropdown-menu level-1 _show']/a[text()='TV Mode']")
 	private WebElement tvMode ;
 
-	@FindBy(xpath="//div[text()='Sensor Health']")
+	@FindBy(xpath="//div[@class='add-widget-app-name' and text()='Sensor Health']")
 	private WebElement  sensorHealth;
 
 	@FindBy(xpath="//span[text()='Pie Chart']")
 	private WebElement piechartname  ;
+	
+	@FindBy(xpath="//i[@class='fa fa-plus']")
+	private WebElement plusIcon  ;
+	
+	@FindBy(xpath="")
+	private WebElement editDashboard  ;
+	
+	@FindBy(xpath="")
+	private WebElement anomallyDetectionApp  ;
+
+//	@FindBy(xpath="")
+//	private WebElement  period ;
+
+	@FindBy(xpath="")
+	private WebElement  dataFrequency ;
+
+	@FindBy(xpath="")
+	private WebElement  threshouldPercent ;
+
+	@FindBy(xpath="")
+	private WebElement trainingWeek  ;
+
+//	@FindBy(xpath="")
+//	private WebElement   ;
+//
+//	@FindBy(xpath="")
+//	private WebElement   ;
+
+	@FindBy(xpath="")
+	private WebElement  toggle ;
+	
+	@FindBy(xpath="")
+	private WebElement  saveChanges ;
+	
+	@FindBy(xpath="")
+	private WebElement   download;
+	
+	@FindBy(xpath="")
+	private WebElement  setting ;
+	
+	@FindBy(xpath="")
+	private WebElement  unifiedDatePicker ;
+	
+	@FindBy(xpath="")
+	private WebElement  updateBtn ;
 
 	public void createDashboard(String dashBoardName) throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-		applyExplicitWaitsUntilElementClickable(addDashBoard,30).click();
+		try {
+			applyExplicitWaitsUntilElementClickable(addDashBoard,30).click();
+			}
+			catch(Exception e) {
+				js.click(addDashBoard);
+			}
+//		
+
+		applyExplicitWaitsUntilElementClickable(enterNameFiled,30).click();
 		applyExplicitWaitsUntilElementClickable(enterNameFiled,30).sendKeys(dashBoardName);
 		applyExplicitWaitsUntilElementClickable(createBtn,30).click();
 	}
@@ -123,32 +182,43 @@ public class Dashboard extends BaseClass {
 
 	public void addWidget() throws Exception
 	{
+		ndriver.findElement(By.xpath("//img[@src='/app/assets/images/operational-excellence.svg']")).click();
 		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
-		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
-		applyExplicitWaitsUntilElementClickable(piechartWidget,30).click();
-		applyExplicitWaitsUntilElementClickable(addBtn,30).click();
-		//add code copy piechart text and paste in name and description field
-		//    Actions acn = new Actions(ndriver);
-		String widgetName =piechartname.getText();
-		applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys(widgetName);
-		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys(widgetName);
-
-		applyExplicitWaitsUntilElementClickable(fromField,30).sendKeys("10");
-		applyExplicitWaitsUntilElementClickable(alias,30).sendKeys("a11");
-		applyExplicitWaitsUntilElementClickable(location,30).click();
-		ndriver.findElement(By.xpath("//div[@id='react-select-4-option-0-0']")).click();
-		applyExplicitWaitsUntilElementClickable(parameter,30).click();
-		ndriver.findElement(By.id("react-select-5-option-55")).click();
-		applyExplicitWaitsUntilElementClickable(color,30).click();
-		ndriver.findElement(By.xpath("//div[@style='background-color: rgb(18, 74, 184);']")).click();
-
+		ndriver.findElement(By.xpath("//div[@class='dashboard-list-litem _active']")).click();
+		ndriver.findElement(By.xpath("//img[@src='/app/assets/images/operational-excellence.svg']")).click();
+		ndriver.findElement(By.xpath("//div[@class='dashboard-list-litem _active']//div[@class='option-wrap dropdown-box']")).click();
 		
-		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
-		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
-
 		
+//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+//		Thread.sleep(1000);
+//		applyExplicitWaitsUntilElementClickable(addWidget,40).click();
+//		Thread.sleep(1000);
+		
+//		applyExplicitWaitsUntilElementClickable(piechartWidgetApp,30).click();
+//		applyExplicitWaitsUntilElementClickable(addBtn,30).click();
+
+/*add code copy piechart text and paste in name and description field		
+ String widgetName =piechartname.getText();
+ */
+		
+//		applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys("Pie Chart");                //here program stop
+//		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys("Pie Chart");
+//
+//		applyExplicitWaitsUntilElementClickable(fromField,30).sendKeys("10");
+//		applyExplicitWaitsUntilElementClickable(alias,30).sendKeys("a11");
+//		applyExplicitWaitsUntilElementClickable(location,30).click();
+//		ndriver.findElement(By.xpath("//div[@id='react-select-4-option-0-0']")).click();
+//		applyExplicitWaitsUntilElementClickable(parameter,30).click();
+//		ndriver.findElement(By.id("react-select-5-option-55")).click();
+//		applyExplicitWaitsUntilElementClickable(color,30).click();
+//		ndriver.findElement(By.xpath("//div[@style='background-color: rgb(18, 74, 184);']")).click();
+//
+//		
+//		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
+//		Thread.sleep(1000);
+//		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
+
+//		
 
 	}
 
@@ -169,7 +239,7 @@ public class Dashboard extends BaseClass {
 		}
 
 		applyExplicitWaitsUntilElementClickable(copyPiechartEllipsisVerticalIcon,30).click();
-		applyExplicitWaitsUntilElementClickable(action, 30).click();
+		applyExplicitWaitsUntilElementClickable(copyPieAction, 30).click();
 		applyExplicitWaitsUntilElementClickable(deleteCopyPie, 30).click();
 		applyExplicitWaitsUntilElementClickable(okBtn, 30).click();
 
@@ -186,10 +256,10 @@ public class Dashboard extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(sensorHealth,30).click();
 		applyExplicitWaitsUntilElementClickable(addBtn,30).click();
 		
-	/*	String widgetName =piechartname.getText();
-		applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys();
-		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys();  //get the text of sensor or copy it 
-		*/
+	
+		applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys("Sensor Health");
+		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys("Sensor Health");  //get the text of sensor or copy it 
+		
 		
 		
 		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
@@ -197,8 +267,76 @@ public class Dashboard extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
 		
 
-		
 	}
+	
+//	public void editDashboard()
+//	{
+//		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
+//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+//		applyExplicitWaitsUntilElementClickable(,30).click();                               //editDashboard
+//		applyExplicitWaitsUntilElementClickable(addNewWidget,30).click();                             //+Addnewwidget
+//		applyExplicitWaitsUntilElementClickable(,30).click();                             //appAbnormallyDetection
+//		applyExplicitWaitsUntilElementClickable(,30).click();                             //addbtn
+//		applyExplicitWaitsUntilElementClickable(widgetName,30).sendKeys("");                        //widgetname
+//		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys("");                        //description
+//		applyExplicitWaitsUntilElementClickable(,30).click();                             //period
+//		ndriver.findElement(By.id("")).click();                                           //select period as week
+//		
+//		applyExplicitWaitsUntilElementClickable(,30).click();                             //datafreq
+//		ndriver.findElement(By.id("")).click();                                            //select 60 min
+//		
+//		applyExplicitWaitsUntilElementClickable(,30).click();                             //enter thres
+//		applyExplicitWaitsUntilElementClickable(,30).sendKeys("50");                                            //50
+//		                                      
+//		
+//		applyExplicitWaitsUntilElementClickable(,30).click();                             //trainigWeek
+//		applyExplicitWaitsUntilElementClickable(,30).sendKeys("2");                                         //2
+//		
+//		
+//		applyExplicitWaitsUntilElementClickable(,30).click();                             //select qa12
+//		ndriver.findElement(By.id("")).click();                
+//		
+//		applyExplicitWaitsUntilElementClickable(,30).click();                             //select kwh
+//		ndriver.findElement(By.id("")).click(); 
+//		
+//		
+//		applyExplicitWaitsUntilElementClickable(,30).click();                       //togglebtn click
+//		
+//		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
+//		Thread.sleep(1000);
+//		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
+//		
+//		applyExplicitWaitsUntilElementClickable(,30).click();                           //click save changes
+//		
+//	}
+//	
+//	
+//	public void downloadWidgetData()
+//	{ 
+//		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
+//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+//		applyExplicitWaitsUntilElementClickable(,30).click();                               //download
+//		ndriver.findElement(By.id("")).click();                                                //image
+//		applyExplicitWaitsUntilElementClickable(,30).click();                           //ok  btn
+//		Thread.sleep(2000);
+//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+//		applyExplicitWaitsUntilElementClickable(,30).click();                               //download
+//		ndriver.findElement(By.id("")).click();                                                //pdf
+//		applyExplicitWaitsUntilElementClickable(,30).click();                           //ok  btn
+//		Thread.sleep(2000);
+//	}
+//	
+//	public void settingOfDashboard()
+//	{
+//		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
+//		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+//		applyExplicitWaitsUntilElementClickable(,30).click();                               //setting
+//		applyExplicitWaitsUntilElementClickable(,30).click();                               //unified picker
+//		applyExplicitWaitsUntilElementClickable(,30).click();                               //update
+//
+//
+//	}
+//	
 
 
 

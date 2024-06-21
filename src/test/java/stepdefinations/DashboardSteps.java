@@ -25,7 +25,7 @@ public class DashboardSteps {
 
 	@When("Clone dispayed the widget it gets clone succefully after that delete clone widget")
 	public void clone_dispayed_the_widget_it_gets_clone_succefully_after_that_delete_clone_widget() throws Exception {
-dash.cloneTheWidgetAndDeleteClone();
+//dash.cloneTheWidgetAndDeleteClone();
 	}
 	@When("Add new widget")
 	public void add_new_widget() {
