@@ -10,7 +10,7 @@ Feature: create dashboard Module
 		Then  Page Title should be "SmartSense"
 
  Scenario: Create dashboard and add widget successfully
- Given User is on Smartsense page and add dashboard as "qa1"
+ Given User is on Smartsense page and add dashboard as "pp1"
  When User Add widget as "Pie Chart" then Verify after refresh preview widget is dispayed compulsory
  When Clone dispayed the widget it gets clone succefully after that delete that clone widget
  When User again Add widget as "Sensor Health" then Verify after refresh preview widget is dispayed compulsory

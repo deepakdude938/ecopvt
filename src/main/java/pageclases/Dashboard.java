@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -24,7 +25,8 @@ public class Dashboard extends BaseClass {
 	WebDriverWait wait;
 	JavaScriptOperation js;
 	Select sel;
-
+    JavascriptExecutor jse;
+    Actions acn;
 	public Dashboard(WebDriver odriver) {
 		this.ndriver = odriver;
 		PageFactory.initElements(ndriver, this);
@@ -72,16 +74,16 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//input[@class='form-control-sm form-control']")
 	private WebElement alias ;
 
-	@FindBy(xpath="(//div[@class='css-16pqwjk-indicatorContainer selectionbox_prefix__indicator selectionbox_prefix__dropdown-indicator'])[1]")
+	@FindBy(xpath="(//div[@class='css-o3h76h-control selectionbox_prefix__control'])[1]")
 	private WebElement location;
 
-	@FindBy(xpath="(//div[@class='css-16pqwjk-indicatorContainer selectionbox_prefix__indicator selectionbox_prefix__dropdown-indicator'])[2]")
+	@FindBy(xpath="(//div[@class='css-1pcexqc-container selectionbox'])[2]")
 	private WebElement parameter ;
 
 	@FindBy(xpath="//input[@type='color']")
 	private WebElement color ;
 
-	@FindBy(xpath="//div[@class='widget-preview-header-refresh']")
+	@FindBy(xpath="//span[normalize-space()='Refresh Preview']")
 	private WebElement refreshPreview ;
 
 	@FindBy(xpath="//a[@class='trigger level-0']")
@@ -96,7 +98,7 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//div[@class='dropdown-menu level-1 _show']/a[text()='Clone']")
 	private WebElement clone ;
 	
-	@FindBy(xpath="//div[@id='1']//a[@class='trigger level-0']")
+	@FindBy(xpath="(//a[@class='trigger level-0'])[2]")
 	private WebElement copiedEllipsisVerticalIcon ; 
 
 	@FindBy(xpath="//div[text()=' Pie Chart - Copy']")
@@ -170,6 +172,7 @@ public class Dashboard extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(enterNameFiled,30).click();
 		applyExplicitWaitsUntilElementClickable(enterNameFiled,30).sendKeys(dashBoardName);
 		applyExplicitWaitsUntilElementClickable(createBtn,30).click();
+		System.out.println(dashBoardName+ "  dashboard is created succefully ");
 	}
 
 
@@ -196,25 +199,30 @@ if(widgetName.equalsIgnoreCase("Pie Chart"))
 
 		applyExplicitWaitsUntilElementClickable(fromField,30).sendKeys("10");
 		
-		JavascriptExecutor		js = (JavascriptExecutor) ndriver;
-		js.executeScript("window.scrollBy(0,1000)");
+				jse = (JavascriptExecutor) ndriver;
+		jse.executeScript("window.scrollBy(0,1000)");
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(alias,30).click();
 		applyExplicitWaitsUntilElementClickable(alias,30).sendKeys("a11");
 //		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(location,30).click();
 		Thread.sleep(1000);
-		ndriver.findElement(By.xpath("//div[@id='react-select-4-option-0-0']")).click();    //here program stop
+		ndriver.findElement(By.xpath("//div[@id='react-select-2-option-0-0']")).click();    //here program stop
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(parameter,30).click();
 		Thread.sleep(1000);
-		ndriver.findElement(By.id("react-select-5-option-55")).click();
+		ndriver.findElement(By.xpath("//div[@id='react-select-3-option-55']")).click();
 		applyExplicitWaitsUntilElementClickable(color,30).click();
-		ndriver.findElement(By.xpath("//div[@style='background-color: rgb(18, 74, 184);']")).click();
+		ndriver.findElement(By.xpath("//div[@class='d-flex flex-column color-pallette']//div[1]//div[3]")).click();
 
-		
-		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
 		Thread.sleep(1000);
+//	js.executeScript("arguments[0].scrollIntoView(true);", refreshPreview);
+//	js.executeScript("window.scrollBy(0,-2000)");
+		
+ acn = new Actions(ndriver);
+acn.moveToElement(refreshPreview).click().perform();
+//		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
 
 		}
@@ -310,8 +318,13 @@ for(WebElement frq:dataFrequencies)
 	{
 		applyExplicitWaitsUntilElementClickable(appEllipsisVerticalIcon,30).click();
 		applyExplicitWaitsUntilElementClickable(action,30).click();
-
-		applyExplicitWaitsUntilElementClickable(clone,30).click();
+		acn=new Actions(ndriver);
+		acn.moveToElement(clone).click().perform();
+//		applyExplicitWaitsUntilElementClickable(clone,30).click();
+		Thread.sleep(1000);
+		
+		acn.moveToElement(piechartCopyText).perform();
+		Thread.sleep(1000);
 		boolean s = isWebElementDisplayed(piechartCopyText);
 		if(s)
 		{
@@ -321,11 +334,13 @@ for(WebElement frq:dataFrequencies)
 			System.out.println("widget not clone succefully");
 
 		}
-
-		applyExplicitWaitsUntilElementClickable(copiedEllipsisVerticalIcon,30).click();
-		applyExplicitWaitsUntilElementClickable(action, 30).click();            //check xpath is common of copy for all app
-		applyExplicitWaitsUntilElementClickable(deleteCopyPie, 30).click();           // check xpath is common of delete for all app
-		applyExplicitWaitsUntilElementClickable(okBtn, 30).click();                   //check xpath is common of ok for all  app
+		Thread.sleep(1000);
+//		ndriver.findElement(By.xpath("(//a[@class='trigger level-0'])[2]")).click();
+////           acn.moveToElement(copiedEllipsisVerticalIcon).click().perform();
+//		applyExplicitWaitsUntilElementClickable(copiedEllipsisVerticalIcon,30).click();
+//		applyExplicitWaitsUntilElementClickable(action, 30).click();            //check xpath is common of copy for all app
+//		applyExplicitWaitsUntilElementClickable(deleteCopyPie, 30).click();           // check xpath is common of delete for all app
+//		applyExplicitWaitsUntilElementClickable(okBtn, 30).click();                   //check xpath is common of ok for all  app
 
 
 	}
