@@ -85,24 +85,24 @@ public class Dashboard extends BaseClass {
 	private WebElement refreshPreview ;
 
 	@FindBy(xpath="//a[@class='trigger level-0']")
-	private WebElement piechartEllipsisVerticalIcon ; 
-
-	@FindBy(xpath="(//div[text()='Action'])[1]")
+	private WebElement appEllipsisVerticalIcon ; 
+	
+	@FindBy(xpath="//div[@class='dropdown-menu level-0 _show']//div[contains(text(),'Action')]")
 	private WebElement  action;
 	
-	@FindBy(xpath="(//div[text()='Action'])[2]")
-	private WebElement  copyPieAction;
+//	@FindBy(xpath="(//div[text()='Action'])[2]")
+//	private WebElement  copyPieAction;
 
 	@FindBy(xpath="//div[@class='dropdown-menu level-1 _show']/a[text()='Clone']")
 	private WebElement clone ;
+	
+	@FindBy(xpath="//div[@id='1']//a[@class='trigger level-0']")
+	private WebElement copiedEllipsisVerticalIcon ; 
 
 	@FindBy(xpath="//div[text()=' Pie Chart - Copy']")
 	private WebElement piechartCopyText ;
 
-	@FindBy(xpath="(//a[@class='trigger level-0'])[2]")
-	private WebElement  copyPiechartEllipsisVerticalIcon;
-
-	@FindBy(xpath="//div[@class='dropdown-menu level-1 _show']/a[text()='Delete']")
+     @FindBy(xpath="//div[@class='dropdown-menu level-1 _show']/a[text()='Delete']")
 	private WebElement  deleteCopyPie;
 
 	@FindBy(xpath="//button[text()='Ok']")
@@ -308,7 +308,7 @@ for(WebElement frq:dataFrequencies)
 
 	public void cloneTheWidgetAndDeleteClone() throws Exception
 	{
-		applyExplicitWaitsUntilElementClickable(piechartEllipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(appEllipsisVerticalIcon,30).click();
 		applyExplicitWaitsUntilElementClickable(action,30).click();
 
 		applyExplicitWaitsUntilElementClickable(clone,30).click();
@@ -322,8 +322,8 @@ for(WebElement frq:dataFrequencies)
 
 		}
 
-		applyExplicitWaitsUntilElementClickable(copyPiechartEllipsisVerticalIcon,30).click();
-		applyExplicitWaitsUntilElementClickable(copyPieAction, 30).click();            //check xpath is common of copy for all app
+		applyExplicitWaitsUntilElementClickable(copiedEllipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(action, 30).click();            //check xpath is common of copy for all app
 		applyExplicitWaitsUntilElementClickable(deleteCopyPie, 30).click();           // check xpath is common of delete for all app
 		applyExplicitWaitsUntilElementClickable(okBtn, 30).click();                   //check xpath is common of ok for all  app
 
