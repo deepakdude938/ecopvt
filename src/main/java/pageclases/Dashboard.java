@@ -1,11 +1,11 @@
 package pageclases;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,7 +33,7 @@ public class Dashboard extends BaseClass {
 
 	}
 
-	@FindBy(xpath="(//img[@class='SSicon center-center'])[1]")
+	@FindBy(xpath="//p[@class='active']")
 	private WebElement operationalExcellence;
 
 	@FindBy(xpath="//button[@class='add-wrap _add-wrap']")
@@ -42,10 +42,10 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//input[@id='dashboard-name']")
 	private WebElement enterNameFiled ;
 
-	@FindBy(xpath="//button[text()='Create']")
+	@FindBy(xpath="//button[normalize-space()='Create']")
 	private WebElement createBtn ;
 
-	@FindBy(xpath="//i[@class='fas fa-ellipsis-v']")
+	@FindBy(xpath="//div[@class='dashboard-list-litem _active']")
 	private WebElement ellipsisVerticalIcon ;
 
 	@FindBy(xpath="//button[normalize-space()='Add Widget']")
@@ -57,10 +57,10 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//i[@class='fas fa-chart-pie']")
 	private WebElement piechartWidgetApp ;
 
-	@FindBy(xpath="//button[text()='Add']")
+	@FindBy(xpath="//button[normalize-space()='Add']")
 	private WebElement addBtn ;
 
-	@FindBy(xpath="//input[@name='widget_name']")
+	@FindBy(xpath="//input[@placeholder='Enter Widget Name']")
 	private WebElement widgetNameField ;
 
 	@FindBy(xpath="//textarea[@name='widget_description']")
@@ -72,10 +72,10 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//input[@class='form-control-sm form-control']")
 	private WebElement alias ;
 
-	@FindBy(xpath="(//div[@class='css-1wy0on6 selectionbox_prefix__indicators'])[1]")
+	@FindBy(xpath="(//div[@class='css-16pqwjk-indicatorContainer selectionbox_prefix__indicator selectionbox_prefix__dropdown-indicator'])[1]")
 	private WebElement location;
 
-	@FindBy(xpath="(//div[@class='css-1wy0on6 selectionbox_prefix__indicators'])[2]")
+	@FindBy(xpath="(//div[@class='css-16pqwjk-indicatorContainer selectionbox_prefix__indicator selectionbox_prefix__dropdown-indicator'])[2]")
 	private WebElement parameter ;
 
 	@FindBy(xpath="//input[@type='color']")
@@ -175,35 +175,39 @@ public class Dashboard extends BaseClass {
 
 	public void addWidget(String widgetName) throws Exception
 	{
- /*      ndriver.findElement(By.xpath("//div[@class='dashboard-list-litem _active']")).click();
-		ndriver.findElement(By.xpath("//img[@src='/app/assets/images/operational-excellence.svg']")).click();
-		ndriver.findElement(By.xpath("//div[@class='dashboard-list-litem _active']//div[@class='option-wrap dropdown-box']")).click();
-		ndriver.findElement(By.xpath("//button[normalize-space()='Add Widgets']")).click();
-	*/
 		
 if(widgetName.equalsIgnoreCase("Pie Chart"))
 {
 	    applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
 		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
-		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(addWidget,40).click();
-		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(plusIcon,50).click();
+		 Thread.sleep(1000);
+//		Actions acn = new Actions(ndriver);
+//		acn.moveToElement(addWidget).click().perform();;
+//		Thread.sleep(1000);
+//WebElement plusIcon=		ndriver.findElement(By.xpath("//i[@class='fa fa-plus']"));
+//acn.moveToElement(plusIcon).click().perform();
+		
 		
 		applyExplicitWaitsUntilElementClickable(piechartWidgetApp,30).click();
 		applyExplicitWaitsUntilElementClickable(addBtn,30).click();
-
-/*add code copy piechart text and paste in name and description field		
- String widgetName =piechartname.getText();
- */
-		
-		applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys(widgetName);                //here program stop
+		applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys(widgetName);                
 		applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys(widgetName);
 
 		applyExplicitWaitsUntilElementClickable(fromField,30).sendKeys("10");
+		
+		JavascriptExecutor		js = (JavascriptExecutor) ndriver;
+		js.executeScript("window.scrollBy(0,1000)");
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(alias,30).click();
 		applyExplicitWaitsUntilElementClickable(alias,30).sendKeys("a11");
+//		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(location,30).click();
-		ndriver.findElement(By.xpath("//div[@id='react-select-4-option-0-0']")).click();
+		Thread.sleep(1000);
+		ndriver.findElement(By.xpath("//div[@id='react-select-4-option-0-0']")).click();    //here program stop
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(parameter,30).click();
+		Thread.sleep(1000);
 		ndriver.findElement(By.id("react-select-5-option-55")).click();
 		applyExplicitWaitsUntilElementClickable(color,30).click();
 		ndriver.findElement(By.xpath("//div[@style='background-color: rgb(18, 74, 184);']")).click();
