@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jun 21, 2024 09:05:43 pm</span></a>
+<a href="#"><span class="badge badge-primary">Jun 22, 2024 01:06:47 pm</span></a>
 </li>
 </ul>
 </div>
@@ -45,11 +45,6 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
-</a>
-</li>
-<li class="nav-item dropdown" onclick="toggleView('exception-view')">
-<a id="nav-exception" class="dropdown-toggle" href="#">
-<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('category-view')">
@@ -97,7 +92,7 @@
           <div class="test-detail">
             <p class="name">create dashboard Module</p>
             <p class="text-sm">
-              <span>9:05:45 pm</span> / <span>00:01:07:201</span>
+              <span>1:06:48 pm</span> / <span>00:00:00:253</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -106,9 +101,9 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-fail">create dashboard Module</h5>
-<span class='badge badge-success'>06.21.2024 9:05:45 pm</span>
-<span class='badge badge-danger'>06.21.2024 9:06:52 pm</span>
-<span class='badge badge-default'>00:01:07:201</span>
+<span class='badge badge-success'>06.22.2024 1:06:48 pm</span>
+<span class='badge badge-danger'>06.22.2024 1:06:48 pm</span>
+<span class='badge badge-default'>00:00:00:253</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -161,48 +156,34 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="10"><span class="badge log fail-bg mr-2">Fail</span>Create dashboard and add widget successfully</div>
+        <div class="node" id="10"><span class="badge log pass-bg mr-2">Pass</span>Create dashboard and add widget successfully</div>
       </div>
     </div>
-        <div class="">
+        <div class="collapse">
           <div class="card-body">
-              <div class="step fail-bg" title="stepdefinations.DashboardSteps.user_is_on_smartsense_page_and_add_dashboard_as(java.lang.String)">
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.user_is_on_smartsense_page_and_add_dashboard_as(java.lang.String)">
                 <span>Given User is on Smartsense page and add dashboard as "qa1234"</span>
       <div>
-        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (be0fd5e662a14b1af37bcf31163c4a00)] -> xpath: (//img[@class='SSicon center-center'])[1]] (tried for 30 second(s) with 500 milliseconds interval)
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.114, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\LENOVO\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61720}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61720/devtoo..., se:cdpVersion: 126.0.6478.114, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: be0fd5e662a14b1af37bcf31163c4a00
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-	at com.eco.base.BaseClass.applyExplicitWaitsUntilElementClickable(BaseClass.java:27)
-	at pageclases.Dashboard.createDashboard(Dashboard.java:168)
-	at stepdefinations.DashboardSteps.user_is_on_smartsense_page_and_add_dashboard_as(DashboardSteps.java:18)
-	at ✽.User is on Smartsense page and add dashboard as "qa1234"(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddDashboard.feature:13)
-</textarea>
-      
       </div>
               </div>
-              <div class="step skip-bg" title="stepdefinations.DashboardSteps.add_widget_and_verify_after_refresh_preview_widget_is_dispayed_compulsory()">
-                <span>When Add widget and Verify after refresh preview widget is dispayed compulsory</span>
-      <div>Step skipped
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.user_add_widget_as_then_verify_after_refresh_preview_widget_is_dispayed_compulsory(java.lang.String)">
+                <span>When User Add widget as "Pie Chart" then Verify after refresh preview widget is dispayed compulsory</span>
+      <div>
       </div>
               </div>
-              <div class="step skip-bg" title="stepdefinations.DashboardSteps.clone_dispayed_the_widget_it_gets_clone_succefully_after_that_delete_clone_widget()">
-                <span>When Clone dispayed the widget it gets clone succefully after that delete clone widget</span>
-      <div>Step skipped
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.clone_dispayed_the_widget_it_gets_clone_succefully_after_that_delete_that_clone_widget()">
+                <span>When Clone dispayed the widget it gets clone succefully after that delete that clone widget</span>
+      <div>
       </div>
               </div>
-              <div class="step skip-bg" title="stepdefinations.DashboardSteps.add_new_widget()">
-                <span>When Add new widget</span>
-      <div>Step skipped
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.user_again_add_widget_as_then_verify_after_refresh_preview_widget_is_dispayed_compulsory(java.lang.String)">
+                <span>When User again Add widget as "Sensor Health" then Verify after refresh preview widget is dispayed compulsory</span>
+      <div>
       </div>
               </div>
-              <div class="step skip-bg" title="stepdefinations.DashboardSteps.verify_user_able_to_add_new_widget_then_clone_it_and_delete_clone_widget_successfully()">
-                <span>Then Verify user able to add new widget then clone it and delete clone widget successfully</span>
-      <div>Step skipped
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.clone_dispayed_the_widget_it_gets_clone_succefully_after_that_delete_that_clone_widget()">
+                <span>When Clone dispayed the widget it gets clone succefully after that delete that clone widget</span>
+      <div>
       </div>
               </div>
           </div>
@@ -216,38 +197,48 @@ Session ID: be0fd5e662a14b1af37bcf31163c4a00
     </div>
         <div class="">
           <div class="card-body">
-              <div class="step fail-bg" title="stepdefinations.DashboardSteps.user_is_on_smartsense_page_and_dashboard()">
-                <span>Given User is on Smartsense page and dashboard</span>
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.user_is_on_smartsense_page_and_edit_dashboard()">
+                <span>Given User is on Smartsense page and Edit dashboard</span>
       <div>
-        <textarea disabled class="code-block">io.cucumber.java.PendingException: TODO: implement me
-	at stepdefinations.DashboardSteps.user_is_on_smartsense_page_and_dashboard(DashboardSteps.java:45)
-	at ✽.User is on Smartsense page and dashboard(file:///C:/Users/LENOVO/git/repository2/Eco_PVT_LTD/src/test/resources/features/AddDashboard.feature:20)
-</textarea>
-      
       </div>
               </div>
-              <div class="step skip-bg" title="stepdefinations.DashboardSteps.add_widget_and_verify_after_refresh_preview_widget_is_dispayed_compulsory()">
-                <span>When Add widget and Verify after refresh preview widget is dispayed compulsory</span>
-      <div>Step skipped
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.edit_with_by_add_new_widget_as_verify_after_refresh_preview_widget_is_dispayed_compulsory(java.lang.String)">
+                <span>When Edit with by Add new widget as "Anomaly Detection" Verify after refresh preview widget is dispayed compulsory</span>
+      <div>
       </div>
               </div>
-              <div class="step skip-bg" title="stepdefinations.DashboardSteps.clone_dispayed_the_widget_it_gets_clone_succefully_after_that_delete_clone_widget()">
-                <span>When Clone dispayed the widget it gets clone succefully after that delete clone widget</span>
-      <div>Step skipped
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.clone_dispayed_the_widget_it_gets_clone_succefully_after_that_delete_that_clone_widget()">
+                <span>When Clone dispayed the widget it gets clone succefully after that delete that clone widget</span>
+      <div>
       </div>
               </div>
-              <div class="step skip-bg" title="stepdefinations.DashboardSteps.save_the_changes()">
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.save_the_changes()">
                 <span>And Save the changes</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinations.DashboardSteps.user_download_the_widget_data_as_img()">
+                <span>When User Download the widget data as img</span>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" >
+                <span>Then Verify downloaded file of data is avaliable in project folder with "smartsense_image.png" name</span>
+      <div>Step undefined
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinations.DashboardSteps.user_download_the_widget_data_as_pdf()">
+                <span>When User Download the widget data as pdf</span>
       <div>Step skipped
       </div>
               </div>
-              <div class="step skip-bg" title="stepdefinations.DashboardSteps.download_the_widget_data_as_img_and_pdf()">
-                <span>Then Download the widget data as img and pdf</span>
+              <div class="step skip-bg" >
+                <span>Then Verify downloaded file of data is avaliable in project folder with "smartsense.pdf" name</span>
       <div>Step skipped
       </div>
               </div>
-              <div class="step skip-bg" title="stepdefinations.DashboardSteps.setting_up_the_dashboard_with_unified_date_picker_and_update_it()">
-                <span>And Setting up the dashboard with unified date picker and update it</span>
+              <div class="step skip-bg" title="stepdefinations.DashboardSteps.finally_user_setting_up_the_dashboard_with_unified_date_picker_and_update_it()">
+                <span>And Finally user Setting up the dashboard with unified date picker and update it</span>
       <div>Step skipped
       </div>
               </div>
@@ -266,95 +257,7 @@ Session ID: be0fd5e662a14b1af37bcf31163c4a00
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="test-wrapper row view exception-view attributes-view">
-<div class="test-list">
-<div class="test-list-tools">
-<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
-</div>
-<div class="test-list-wrapper scrollable">
-<ul class="test-list-item">
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>1</span>
-</span>
-<p class="name">io.cucumber.java.PendingException</p>
-<p class="duration text-sm">1 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>io.cucumber.java.PendingException</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>21:06:52 pm</td>
-<td>
-<a href="#" class="linked" test-id='1' id='17'>Given User is on Smartsense page and dashboard</a>
-<div class="">
-<span class="badge badge-default">create dashboard Module.Edit dashboard.Given User is on Smartsense page and dashboard</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>1</span>
-</span>
-<p class="name">org.openqa.selenium.TimeoutException</p>
-<p class="duration text-sm">1 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>org.openqa.selenium.TimeoutException</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>21:06:21 pm</td>
-<td>
-<a href="#" class="linked" test-id='1' id='11'>Given User is on Smartsense page and add dashboard as "qa1234"</a>
-<div class="">
-<span class="badge badge-default">create dashboard Module.Create dashboard and add widget successfully.Given User is on Smartsense page and add dashboard as "qa1234"</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="test-content scrollable">
-<div class="test-content-detail">
-<div class="detail-body"></div>
-</div>
-</div>
-</div><div class="test-wrapper row view category-view attributes-view">
+<div class="test-wrapper row view category-view attributes-view">
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
@@ -386,7 +289,7 @@ Session ID: be0fd5e662a14b1af37bcf31163c4a00
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>21:05:45 pm</td>
+<td>13:06:48 pm</td>
 <td>
 <a href="#" class="linked" test-id='1' id='2'>Login to Eco app</a>
 <div class="">
@@ -411,13 +314,13 @@ Session ID: be0fd5e662a14b1af37bcf31163c4a00
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jun 21, 2024 09:05:43 pm</h3>
+<h3>Jun 22, 2024 01:06:47 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jun 21, 2024 09:06:52 pm</h3>
+<h3>Jun 22, 2024 01:06:48 pm</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -468,9 +371,9 @@ Session ID: be0fd5e662a14b1af37bcf31163c4a00
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='33%'><b>1</b> scenarios passed</small></div>
+<div><small data-tooltip='66%'><b>2</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='66%'><b>2</b> scenarios failed,
+<small data-tooltip='33%'><b>1</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -488,10 +391,10 @@ Session ID: be0fd5e662a14b1af37bcf31163c4a00
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='35%'><b>6</b> steps passed</small></div>
+<div><small data-tooltip='80%'><b>16</b> steps passed</small></div>
 <div>
-<small data-tooltip='11%'><b>2</b> steps failed,
-<b>9</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='5%'><b>1</b> steps failed,
+<b>3</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -507,7 +410,7 @@ Session ID: be0fd5e662a14b1af37bcf31163c4a00
 </div></div>
 <script>
 var timeline = {
-"create dashboard Module":67.201
+"create dashboard Module":0.253
 };
 </script>
 <div class="row">
@@ -538,16 +441,16 @@ failParent: 1,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 1,
-failChild: 2,
+passChild: 2,
+failChild: 1,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 6,
-failGrandChild: 2,
+passGrandChild: 16,
+failGrandChild: 1,
 warningGrandChild: 0,
-skipGrandChild: 9,
+skipGrandChild: 3,
 infoGrandChild: 0,
 eventsCount: 5,
 };
