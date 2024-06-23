@@ -29,39 +29,39 @@ public class DashboardSteps {
 	}
 	@When("User again Add widget as {string} then Verify after refresh preview widget is dispayed compulsory")
 	public void user_again_add_widget_as_then_verify_after_refresh_preview_widget_is_dispayed_compulsory(String widgetName) throws Exception {
-		//         dash.addWidget(widgetName);
+		         dash.addWidget(widgetName);
 	}
 	@Given("User is on Smartsense page and Edit dashboard")
 	public void user_is_on_smartsense_page_and_edit_dashboard() throws Exception {
-		//            dash.editDashboard();
+		            dash.editDashboard();
 	}
 	@When("Edit with by Add new widget as {string} Verify after refresh preview widget is dispayed compulsory")
 	public void edit_with_by_add_new_widget_as_verify_after_refresh_preview_widget_is_dispayed_compulsory(String widgetName) throws Exception {
-		//          dash.addWidget(widgetName);
+		          dash.addWidget(widgetName);
 	}
 
 	@When("Save the changes")
 	public void save_the_changes() throws Exception {
-		//         dash.clickOnSaveChanges();
+		         dash.clickOnSaveChanges();
 	}
 	@When("User Download the widget data as img")
 	public void user_download_the_widget_data_as_img() throws Exception {
-		//       dash.downloadWidgetDataAsImg();
+		       dash.downloadWidgetDataAsImg();
 	}
 
 	@Then("Verify downloaded file of data is avaliable in project folder with {string} name")
 	public void verify_downloaded_file_of_data_is_avaliable_in_project_folder_with_name(String filenameWithExtension) throws Exception {
-		//	   dash.checkIfFileIsDownloaded(filenameWithExtension);
+			   dash.checkIfFileIsDownloaded(filenameWithExtension);
 	}
 
 
 	@When("User Download the widget data as pdf")
 	public void user_download_the_widget_data_as_pdf() throws Exception {
-		//         dash.downloadWidgetDataAsPdf();
+		         dash.downloadWidgetDataAsPdf();
 	}
 	@Then("Finally user Setting up the dashboard with unified date picker and update it")
 	public void finally_user_setting_up_the_dashboard_with_unified_date_picker_and_update_it() throws Exception {
-		//                  dash.settingOfDashboard();
+		                  dash.settingOfDashboard();
 	}
 
 }
