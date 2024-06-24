@@ -103,7 +103,7 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//span[@class='recharts-legend-item-text']")
 	private WebElement aliasText ; 
 
-    @FindBy(xpath="//a[@class='trigger level-0']")
+	@FindBy(xpath="//a[@class='trigger level-0']")
 	private WebElement appEllipsisVerticalIcon ; 
 
 	@FindBy(xpath="(//div[contains(text(),'Action')])[1]")
@@ -194,7 +194,7 @@ public class Dashboard extends BaseClass {
 		catch(Exception e) {
 			js.click(addDashBoard);
 		}
-		//		
+
 
 		applyExplicitWaitsUntilElementClickable(enterNameFiled,30).click();
 		applyExplicitWaitsUntilElementClickable(enterNameFiled,30).sendKeys(dashBoardName);
@@ -205,7 +205,6 @@ public class Dashboard extends BaseClass {
 		boolean messgAvaliable=	isWebElementDisplayed(createNotificatn);
 		if(messgAvaliable)
 		{
-
 			System.out.println(dashBoardName+ "  dashboard is created succefully ");
 
 		}
@@ -220,8 +219,10 @@ public class Dashboard extends BaseClass {
 
 
 	public boolean addWidget(String widgetName) throws Exception
-	{  acn = new  Actions(ndriver);
-       jse= (JavascriptExecutor)ndriver;
+	{  
+		acn = new  Actions(ndriver);
+		jse= (JavascriptExecutor)ndriver;
+
 		if(widgetName.equalsIgnoreCase("Pie Chart"))
 		{
 			applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
@@ -257,8 +258,6 @@ public class Dashboard extends BaseClass {
 
 
 			Thread.sleep(1000);
-
-			
 			acn.moveToElement(refreshPreview).click().perform();
 			//		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
 			Thread.sleep(2000);
@@ -275,31 +274,27 @@ public class Dashboard extends BaseClass {
 				}
 			}
 			applyExplicitWaitsUntilElementClickable(addWidget,30).click();
-		
+
 
 		}
 
 		else if(widgetName.equalsIgnoreCase("Sensor Health"))
 		{
-						applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-						applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
-						applyExplicitWaitsUntilElementClickable(plusIcon,50).click();
-						Thread.sleep(1000);
+			//			applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
+			//			applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+			//			applyExplicitWaitsUntilElementClickable(plusIcon,50).click();                              //add by using + icon
+			//			Thread.sleep(1000);
 
-//			applyExplicitWaitsUntilElementClickable(operationalExcellence,50).click();
-//			Thread.sleep(1000);
-//			applyExplicitWaitsUntilElementClickable(VerticalIcon,50).click();
-//			Thread.sleep(1000);
-			applyExplicitWaitsUntilElementClickable(addWidget,30).click();
+			applyExplicitWaitsUntilElementClickable(operationalExcellence,50).click();
+			Thread.sleep(1000);
+			applyExplicitWaitsUntilElementClickable(VerticalIcon,50).click();       
+			Thread.sleep(1000);
+			applyExplicitWaitsUntilElementClickable(addWidget,30).click();                                //add by using widget menu
 			applyExplicitWaitsUntilElementClickable(sensorHealth,30).click();
 			applyExplicitWaitsUntilElementClickable(addBtn,30).click();
 
-
 			applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys(widgetName);
-			applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys(widgetName);  //get the text of sensor or copy it 
-
-
-
+			applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys(widgetName);  
 			applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
 			Thread.sleep(1000);
 			applyExplicitWaitsUntilElementClickable(addWidget,30).click();
@@ -307,14 +302,14 @@ public class Dashboard extends BaseClass {
 		}
 		else if(widgetName.equalsIgnoreCase("Anomaly Detection"))
 		{
-     
+
 			applyExplicitWaitsUntilElementClickable(addNewWidget,30).click();                             
 			applyExplicitWaitsUntilElementClickable(anomallyDetectionApp,30).click();                             
 			applyExplicitWaitsUntilElementClickable(addBtn,30).click();                             
 			applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys(widgetName);                        
 			applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys(widgetName);                        
 
-            jse = (JavascriptExecutor) ndriver;
+			jse = (JavascriptExecutor) ndriver;
 			jse.executeScript("window.scrollBy(0,400)");
 			//select the period as week	
 			Select sel = new Select(period) ; 
@@ -334,21 +329,19 @@ public class Dashboard extends BaseClass {
 			jse.executeScript("window.scrollBy(0,1000)");
 			//select qa12	
 			applyExplicitWaitsUntilElementClickable(selectBox1,30).click(); 
-			//here  we apply loop to select qa2...option-2....last no...3.4.5
 			Thread.sleep(2000);
-            ndriver.findElement(By.xpath("//div[@id='react-select-2-option-2']")).click();            
+			ndriver.findElement(By.xpath("//div[@id='react-select-2-option-2']")).click();            
 
 			// //select kVA	
 			applyExplicitWaitsUntilElementClickable(selectBox2,30).click(); 
 			Thread.sleep(2000);
-             ndriver.findElement(By.xpath("//div[text()='KVA']")).click();  
+			ndriver.findElement(By.xpath("//div[text()='KVA']")).click();  
 
 
 			applyExplicitWaitsUntilElementClickable(toggleCheckBox,30).click();                       //togglebtn click
-            acn.moveToElement(refreshPreview).perform();
+			acn.moveToElement(refreshPreview).perform();
 			applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
 			Thread.sleep(1000);
-
 
 			applyExplicitWaitsUntilElementClickable(addWidget,30).click();
 		}
@@ -360,17 +353,18 @@ public class Dashboard extends BaseClass {
 
 
 	public void cloneTheWidgetAndDeleteClone() throws Exception
-	{ jse= (JavascriptExecutor)ndriver;
+	{ 
+		jse= (JavascriptExecutor)ndriver;
 		applyExplicitWaitsUntilElementClickable(appEllipsisVerticalIcon,30).click();
-	
+
 		applyExplicitWaitsUntilElementClickable(action,30).click();
 		Thread.sleep(1000);
 
 		applyExplicitWaitsUntilElementClickable(clone,30).click();
 		Thread.sleep(1000);
 		jse.executeScript("window.scrollBy(0,1000)");
-//		acn.moveToElement(piechartCopyText).perform();
-//		Thread.sleep(1000);
+		//		acn.moveToElement(piechartCopyText).perform();
+		//		Thread.sleep(1000);
 		boolean s = isWebElementDisplayed(piechartCopyText);
 		if(s)
 		{
