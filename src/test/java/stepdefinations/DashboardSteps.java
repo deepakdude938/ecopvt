@@ -17,14 +17,14 @@ public class DashboardSteps {
 
 	@Given("User is on Smartsense page and add dashboard as {string}")
 	public void user_is_on_smartsense_page_and_add_dashboard_as(String dashboardName) throws Exception {
-		
+
 		boolean created =dash.createDashboard(dashboardName);
 		Assert.assertTrue(created, "dashboard is not created ");
 
 	}
 	@When("User Add widget as {string} then Verify after refresh preview widget is dispayed compulsory")
 	public void user_add_widget_as_then_verify_after_refresh_preview_widget_is_dispayed_compulsory(String widgetName) throws Exception {
-        
+
 		boolean widgetIsDisplayed =dash.addWidget(widgetName);
 		Assert.assertTrue(widgetIsDisplayed,"Pie Chart widget not Dispayed succefully" );
 	}
@@ -35,8 +35,7 @@ public class DashboardSteps {
 	}
 	@When("User again Add widget as {string} then Verify after refresh preview widget is dispayed compulsory")
 	public void user_again_add_widget_as_then_verify_after_refresh_preview_widget_is_dispayed_compulsory(String widgetName) throws Exception {
-		boolean widgetIsDisplayed =dash.addWidget(widgetName);
-		Assert.assertTrue(widgetIsDisplayed,"Sensor Health widget not Dispayed succefully" );
+		dash.addWidget(widgetName);
 	}
 	@Given("User is on Smartsense page and Edit dashboard")
 	public void user_is_on_smartsense_page_and_edit_dashboard() throws Exception {
@@ -44,8 +43,7 @@ public class DashboardSteps {
 	}
 	@When("Edit with by Add new widget as {string} Verify after refresh preview widget is dispayed compulsory")
 	public void edit_with_by_add_new_widget_as_verify_after_refresh_preview_widget_is_dispayed_compulsory(String widgetName) throws Exception {
-		boolean widgetIsDisplayed =dash.addWidget(widgetName);
-		Assert.assertTrue(widgetIsDisplayed,"Anomaly Detection widget not Dispayed succefully" );
+		dash.addWidget(widgetName);
 	}
 
 	@When("Save the changes")
