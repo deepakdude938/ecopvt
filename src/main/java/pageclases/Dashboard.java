@@ -2,7 +2,6 @@ package pageclases;
 
 import java.io.File;
 import java.time.Duration;
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -35,7 +34,7 @@ public class Dashboard extends BaseClass {
 
 	}
 
-	@FindBy(xpath="//p[@class='active']")
+	@FindBy(xpath="//p[@class='active' and text()='Operational Excellence']")
 	private WebElement operationalExcellence;
 
 	@FindBy(xpath="//button[@class='add-wrap _add-wrap']")
@@ -47,11 +46,17 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//button[normalize-space()='Create']")
 	private WebElement createBtn ;
 
-	@FindBy(xpath="//span[text()='Dashboard created']")
-	private WebElement createMessg ;
+	@FindBy(xpath="//div[@class='Toastify__toast Toastify__toast--success successToast notification']")
+	private WebElement createNotificatn ;
 
 	@FindBy(xpath="//div[@class='dashboard-list-litem _active']")
 	private WebElement ellipsisVerticalIcon ;
+
+	@FindBy(xpath="//i[@class='fas fa-ellipsis-v']")
+	private WebElement VerticalIcon ;
+
+	//	@FindBy(xpath="(//button[@class='menu-item'])[1]")
+	//	private WebElement addWidgetMenu ;
 
 	@FindBy(xpath="//button[normalize-space()='Add Widget']")
 	private WebElement addWidget ;
@@ -86,25 +91,28 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//input[@type='color']")
 	private WebElement color ;
 
+	@FindBy(xpath="//div[@class='d-flex flex-column color-pallette']//div[1]//div[3]")
+	private WebElement selectColor;
+
 	@FindBy(xpath="//span[normalize-space()='Refresh Preview']")
 	private WebElement refreshPreview ;
 
 	@FindBy(xpath="//*[name()='g' and contains(@class,'recharts-l')]")
-	private WebElement pieChartDisplay ;
+	private WebElement widgetDisplay ;
 
 	@FindBy(xpath="//span[@class='recharts-legend-item-text']")
 	private WebElement aliasText ; 
 
-	@FindBy(xpath="//a[@class='trigger level-0']")
+    @FindBy(xpath="//a[@class='trigger level-0']")
 	private WebElement appEllipsisVerticalIcon ; 
 
-	@FindBy(xpath="//div[@class='dropdown-menu level-0 _show']//div[contains(text(),'Action')]")
+	@FindBy(xpath="(//div[contains(text(),'Action')])[1]")
 	private WebElement  action;
 
-	//	@FindBy(xpath="(//div[text()='Action'])[2]")
-	//	private WebElement  copyPieAction;
+	@FindBy(xpath="(//a[@class='trigger level-0'])[2]")
+	private WebElement  copyPieAction;
 
-	@FindBy(xpath="//div[@class='dropdown-menu level-1 _show']/a[text()='Clone']")
+	@FindBy(xpath="(//a[normalize-space()='Clone'])[1]")
 	private WebElement clone ;
 
 	@FindBy(xpath="(//a[@class='trigger level-0'])[2]")
@@ -113,7 +121,7 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//div[text()=' Pie Chart - Copy']")
 	private WebElement piechartCopyText ;
 
-	@FindBy(xpath="//div[@class='dropdown-menu level-1 _show']/a[text()='Delete']")
+	@FindBy(xpath="(//a[@class='dropdown-item' and text()='Delete'])[2]")
 	private WebElement  deleteCopyPie;
 
 	@FindBy(xpath="//button[text()='Ok']")
@@ -143,11 +151,17 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//select[@placeholder='Data Frequency']")
 	private WebElement  dataFrequency ;
 
-	@FindBy(xpath="(//input[@placeholder='Enter From'])[1]")
+	@FindBy(xpath="(//input[@class='form-control'])[3]")
 	private WebElement  threshouldPercent ;
 
-	@FindBy(xpath="(//input[@placeholder='Enter From'])[2]")
+	@FindBy(xpath="(//input[@class='form-control'])[4]")
 	private WebElement trainingWeek  ;
+
+	@FindBy(xpath = "(//div[@class='css-o3h76h-control selectionbox_prefix__control'])[1]")
+	private WebElement selectBox1;
+
+	@FindBy(xpath="(//div[@class='css-o3h76h-control selectionbox_prefix__control'])[2]")
+	private WebElement selectBox2;
 
 	@FindBy(xpath="(//span[@class='checkmark'])[3]")
 	private WebElement  toggleCheckBox ;
@@ -167,7 +181,11 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//button[normalize-space()='Update']")
 	private WebElement  updateBtn ;
 
-	public void createDashboard(String dashBoardName) throws Exception
+
+
+
+	boolean widgetDisplayed;
+	public boolean createDashboard(String dashBoardName) throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
 		try {
@@ -181,33 +199,35 @@ public class Dashboard extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(enterNameFiled,30).click();
 		applyExplicitWaitsUntilElementClickable(enterNameFiled,30).sendKeys(dashBoardName);
 		applyExplicitWaitsUntilElementClickable(createBtn,30).click();
-		boolean messgAvaliable=	isWebElementDisplayed(createMessg);
+		Thread.sleep(2000);
+
+
+		boolean messgAvaliable=	isWebElementDisplayed(createNotificatn);
 		if(messgAvaliable)
 		{
+
 			System.out.println(dashBoardName+ "  dashboard is created succefully ");
-			Asser
+
 		}
 		else {
 			System.out.println(dashBoardName+ "  dashboard is not created succefully ");
 		}
 
+		return messgAvaliable;
+
+
 	}
 
 
-	public void addWidget(String widgetName) throws Exception
-	{
-
+	public boolean addWidget(String widgetName) throws Exception
+	{  acn = new  Actions(ndriver);
+       jse= (JavascriptExecutor)ndriver;
 		if(widgetName.equalsIgnoreCase("Pie Chart"))
 		{
 			applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
 			applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
 			applyExplicitWaitsUntilElementClickable(plusIcon,50).click();
 			Thread.sleep(1000);
-			//		Actions acn = new Actions(ndriver);
-			//		acn.moveToElement(addWidget).click().perform();;
-			//		Thread.sleep(1000);
-			//WebElement plusIcon=		ndriver.findElement(By.xpath("//i[@class='fa fa-plus']"));
-			//acn.moveToElement(plusIcon).click().perform();
 
 
 			applyExplicitWaitsUntilElementClickable(piechartWidgetApp,30).click();
@@ -221,7 +241,7 @@ public class Dashboard extends BaseClass {
 			jse.executeScript("window.scrollBy(0,1000)");
 			Thread.sleep(1000);
 			applyExplicitWaitsUntilElementClickable(alias,30).click();
-			applyExplicitWaitsUntilElementClickable(alias,30).sendKeys("a11");
+			applyExplicitWaitsUntilElementClickable(alias,30).sendKeys("abc");
 			//		Thread.sleep(1000);
 			applyExplicitWaitsUntilElementClickable(location,30).click();
 			Thread.sleep(1000);
@@ -230,46 +250,46 @@ public class Dashboard extends BaseClass {
 			applyExplicitWaitsUntilElementClickable(parameter,30).click();
 			Thread.sleep(1000);
 			ndriver.findElement(By.xpath("//div[@id='react-select-3-option-55']")).click();
+
 			applyExplicitWaitsUntilElementClickable(color,30).click();
-			ndriver.findElement(By.xpath("//div[@class='d-flex flex-column color-pallette']//div[1]//div[3]")).click();
+			String colorValue =selectColor.getCssValue("color");
+			applyExplicitWaitsUntilElementClickable(selectColor,30).click();
+
 
 			Thread.sleep(1000);
-			//	js.executeScript("arguments[0].scrollIntoView(true);", refreshPreview);
-			//	js.executeScript("window.scrollBy(0,-2000)");
 
-			acn = new Actions(ndriver);
+			
 			acn.moveToElement(refreshPreview).click().perform();
 			//		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
 			Thread.sleep(2000);
-			boolean display=isWebElementDisplayed(pieChartDisplay);
-			if(display)
+			widgetDisplayed=isWebElementDisplayed(widgetDisplay);
+			if(widgetDisplayed)
 			{
-				System.out.println(  "piechart display succefully ");
+				if(widgetDisplay.getCssValue("color").equals(colorValue) &&  aliasText.getText().equals("abc"))
+				{
+					System.out.println(  "piechart  succefully display with correct colour");
+				}
+
+				else {
+					System.out.println("piechart not succefully display with correct colour");
+				}
 			}
-			else {
-				System.out.println("piechart  not display succefully ");
-			}
-
-			boolean textDisplay=isWebElementDisplayed(aliasText);
-			if(textDisplay)
-			{
-
-				System.out.println(  "piechartText is display succefully ");
-			}
-			else {
-				System.out.println("piechartText not display succefully ");
-			}
-
-
-
-
 			applyExplicitWaitsUntilElementClickable(addWidget,30).click();
+		
 
 		}
+
 		else if(widgetName.equalsIgnoreCase("Sensor Health"))
 		{
-			applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-			applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+						applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
+						applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+						applyExplicitWaitsUntilElementClickable(plusIcon,50).click();
+						Thread.sleep(1000);
+
+//			applyExplicitWaitsUntilElementClickable(operationalExcellence,50).click();
+//			Thread.sleep(1000);
+//			applyExplicitWaitsUntilElementClickable(VerticalIcon,50).click();
+//			Thread.sleep(1000);
 			applyExplicitWaitsUntilElementClickable(addWidget,30).click();
 			applyExplicitWaitsUntilElementClickable(sensorHealth,30).click();
 			applyExplicitWaitsUntilElementClickable(addBtn,30).click();
@@ -287,67 +307,70 @@ public class Dashboard extends BaseClass {
 		}
 		else if(widgetName.equalsIgnoreCase("Anomaly Detection"))
 		{
+     
 			applyExplicitWaitsUntilElementClickable(addNewWidget,30).click();                             
 			applyExplicitWaitsUntilElementClickable(anomallyDetectionApp,30).click();                             
 			applyExplicitWaitsUntilElementClickable(addBtn,30).click();                             
 			applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys(widgetName);                        
 			applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys(widgetName);                        
 
-
+            jse = (JavascriptExecutor) ndriver;
+			jse.executeScript("window.scrollBy(0,400)");
 			//select the period as week	
-			applyExplicitWaitsUntilElementClickable(period,30).click(); //click on period//period
 			Select sel = new Select(period) ; 
 			sel.selectByVisibleText("Week");
 
 			//select freq = 60 min
-			applyExplicitWaitsUntilElementClickable(dataFrequency,30).click();                             //datafreq click
 			sel = new Select(dataFrequency) ; 
-			sel.deselectByVisibleText("60 min");
+			sel.selectByVisibleText("60 min");
 
+			applyExplicitWaitsUntilElementClickable(threshouldPercent,30).click();                             //enter threshould
+			applyExplicitWaitsUntilElementClickable(threshouldPercent,30).sendKeys("50");                           //50
+
+
+			applyExplicitWaitsUntilElementClickable(trainingWeek,30).click();                             //trainigWeek
+			applyExplicitWaitsUntilElementClickable(trainingWeek,30).sendKeys("2");                            //2
+
+			jse.executeScript("window.scrollBy(0,1000)");
+			//select qa12	
+			applyExplicitWaitsUntilElementClickable(selectBox1,30).click(); 
+			//here  we apply loop to select qa2...option-2....last no...3.4.5
+			Thread.sleep(2000);
+            ndriver.findElement(By.xpath("//div[@id='react-select-2-option-2']")).click();            
+
+			// //select kVA	
+			applyExplicitWaitsUntilElementClickable(selectBox2,30).click(); 
+			Thread.sleep(2000);
+             ndriver.findElement(By.xpath("//div[text()='KVA']")).click();  
+
+
+			applyExplicitWaitsUntilElementClickable(toggleCheckBox,30).click();                       //togglebtn click
+            acn.moveToElement(refreshPreview).perform();
+			applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
+			Thread.sleep(1000);
+
+
+			applyExplicitWaitsUntilElementClickable(addWidget,30).click();
 		}
 
-		applyExplicitWaitsUntilElementClickable(threshouldPercent,30).click();                             //enter threshould
-		applyExplicitWaitsUntilElementClickable(threshouldPercent,30).sendKeys("50");                           //50
-
-
-		applyExplicitWaitsUntilElementClickable(trainingWeek,30).click();                             //trainigWeek
-		applyExplicitWaitsUntilElementClickable(trainingWeek,30).sendKeys("2");                            //2
-
-		//select qa12	
-		//	applyExplicitWaitsUntilElementClickable(,30).click();                             
-		ndriver.findElement(By.xpath("//div[@class='css-1thkkgx-indicatorContainer selectionbox_prefix__indicator selectionbox_prefix__dropdown-indicator']")).click();                
-		//here  we apply loop to select qa2...option-2....last no...3.4.5		
-		ndriver.findElement(By.xpath("//div[@id='react-select-6-option-2']")).click();            
-
-		// //select kwh	
-		//	applyExplicitWaitsUntilElementClickable(,30).click();                            
-		ndriver.findElement(By.xpath("(//div[contains(@class,'css-1thkkgx-indicatorContainer selectionbox_prefix')])[2]")).click(); 
-		ndriver.findElement(By.xpath("//div[@id='react-select-7-option-437']")).click();  
-
-
-		applyExplicitWaitsUntilElementClickable(toggleCheckBox,30).click();                       //togglebtn click
-
-		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
-		Thread.sleep(1000);
-
-
-		applyExplicitWaitsUntilElementClickable(addWidget,30).click();
+		return widgetDisplayed;
 
 	}
 
 
 
 	public void cloneTheWidgetAndDeleteClone() throws Exception
-	{
+	{ jse= (JavascriptExecutor)ndriver;
 		applyExplicitWaitsUntilElementClickable(appEllipsisVerticalIcon,30).click();
+	
 		applyExplicitWaitsUntilElementClickable(action,30).click();
-		acn=new Actions(ndriver);
-		acn.moveToElement(clone).click().perform();
-		//		applyExplicitWaitsUntilElementClickable(clone,30).click();
 		Thread.sleep(1000);
 
-		acn.moveToElement(piechartCopyText).perform();
+		applyExplicitWaitsUntilElementClickable(clone,30).click();
 		Thread.sleep(1000);
+		jse.executeScript("window.scrollBy(0,1000)");
+//		acn.moveToElement(piechartCopyText).perform();
+//		Thread.sleep(1000);
 		boolean s = isWebElementDisplayed(piechartCopyText);
 		if(s)
 		{
@@ -357,12 +380,11 @@ public class Dashboard extends BaseClass {
 			System.out.println("widget not clone succefully");
 
 		}
-		Thread.sleep(1000);
-		ndriver.findElement(By.xpath("(//a[@class='trigger level-0'])[2]")).click();
-		//           acn.moveToElement(copiedEllipsisVerticalIcon).click().perform();
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(copiedEllipsisVerticalIcon,30).click();
-		applyExplicitWaitsUntilElementClickable(action, 30).click();            //check xpath is common of copy for all app
+		applyExplicitWaitsUntilElementClickable(copyPieAction, 30).click();  
 		applyExplicitWaitsUntilElementClickable(deleteCopyPie, 30).click();           // check xpath is common of delete for all app
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(okBtn, 30).click();                   //check xpath is common of ok for all  app
 
 
@@ -374,7 +396,7 @@ public class Dashboard extends BaseClass {
 	public void editDashboard() throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(VerticalIcon,30).click();
 		applyExplicitWaitsUntilElementClickable(editDashboard,30).click(); 
 
 	}
@@ -388,9 +410,11 @@ public class Dashboard extends BaseClass {
 	public void downloadWidgetDataAsImg() throws Exception
 	{ 
 		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(VerticalIcon,30).click();
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(download,30).click();                               //download
-		ndriver.findElement(By.id("//span[normalize-space()='Image']")).click();                     //image
+		ndriver.findElement(By.xpath("//span[normalize-space()='Image']")).click();                     //image
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(okBtn,30).click();                                 //ok  btn
 		Thread.sleep(2000);
 
@@ -400,9 +424,11 @@ public class Dashboard extends BaseClass {
 	public void downloadWidgetDataAsPdf() throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(VerticalIcon,30).click();
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(download,30).click();                               //download
 		ndriver.findElement(By.xpath("//span[normalize-space()='pdf']")).click();                       //pdf
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(okBtn,30).click();                                   //ok  btn
 		Thread.sleep(2000);
 	}
@@ -432,7 +458,8 @@ public class Dashboard extends BaseClass {
 	public void settingOfDashboard() throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-		applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
+		applyExplicitWaitsUntilElementClickable(VerticalIcon,30).click();
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(setting,30).click();                               //setting
 		applyExplicitWaitsUntilElementClickable(unifiedDatePicker,30).click();                     //unified picker
 		applyExplicitWaitsUntilElementClickable(updateBtn,30).click();                              //update

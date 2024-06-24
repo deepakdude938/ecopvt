@@ -1,6 +1,7 @@
 package stepdefinations;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import drivers.DriverFactory;
 import io.cucumber.java.en.Given;
@@ -16,11 +17,16 @@ public class DashboardSteps {
 
 	@Given("User is on Smartsense page and add dashboard as {string}")
 	public void user_is_on_smartsense_page_and_add_dashboard_as(String dashboardName) throws Exception {
-		dash.createDashboard(dashboardName);
+		boolean created =dash.createDashboard(dashboardName);
+		Assert.assertTrue(created, "dashboard is not created ");
+	
 	}
 	@When("User Add widget as {string} then Verify after refresh preview widget is dispayed compulsory")
 	public void user_add_widget_as_then_verify_after_refresh_preview_widget_is_dispayed_compulsory(String widgetName) throws Exception {
+		
 		dash.addWidget(widgetName);
+		boolean widgetIsDisplayed =dash.addWidget(widgetName);
+		Assert.assertTrue(widgetIsDisplayed,"widget not Dispayed succefully" );
 	}
 	@When("Clone dispayed the widget it gets clone succefully after that delete that clone widget")
 	public void clone_dispayed_the_widget_it_gets_clone_succefully_after_that_delete_that_clone_widget() throws Exception {
