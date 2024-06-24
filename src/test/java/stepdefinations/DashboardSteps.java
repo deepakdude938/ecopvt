@@ -17,14 +17,14 @@ public class DashboardSteps {
 
 	@Given("User is on Smartsense page and add dashboard as {string}")
 	public void user_is_on_smartsense_page_and_add_dashboard_as(String dashboardName) throws Exception {
+		
 		boolean created =dash.createDashboard(dashboardName);
 		Assert.assertTrue(created, "dashboard is not created ");
 
 	}
 	@When("User Add widget as {string} then Verify after refresh preview widget is dispayed compulsory")
 	public void user_add_widget_as_then_verify_after_refresh_preview_widget_is_dispayed_compulsory(String widgetName) throws Exception {
-
-		
+        
 		boolean widgetIsDisplayed =dash.addWidget(widgetName);
 		Assert.assertTrue(widgetIsDisplayed,"Pie Chart widget not Dispayed succefully" );
 	}
