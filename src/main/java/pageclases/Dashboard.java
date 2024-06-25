@@ -55,11 +55,14 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//i[@class='fas fa-ellipsis-v']")
 	private WebElement VerticalIcon ;
 
-	//	@FindBy(xpath="(//button[@class='menu-item'])[1]")
-	//	private WebElement addWidgetMenu ;
+		@FindBy(xpath="//button[normalize-space()='Add Widgets']")
+		private WebElement addWidgetMenu ;
 
 	@FindBy(xpath="//button[normalize-space()='Add Widget']")
 	private WebElement addWidget ;
+	
+	@FindBy(xpath="//span[text()='Widget Added']")
+	private WebElement addWidgetNotification ;
 
 	@FindBy(xpath="//button[normalize-space()='+ Add New Widget']")
 	private WebElement addNewWidget ;
@@ -109,7 +112,7 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="(//div[contains(text(),'Action')])[1]")
 	private WebElement  action;
 
-	@FindBy(xpath="(//a[@class='trigger level-0'])[2]")
+	@FindBy(xpath="(//div[text()='Action'])[2]")
 	private WebElement  copyPieAction;
 
 	@FindBy(xpath="(//a[normalize-space()='Clone'])[1]")
@@ -121,7 +124,7 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//div[text()=' Pie Chart - Copy']")
 	private WebElement piechartCopyText ;
 
-	@FindBy(xpath="(//a[@class='dropdown-item' and text()='Delete'])[2]")
+	@FindBy(xpath="(//a[text()='Delete'])[2]")
 	private WebElement  deleteCopyPie;
 
 	@FindBy(xpath="//button[text()='Ok']")
@@ -157,10 +160,10 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="(//input[@class='form-control'])[4]")
 	private WebElement trainingWeek  ;
 
-	@FindBy(xpath = "(//div[@class='css-o3h76h-control selectionbox_prefix__control'])[1]")
+	@FindBy(xpath = "(//div[@class='css-16pqwjk-indicatorContainer selectionbox_prefix__indicator selectionbox_prefix__dropdown-indicator'])[1]")
 	private WebElement selectBox1;
 
-	@FindBy(xpath="(//div[@class='css-o3h76h-control selectionbox_prefix__control'])[2]")
+	@FindBy(xpath="(//div[@class='css-16pqwjk-indicatorContainer selectionbox_prefix__indicator selectionbox_prefix__dropdown-indicator'])[2]")
 	private WebElement selectBox2;
 
 	@FindBy(xpath="(//span[@class='checkmark'])[3]")
@@ -286,10 +289,10 @@ public class Dashboard extends BaseClass {
 			//			Thread.sleep(1000);
 
 			applyExplicitWaitsUntilElementClickable(operationalExcellence,50).click();
-			Thread.sleep(1000);
+//			Thread.sleep(1000);
 			applyExplicitWaitsUntilElementClickable(VerticalIcon,50).click();       
-			Thread.sleep(1000);
-			applyExplicitWaitsUntilElementClickable(addWidget,30).click();                                //add by using widget menu
+//			Thread.sleep(1000);
+			applyExplicitWaitsUntilElementClickable(addWidgetMenu,30).click();                                //add by using widgets menu
 			applyExplicitWaitsUntilElementClickable(sensorHealth,30).click();
 			applyExplicitWaitsUntilElementClickable(addBtn,30).click();
 
@@ -326,16 +329,17 @@ public class Dashboard extends BaseClass {
 			applyExplicitWaitsUntilElementClickable(trainingWeek,30).click();                             //trainigWeek
 			applyExplicitWaitsUntilElementClickable(trainingWeek,30).sendKeys("2");                            //2
 
-			jse.executeScript("window.scrollBy(0,1000)");
+//			jse.executeScript("window.scrollBy(0,1000)");
 			//select qa12	
 			applyExplicitWaitsUntilElementClickable(selectBox1,30).click(); 
 			Thread.sleep(2000);
-			ndriver.findElement(By.xpath("//div[@id='react-select-2-option-2']")).click();            
+			ndriver.findElement(By.xpath("//div[text()='QA12']")).click();
+//			Thread.sleep(1000);
 
 			// //select kVA	
 			applyExplicitWaitsUntilElementClickable(selectBox2,30).click(); 
-			Thread.sleep(2000);
-			ndriver.findElement(By.xpath("//div[text()='KVA']")).click();  
+//			Thread.sleep(2000);
+			ndriver.findElement(By.xpath("(//div[@class='css-11unzgr selectionbox_prefix__menu-list']/div)[3]")).click();  
 
 
 			applyExplicitWaitsUntilElementClickable(toggleCheckBox,30).click();                       //togglebtn click
@@ -376,7 +380,8 @@ public class Dashboard extends BaseClass {
 		}
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(copiedEllipsisVerticalIcon,30).click();
-		applyExplicitWaitsUntilElementClickable(copyPieAction, 30).click();  
+		applyExplicitWaitsUntilElementClickable(copyPieAction, 30).click();
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(deleteCopyPie, 30).click();           // check xpath is common of delete for all app
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(okBtn, 30).click();                   //check xpath is common of ok for all  app
