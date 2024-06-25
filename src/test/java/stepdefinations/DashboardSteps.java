@@ -35,7 +35,8 @@ public class DashboardSteps {
 	}
 	@When("User again Add widget as {string} then Verify after refresh preview widget is dispayed compulsory")
 	public void user_again_add_widget_as_then_verify_after_refresh_preview_widget_is_dispayed_compulsory(String widgetName) throws Exception {
-		dash.addWidget(widgetName);
+		boolean widgetIsDisplayed =dash.addWidget(widgetName);
+		Assert.assertTrue(widgetIsDisplayed,"Sensor Health widget not Dispayed succefully" );
 	}
 	@Given("User is on Smartsense page and Edit dashboard")
 	public void user_is_on_smartsense_page_and_edit_dashboard() throws Exception {

@@ -55,12 +55,12 @@ public class Dashboard extends BaseClass {
 	@FindBy(xpath="//i[@class='fas fa-ellipsis-v']")
 	private WebElement VerticalIcon ;
 
-		@FindBy(xpath="//button[normalize-space()='Add Widgets']")
-		private WebElement addWidgetMenu ;
+	@FindBy(xpath="//button[normalize-space()='Add Widgets']")
+	private WebElement addWidgetMenu ;
 
 	@FindBy(xpath="//button[normalize-space()='Add Widget']")
 	private WebElement addWidget ;
-	
+
 	@FindBy(xpath="//span[text()='Widget Added']")
 	private WebElement addWidgetNotification ;
 
@@ -101,7 +101,7 @@ public class Dashboard extends BaseClass {
 	private WebElement refreshPreview ;
 
 	@FindBy(xpath="//*[name()='g' and contains(@class,'recharts-l')]")
-	private WebElement widgetDisplay ;
+	private WebElement pieWidgetDisplay ;
 
 	@FindBy(xpath="//span[@class='recharts-legend-item-text']")
 	private WebElement aliasText ; 
@@ -135,6 +135,9 @@ public class Dashboard extends BaseClass {
 
 	@FindBy(xpath="//div[@class='add-widget-app-name' and text()='Sensor Health']")
 	private WebElement  sensorHealth;
+
+	@FindBy(xpath="//div[@class='sensor-sidget-wrap']")
+	private WebElement sensorWidgetDisplay ;
 
 	@FindBy(xpath="//span[text()='Pie Chart']")
 	private WebElement piechartname  ;
@@ -183,6 +186,10 @@ public class Dashboard extends BaseClass {
 
 	@FindBy(xpath="//button[normalize-space()='Update']")
 	private WebElement  updateBtn ;
+
+
+	@FindBy(xpath="//div[@class='Toastify__toast Toastify__toast--success successToast notification']")
+	private WebElement  notification ;
 
 
 
@@ -264,10 +271,10 @@ public class Dashboard extends BaseClass {
 			acn.moveToElement(refreshPreview).click().perform();
 			//		applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
 			Thread.sleep(2000);
-			widgetDisplayed=isWebElementDisplayed(widgetDisplay);
+			widgetDisplayed=isWebElementDisplayed(pieWidgetDisplay);
 			if(widgetDisplayed)
 			{
-				if(widgetDisplay.getCssValue("color").equals(colorValue) &&  aliasText.getText().equals("abc"))
+				if(pieWidgetDisplay.getCssValue("color").equals(colorValue) &&  aliasText.getText().equals("abc"))
 				{
 					System.out.println(  "piechart  succefully display with correct colour");
 				}
@@ -277,21 +284,17 @@ public class Dashboard extends BaseClass {
 				}
 			}
 			applyExplicitWaitsUntilElementClickable(addWidget,30).click();
+			Thread.sleep(1000);
 
 
 		}
 
 		else if(widgetName.equalsIgnoreCase("Sensor Health"))
 		{
-			//			applyExplicitWaitsUntilElementClickable(operationalExcellence,30).click();
-			//			applyExplicitWaitsUntilElementClickable(ellipsisVerticalIcon,30).click();
-			//			applyExplicitWaitsUntilElementClickable(plusIcon,50).click();                              //add by using + icon
-			//			Thread.sleep(1000);
-
 			applyExplicitWaitsUntilElementClickable(operationalExcellence,50).click();
-//			Thread.sleep(1000);
+			//			Thread.sleep(1000);
 			applyExplicitWaitsUntilElementClickable(VerticalIcon,50).click();       
-//			Thread.sleep(1000);
+			//			Thread.sleep(1000);
 			applyExplicitWaitsUntilElementClickable(addWidgetMenu,30).click();                                //add by using widgets menu
 			applyExplicitWaitsUntilElementClickable(sensorHealth,30).click();
 			applyExplicitWaitsUntilElementClickable(addBtn,30).click();
@@ -299,6 +302,8 @@ public class Dashboard extends BaseClass {
 			applyExplicitWaitsUntilElementClickable(widgetNameField,30).sendKeys(widgetName);
 			applyExplicitWaitsUntilElementClickable(widgetDescription,30).sendKeys(widgetName);  
 			applyExplicitWaitsUntilElementClickable(refreshPreview,30).click();
+			Thread.sleep(2000);
+			widgetDisplayed=isWebElementDisplayed(sensorWidgetDisplay);
 			Thread.sleep(1000);
 			applyExplicitWaitsUntilElementClickable(addWidget,30).click();
 
@@ -329,16 +334,21 @@ public class Dashboard extends BaseClass {
 			applyExplicitWaitsUntilElementClickable(trainingWeek,30).click();                             //trainigWeek
 			applyExplicitWaitsUntilElementClickable(trainingWeek,30).sendKeys("2");                            //2
 
-//			jse.executeScript("window.scrollBy(0,1000)");
 			//select qa12	
 			applyExplicitWaitsUntilElementClickable(selectBox1,30).click(); 
 			Thread.sleep(2000);
 			ndriver.findElement(By.xpath("//div[text()='QA12']")).click();
-//			Thread.sleep(1000);
+			Thread.sleep(1000);
 
 			// //select kVA	
-			applyExplicitWaitsUntilElementClickable(selectBox2,30).click(); 
-//			Thread.sleep(2000);
+			//			applyExplicitWaitsUntilElementClickable(selectBox2,30).click(); 
+			try {
+				applyExplicitWaitsUntilElementClickable(selectBox2,30).click();
+			}
+			catch(Exception e) {
+				js.click(selectBox2);
+			}
+			//			Thread.sleep(2000);
 			ndriver.findElement(By.xpath("(//div[@class='css-11unzgr selectionbox_prefix__menu-list']/div)[3]")).click();  
 
 
@@ -382,15 +392,12 @@ public class Dashboard extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(copiedEllipsisVerticalIcon,30).click();
 		applyExplicitWaitsUntilElementClickable(copyPieAction, 30).click();
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(deleteCopyPie, 30).click();           // check xpath is common of delete for all app
+		applyExplicitWaitsUntilElementClickable(deleteCopyPie, 30).click();          
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(okBtn, 30).click();                   //check xpath is common of ok for all  app
+		applyExplicitWaitsUntilElementClickable(okBtn, 30).click();                  
 
 
 	}
-	//check tvMode
-
-
 
 	public void editDashboard() throws Exception
 	{
@@ -412,7 +419,7 @@ public class Dashboard extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(VerticalIcon,30).click();
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(download,30).click();                               //download
-		ndriver.findElement(By.xpath("//span[normalize-space()='Image']")).click();                     //image
+		ndriver.findElement(By.xpath("//span[normalize-space()='Image']")).click();                 //image
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(okBtn,30).click();                                 //ok  btn
 		Thread.sleep(2000);
